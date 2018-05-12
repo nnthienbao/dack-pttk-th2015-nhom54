@@ -8,31 +8,31 @@
         mc:Ignorable="d"
         Title="Phần mềm quản lý thư viện" Height="550" Width="1000">
     <DockPanel>
-        <Ribbon DockPanel.Dock="Top" SelectedIndex="0">
+        <Ribbon DockPanel.Dock="Top" SelectedIndex="2">
             <RibbonTab Header="Quản lý danh mục sách">
                 <RibbonGroup Header="Quản lý loại sách">
                     <RibbonButton Label="Loại sách" LargeImageSource="images/loai-sach.png" Click="btnPageDSLoaiSachClick" />
-                    <RibbonButton Label="Thêm loại sách" SmallImageSource="images/add-icon.png" />
-                    <RibbonButton Label="Sửa thông tin loại sách" SmallImageSource="images/edit-icon.png" />
-                    <RibbonButton Label="Xóa thông tin loại sách" SmallImageSource="images/delete-icon.png" />
+                    <RibbonButton Label="Thêm loại sách" SmallImageSource="images/add-icon.png" Click="btnThemLoaiSachClick" />
+                    <RibbonButton Label="Sửa thông tin loại sách" SmallImageSource="images/edit-icon.png" Click="btnSuaLoaiSachClick" />
+                    <RibbonButton Label="Xóa thông tin loại sách" SmallImageSource="images/delete-icon.png" Click="btnXoaLoaiSachClick" />
                 </RibbonGroup>
                 <RibbonGroup Header="Quản lý ngành sách">
                     <RibbonButton Label="Ngành sách" LargeImageSource="images/nganh-sach.png" Click="btnPageDSNganhSachClick" />
-                    <RibbonButton Label="Thêm ngành sách" SmallImageSource="images/add-icon.png" />
-                    <RibbonButton Label="Sửa thông tin ngành sách" SmallImageSource="images/edit-icon.png" />
-                    <RibbonButton Label="Xóa thông tin ngành sách" SmallImageSource="images/delete-icon.png" />
+                    <RibbonButton Label="Thêm ngành sách" SmallImageSource="images/add-icon.png" Click="btnThemNganhSachClick" />
+                    <RibbonButton Label="Sửa thông tin ngành sách" SmallImageSource="images/edit-icon.png" Click="btnSuaNganhSachClick" />
+                    <RibbonButton Label="Xóa thông tin ngành sách" SmallImageSource="images/delete-icon.png" Click="btnXoaNganhSachClick" />
                 </RibbonGroup>
                 <RibbonGroup Header="Quản lý độc giả">
                     <RibbonButton Label="Nhà xuất bản" LargeImageSource="images/doc-gia.png" Click="btnPageDSNhaXuatBanClick" />
-                    <RibbonButton Label="Thêm NXB" SmallImageSource="images/add-icon.png" />
-                    <RibbonButton Label="Sửa thông tin NXB" SmallImageSource="images/edit-icon.png" />
-                    <RibbonButton Label="Xóa thông tin NXB" SmallImageSource="images/delete-icon.png" />
+                    <RibbonButton Label="Thêm NXB" SmallImageSource="images/add-icon.png" Click="btnThemNhaXuatBanClick" />
+                    <RibbonButton Label="Sửa thông tin NXB" SmallImageSource="images/edit-icon.png" Click="btnSuaNhaXuatBanClick" />
+                    <RibbonButton Label="Xóa thông tin NXB" SmallImageSource="images/delete-icon.png" Click="btnXoaNhaXuatBanClick" />
                 </RibbonGroup>
                 <RibbonGroup Header="Quản lý sách">
                     <RibbonButton Label="Sách" LargeImageSource="images/sach.png" Click="btnPageDSSachClick" />
-                    <RibbonButton Label="Thêm sách" SmallImageSource="images/add-icon.png" />
-                    <RibbonButton Label="Sửa thông tin sách" SmallImageSource="images/edit-icon.png" />
-                    <RibbonButton Label="Xóa thông tin sách" SmallImageSource="images/delete-icon.png" />
+                    <RibbonButton Label="Thêm sách" SmallImageSource="images/add-icon.png" Click="btnThemSachClick" />
+                    <RibbonButton Label="Sửa thông tin sách" SmallImageSource="images/edit-icon.png" Click="btnSuaSachClick" />
+                    <RibbonButton Label="Xóa thông tin sách" SmallImageSource="images/delete-icon.png" Click="btnXoaSachClick" />
                 </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="Quản lý độc giả">

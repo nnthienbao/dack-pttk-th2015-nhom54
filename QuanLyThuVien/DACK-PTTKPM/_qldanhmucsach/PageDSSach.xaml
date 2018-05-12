@@ -5,10 +5,100 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DACK_PTTKPM"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="600" d:DesignWidth="800"
       Title="Sach">
 
     <Grid>
-        <TextBlock Text="Sach" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFECF2F9" Offset="0"/>
+                <GradientStop Color="White" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400" />
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Danh sách Sách" FontSize="20" FontWeight="bold" Foreground="Red"
+            HorizontalAlignment="center" Grid.ColumnSpan="2" />
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" BorderThickness="0 2 2 0" BorderBrush="#B9C9DA">
+                <StackPanel Orientation="Vertical" Margin="20, 10, 20, 10">
+                    <RadioButton GroupName="rdoBtn_TimKiemSach" IsChecked="true" Content="Tìm kiếm theo mã loại" FontWeight="Bold" />
+                    <TextBox x:Name="tb_TimKiemMaSach" Text="Nhập mã sách tìm kiếm" Margin="20,5,0,0"/>
+                    <RadioButton GroupName="rdoBtn_TimKiemSach" Content="Tìm kiếm theo tên loại"  Margin="0,15,0,0" FontWeight="bold" />
+                    <TextBox x:Name="tb_TimKiemTenSach" Text="Nhập tên sách tìm kiếm" Margin="20,5,0,0" />
+                    <Button x:Name="btn_TimKiemSach" Content="Tìm kiếm" Height="25" Margin="40,10,40,0"></Button>
+                </StackPanel>
+            </Border>
+            <Border Grid.Row="1" BorderThickness="0 1 2 0" BorderBrush="#B9C9DA">
+                <ScrollViewer>
+                    <StackPanel Orientation="Vertical"  Margin="20, 0, 20, 10">
+                        <Label Content="Thông tin sách" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold" Foreground="Red"/>
+                        <Image Source="../images/Sach.png" Width="100" Height="100"></Image>
+                        <StackPanel Height="25" Orientation="Horizontal">
+                            <Label Content="Mã sách:" FontWeight="Bold" Foreground="Red" Width="100" />
+                            <Label x:Name="lb_KQTK_MaSach" Content="" FontWeight="Bold" />
+                        </StackPanel>
+                        <Label Content="Tên sách:" FontWeight="Bold" Foreground="Red" Margin="0,5,0,0" Width="100" HorizontalAlignment="Left" />
+                        <Label x:Name="lb_KQTK_TenSach" Content="" FontWeight="Bold" />
+                        <StackPanel Height="25" Orientation="Horizontal" Margin="0,5,0,0">
+                            <Label Content="Số lượng hiện có:" FontWeight="Bold" Foreground="Red" Width="130" />
+                            <Label x:Name="lb_KQTK_SoLuongHienCo" Content="" FontWeight="Bold" Width="30" />
+                            <Label Content="Số lượng hiện có:" FontWeight="Bold" Foreground="Red" Width="130" Margin="37,0,0,0" />
+                            <Label x:Name="lb_KQTK_SoLuongDaMuon" Content="" FontWeight="Bold" Width="30" />
+                        </StackPanel>
+                        <Label Content="Mô tả:" FontWeight="Bold" Foreground="Red" Margin="0,5,0,0" Width="100" HorizontalAlignment="Left" />
+                        <Label x:Name="lb_KQTK_MoTa" Content="" FontWeight="Bold" />
+                        <Label Content="Tên tác giả:" FontWeight="Bold" Foreground="Red" Margin="0,5,0,0" Width="100" HorizontalAlignment="Left" />
+                        <Label x:Name="lb_KQTK_TenTacGia" Content="" FontWeight="Bold" />
+                        <StackPanel Height="25" Orientation="Horizontal" Margin="0,5,0,0">
+                            <Label Content="Năm xuất bản:" FontWeight="Bold" Foreground="Red" Width="100" />
+                            <Label x:Name="lb_KQTK_NamXuatBan" Content="" FontWeight="Bold" />
+                        </StackPanel>
+                        <Label Content="Nhà xuất bản:" FontWeight="Bold" Foreground="Red" Margin="0,5,0,0" Width="100" HorizontalAlignment="Left" />
+                        <Label x:Name="lb_KQTK_NhaXuatBan" Content="" FontWeight="Bold" />
+                        <StackPanel Height="25" Orientation="Horizontal" Margin="0,5,0,0">
+                            <Label Content="Loại sách:" FontWeight="Bold" Foreground="Red" Width="100" />
+                            <Label x:Name="lb_KQTK_LoaiSach" Content="" FontWeight="Bold" />
+                        </StackPanel>
+                        <StackPanel Height="25" Orientation="Horizontal" Margin="0,5,0,0">
+                            <Label Content="Ngành:" FontWeight="Bold" Foreground="Red" Width="100" />
+                            <Label x:Name="lb_KQTK_NganhSach" Content="" FontWeight="Bold" />
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+        <Border Grid.Row="1" Grid.Column="1" BorderThickness="0 2 0 0" BorderBrush="#B9C9DA" >
+            <DataGrid x:Name="dataGridSach"
+                      SelectionMode="Single" 
+                      ScrollViewer.CanContentScroll="True" 
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                      ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Mã sách" Width="80"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Tên sách" Width="200"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Mô tả" Width="200"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Số lượng hiện có" Width="120"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Số lượng đã mượn" Width="120"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Tác giả" Width="100"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Năm xuất bản" Width="100"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Nhà xuất bản" Width="200"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Loại sách" Width="100"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Ngành sách" Width="100"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
     </Grid>
 </Page>

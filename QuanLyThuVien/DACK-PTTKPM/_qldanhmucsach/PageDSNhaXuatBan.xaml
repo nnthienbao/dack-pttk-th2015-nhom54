@@ -5,10 +5,61 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DACK_PTTKPM"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="400" d:DesignWidth="600"
       Title="NhaXuatBan">
 
     <Grid>
-        <TextBlock Text="NhaXuatBan" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFECF2F9" Offset="0"/>
+                <GradientStop Color="White" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400" />
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Danh sách nhà xuất bản" FontSize="20" FontWeight="bold" Foreground="Red"
+            HorizontalAlignment="center" Grid.ColumnSpan="2" />
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="180" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" BorderThickness="0 2 2 0" BorderBrush="#B9C9DA">
+                <StackPanel Orientation="Vertical" Margin="20, 10, 20, 10">
+                    <Label Content="Tìm kiếm theo mã nhà xuất bản" FontWeight="Bold" />
+                    <TextBox x:Name="tb_TimKiemNhaXuatBan" Text="Nhập mã tìm kiếm" Margin="20,5,0,0"/>
+                    <Label Content="Tìm kiếm theo tên nhà xuất bản"  Margin="0,15,0,0" FontWeight="bold" />
+                    <TextBox x:Name="tb_TimKiemTenNhaXuatBan" Text="Nhập tên nhà xuất bản tìm kiếm" Margin="20,5,0,0" />
+                    <Button x:Name="btn_TimKiemNhaXuatBan" Content="Tìm kiếm" Height="25" Margin="40,10,40,0"></Button>
+                </StackPanel>
+            </Border>
+            <Border Grid.Row="1" BorderThickness="0 1 2 0" BorderBrush="#B9C9DA">
+                <StackPanel Orientation="Vertical"  Margin="20, 0, 20, 10">
+                    <Label Content="Thông tin nhà xuất bản" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold" Foreground="Red"/>
+                    <StackPanel Height="25" Orientation="Horizontal">
+                        <Label Content="Mã loại sách:" FontWeight="Bold" Foreground="Red" Width="100" />
+                        <Label x:Name="lb_KQTK_MaNhaXuatBan" Content="" FontWeight="Bold"/>
+                    </StackPanel>
+                    <Label Content="Tên nhà xuất bản:" FontWeight="Bold" Foreground="Red" Width="150" Margin="0,5,0,0" HorizontalAlignment="Left"/>
+                    <Label x:Name="lb_KQTK_TenNhaXuatBan" Content="asdfsadf" FontWeight="Bold" Margin="0,0,0,0"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <Border Grid.Row="1" Grid.Column="1" BorderThickness="0 2 0 0" BorderBrush="#B9C9DA" >
+            <DataGrid x:Name="dataGridNhaXuatBan">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Mã nhà xuất bản" Width="150"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Tên nhà xuất bản" Width="*"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
     </Grid>
 </Page>

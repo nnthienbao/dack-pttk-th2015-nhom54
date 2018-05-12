@@ -5,10 +5,123 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DACK_PTTKPM"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="500" d:DesignWidth="800"
       Title="PageDSPhieuMuon">
 
     <Grid>
-        <TextBlock Text="DanhSachPhieuMuon" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFECF2F9" Offset="0"/>
+                <GradientStop Color="White" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400" />
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Danh sách phiếu mượn" FontSize="20" FontWeight="bold" Foreground="Red"
+            HorizontalAlignment="center" Grid.ColumnSpan="2" />
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="245" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" BorderThickness="0 2 2 0" BorderBrush="#B9C9DA">
+                <StackPanel Orientation="Vertical" Margin="20, 10, 20, 10">
+                    <Label Content="Tìm kiếm theo mã phiếu mượn" FontWeight="Bold" />
+                    <TextBox x:Name="tb_TimKiemMaPhieuMuon" Text="Nhập mã độc giả tìm kiếm" Margin="20,5,0,0"/>
+                    <Label Content="Tìm kiếm theo độc giả"  Margin="0,15,0,0" FontWeight="bold" />
+                    <TextBox x:Name="tb_TimKiemTenDocGia" Text="Nhập mã độc giả tìm kiếm" Margin="20,5,0,0" />
+                    <Label Content="Tìm kiếm theo người lập phiếu"  Margin="0,15,0,0" FontWeight="bold" />
+                    <TextBox x:Name="tb_TimKiemTenNguoiLapPhieu" Text="Nhập mã người lập phiếu tìm kiếm" Margin="20,5,0,0" />
+                    <Button x:Name="btn_TimKiemPhieuMuon" Content="Tìm kiếm" Height="25" Margin="40,10,40,0"></Button>
+                </StackPanel>
+            </Border>
+            <Border Grid.Row="1" BorderThickness="0 1 2 0" BorderBrush="#B9C9DA">
+                <ScrollViewer>
+                    <StackPanel Orientation="Vertical"  Margin="20, 0, 20, 10">
+                        <Label Content="Thông tin phiếu mượn" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold" Foreground="Red"/>
+                        <StackPanel Height="25" Orientation="Horizontal">
+                            <Label Content="Mã phiếu mượn:" FontWeight="Bold" Foreground="Red" Width="120" />
+                            <Label x:Name="lb_KQTK_MaPhieuMuon" Content="" FontWeight="Bold" />
+                        </StackPanel>
+                        <StackPanel Height="25" Orientation="Horizontal" Margin="0,5,0,0">
+                            <Label Content="Mã độc giả:" FontWeight="Bold" Foreground="Red" Width="120" />
+                            <Label x:Name="lb_KQTK_MaDocgia" Content="" FontWeight="Bold" />
+                        </StackPanel>
+                        <StackPanel Height="25" Orientation="Horizontal" Margin="0,5,0,0">
+                            <Label Content="Họ tên độc giả:" FontWeight="Bold" Foreground="Red" Width="120" />
+                            <Label x:Name="lb_KQTK_HoTenDocgia" Content="" FontWeight="Bold" />
+                        </StackPanel>
+                        <StackPanel Height="25" Orientation="Horizontal" Margin="0,5,0,0">
+                            <Label Content="Mã người lập:" FontWeight="Bold" Foreground="Red" Width="120" />
+                            <Label x:Name="lb_KQTK_MaNguoiLap" Content="" FontWeight="Bold" />
+                        </StackPanel>
+                        <StackPanel Height="25" Orientation="Horizontal" Margin="0,5,0,0">
+                            <Label Content="Họ tên người lập:" FontWeight="Bold" Foreground="Red" Width="120" />
+                            <Label x:Name="lb_KQTK_HoTenNguoiLap" Content="" FontWeight="Bold" />
+                        </StackPanel>
+                        <StackPanel Height="25" Orientation="Horizontal" Margin="0,5,0,0">
+                            <Label Content="Ngày mượn:" FontWeight="Bold" Foreground="Red" Width="120" />
+                            <Label x:Name="lb_KQTK_NgayMuon" Content="" FontWeight="Bold" />
+                        </StackPanel>
+                        <StackPanel Height="25" Orientation="Horizontal" Margin="0,5,0,0">
+                            <Label Content="Hạn trả:" FontWeight="Bold" Foreground="Red" Width="120" />
+                            <Label x:Name="lb_KQTK_HanTra" Content="" FontWeight="Bold" />
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" BorderThickness="0 2 0 0" BorderBrush="#B9C9DA" >
+                <DataGrid x:Name="dataGridPhieuMuon"
+                      SelectionMode="Single" 
+                      ScrollViewer.CanContentScroll="True" 
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                      ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Mã phiếu mượn" Width="80"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Mã độc giả" Width="200"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Mã người lập" Width="200"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Ngày mượn" Width="200"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Hạn trả" Width="200"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Border>
+            <StackPanel Grid.Row="1">
+                <Label Content="Chi tiết phiếu mượn" FontSize="14" FontWeight="Bold" Foreground="Red" HorizontalAlignment="Center"/>
+                <DataGrid x:Name="dataGridChiTietPhieuMuon"
+                      SelectionMode="Single" 
+                      ScrollViewer.CanContentScroll="True" 
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                      ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Mã sách" Width="80"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Tên sách" Width="200"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Mô tả" Width="200"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Số lượng hiện có" Width="120"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Số lượng đã mượn" Width="120"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Tác giả" Width="100"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Năm xuất bản" Width="100"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Nhà xuất bản" Width="200"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Loại sách" Width="100"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Ngành sách" Width="100"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+            
+        </Grid>
+        
     </Grid>
 </Page>
