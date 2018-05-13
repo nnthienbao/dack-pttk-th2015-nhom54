@@ -1,0 +1,41 @@
+﻿<Window x:Class="DACK_PTTKPM.WindowSuaNhaXuatBan"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DACK_PTTKPM"
+        mc:Ignorable="d"
+        Title="Sửa thông tin nhà xuất bản" Height="250" Width="400"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFECF2F9" Offset="0"/>
+                <GradientStop Color="White" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+
+        <Label Content="Sửa thông tin nhà xuất bản" FontSize="20" FontWeight="bold" Foreground="Red"
+            HorizontalAlignment="center" />
+        <Border Grid.Row="1" BorderThickness="0 2 0 2" BorderBrush="#B9C9DA" Padding="20, 0, 20, 0" >
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Mã nhà xuất bản:" Width="120" FontWeight="Bold" Margin="10,0,0,0"/>
+                    <Label x:Name="lb_MaNhaXuatBan" Content="" FontWeight="Bold" Margin="20,0,0,0"/>
+                </StackPanel>
+                <Label Content="Tên nhà xuất bản" Width="120" FontWeight="bold"  Margin="10,5,0,0" HorizontalAlignment="Left" />
+                <TextBox x:Name="tb_TenNhaXuatBan" Width="290" Height="23" Text="..." Margin="30,0,0,0" HorizontalAlignment="Left" />
+            </StackPanel>
+        </Border>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="btn_XacNhan" Content="Xác nhận" Width="100" Height="30" Click="btnXacNhanClick" />
+            <Button x:Name="btn_HuyBo" Content="Hủy bỏ" Width="100" Height="30" Margin="10,0,20,0" Click="btnHuyBoClick" />
+        </StackPanel>
+    </Grid>
+</Window>

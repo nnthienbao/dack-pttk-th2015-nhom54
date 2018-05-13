@@ -6,9 +6,10 @@
         xmlns:ribbon="clr-namespace:System.Windows.Controls.Ribbon;assembly=System.Windows.Controls.Ribbon"
         xmlns:local="clr-namespace:DACK_PTTKPM"
         mc:Ignorable="d"
-        Title="Phần mềm quản lý thư viện" Height="550" Width="1000">
+        Title="Phần mềm quản lý thư viện" Height="550" Width="1000"
+        WindowStartupLocation="CenterScreen">
     <DockPanel>
-        <Ribbon DockPanel.Dock="Top" SelectedIndex="2">
+        <Ribbon DockPanel.Dock="Top" SelectedIndex="0">
             <RibbonTab Header="Quản lý danh mục sách">
                 <RibbonGroup Header="Quản lý loại sách">
                     <RibbonButton Label="Loại sách" LargeImageSource="images/loai-sach.png" Click="btnPageDSLoaiSachClick" />
@@ -38,16 +39,16 @@
             <RibbonTab Header="Quản lý độc giả">
                 <RibbonGroup Header="Quản lý mượn sách">
                     <RibbonButton Label="Danh sách độc giả" LargeImageSource="images/doc-gia.png" Click="btnPageDSDocGiaClick" />
-                    <RibbonButton Label="Tạo phiếu độc giả" LargeImageSource="images/them-doc-gia.png" />
-                    <RibbonButton Label="Sửa thông tin độc giả" LargeImageSource="images/sua-doc-gia.png" />
+                    <RibbonButton Label="Tạo phiếu độc giả" LargeImageSource="images/them-doc-gia.png" Click="btnThemDocGiaClick" />
+                    <RibbonButton Label="Sửa thông tin độc giả" LargeImageSource="images/sua-doc-gia.png" Click="btnSuaDocGiaClick" />
                     <RibbonButton Label="Xóa thông tin độc giả" LargeImageSource="images/xoa-doc-gia.png" />
                 </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="Quản lý sách mượn - trả">
                 <RibbonGroup Header="Quản lý mượn sách">
                     <RibbonButton Label="Danh sách phiếu mượn" LargeImageSource="images/phieu-muon-sach.png" Click="btnPageDSPhieuMuonClick" />
-                    <RibbonButton Label="Tạo phiếu mượn mới" LargeImageSource="images/them-phieu-muon-sach.png" />
-                    <RibbonButton Label="Sửa thông tin phiếu mượn" LargeImageSource="images/sua-phieu-muon-sach.png" />
+                    <RibbonButton Label="Tạo phiếu mượn mới" LargeImageSource="images/them-phieu-muon-sach.png" Click="btnThemPhieuMuonClick" />
+                    <RibbonButton Label="Sửa thông tin phiếu mượn" LargeImageSource="images/sua-phieu-muon-sach.png" Click="btnSuaPhieuMuonClick" />
                     <RibbonButton Label="Xóa thông tin phiếu mượn" LargeImageSource="images/xoa-phieu-muon-sach.png" />
                 </RibbonGroup>
                 <RibbonGroup Header="Quản lý trả sách">

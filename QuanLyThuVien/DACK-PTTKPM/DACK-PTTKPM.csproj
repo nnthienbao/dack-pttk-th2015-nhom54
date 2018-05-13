@@ -58,6 +58,42 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="_qldocgia\WindowSuaDocGia.xaml.cs">
+      <DependentUpon>WindowSuaDocGia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qlsachmuontra\WindowSuaPhieuMuon.xaml.cs">
+      <DependentUpon>WindowSuaPhieuMuon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qldocgia\WindowThemDocGia.xaml.cs">
+      <DependentUpon>WindowThemDocGia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qlsachmuontra\WindowThemPhieuMuon.xaml.cs">
+      <DependentUpon>WindowThemPhieuMuon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qldanhmucsach\WindowSuaLoaiSach.xaml.cs">
+      <DependentUpon>WindowSuaLoaiSach.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qldanhmucsach\WindowSuaNganhSach.xaml.cs">
+      <DependentUpon>WindowSuaNganhSach.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qldanhmucsach\WindowSuaNhaXuatBan.xaml.cs">
+      <DependentUpon>WindowSuaNhaXuatBan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qldanhmucsach\WindowSuaSach.xaml.cs">
+      <DependentUpon>WindowSuaSach.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qldanhmucsach\WindowThemNganhSach.xaml.cs">
+      <DependentUpon>WindowThemNganhSach.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qldanhmucsach\WindowThemNhaXuatBan.xaml.cs">
+      <DependentUpon>WindowThemNhaXuatBan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qldanhmucsach\WindowThemSach.xaml.cs">
+      <DependentUpon>WindowThemSach.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qldanhmucsach\WindowThemLoaiSach.xaml.cs">
+      <DependentUpon>WindowThemLoaiSach.xaml</DependentUpon>
+    </Compile>
     <Compile Include="_baocaothongke\PageDSSachHong.xaml.cs">
       <DependentUpon>PageDSSachHong.xaml</DependentUpon>
     </Compile>
@@ -85,6 +121,54 @@
     <Compile Include="_qldanhmucsach\PageDSSach.xaml.cs">
       <DependentUpon>PageDSSach.xaml</DependentUpon>
     </Compile>
+    <Page Include="_qldocgia\WindowSuaDocGia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qlsachmuontra\WindowSuaPhieuMuon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qldocgia\WindowThemDocGia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qlsachmuontra\WindowThemPhieuMuon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qldanhmucsach\WindowSuaLoaiSach.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qldanhmucsach\WindowSuaNganhSach.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qldanhmucsach\WindowSuaNhaXuatBan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qldanhmucsach\WindowSuaSach.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qldanhmucsach\WindowThemNganhSach.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qldanhmucsach\WindowThemNhaXuatBan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qldanhmucsach\WindowThemSach.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qldanhmucsach\WindowThemLoaiSach.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="_baocaothongke\PageDSSachHong.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
