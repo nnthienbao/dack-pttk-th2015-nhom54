@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace QuanLyThuVien.Properties
+namespace DACK_PTTKPM.Properties
 {
 
 

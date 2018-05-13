@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C3DE25EE-CCF7-4B0F-AC00-E9EB5A35643B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DACK_PTTKPM</RootNamespace>
+    <AssemblyName>DACK-PTTKPM</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="system.windows.controls.ribbon" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="_qldocgia\WindowSuaDocGia.xaml.cs">
+      <DependentUpon>WindowSuaDocGia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qlsachmuontra\WindowSuaPhieuMuon.xaml.cs">
+      <DependentUpon>WindowSuaPhieuMuon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qldocgia\WindowThemDocGia.xaml.cs">
+      <DependentUpon>WindowThemDocGia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qlsachmuontra\WindowThemPhieuMuon.xaml.cs">
+      <DependentUpon>WindowThemPhieuMuon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qldanhmucsach\WindowSuaLoaiSach.xaml.cs">
+      <DependentUpon>WindowSuaLoaiSach.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qldanhmucsach\WindowSuaNganhSach.xaml.cs">
+      <DependentUpon>WindowSuaNganhSach.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qldanhmucsach\WindowSuaNhaXuatBan.xaml.cs">
+      <DependentUpon>WindowSuaNhaXuatBan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qldanhmucsach\WindowSuaSach.xaml.cs">
+      <DependentUpon>WindowSuaSach.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qldanhmucsach\WindowThemNganhSach.xaml.cs">
+      <DependentUpon>WindowThemNganhSach.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qldanhmucsach\WindowThemNhaXuatBan.xaml.cs">
+      <DependentUpon>WindowThemNhaXuatBan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qldanhmucsach\WindowThemSach.xaml.cs">
+      <DependentUpon>WindowThemSach.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qldanhmucsach\WindowThemLoaiSach.xaml.cs">
+      <DependentUpon>WindowThemLoaiSach.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_baocaothongke\PageDSSachHong.xaml.cs">
+      <DependentUpon>PageDSSachHong.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_baocaothongke\PageDSSachItMuon.xaml.cs">
+      <DependentUpon>PageDSSachItMuon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_baocaothongke\PageDSViPham.xaml.cs">
+      <DependentUpon>PageDSViPham.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qlsachmuontra\PageDSPhieuMuon.xaml.cs">
+      <DependentUpon>PageDSPhieuMuon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qlsachmuontra\PageDSPhieuTra.xaml.cs">
+      <DependentUpon>PageDSPhieuTra.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qldanhmucsach\PageDSLoaiSach.xaml.cs">
+      <DependentUpon>PageDSLoaiSach.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qldanhmucsach\PageDSNganhSach.xaml.cs">
+      <DependentUpon>PageDSNganhSach.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qldanhmucsach\PageDSNhaXuatBan.xaml.cs">
+      <DependentUpon>PageDSNhaXuatBan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qldanhmucsach\PageDSSach.xaml.cs">
+      <DependentUpon>PageDSSach.xaml</DependentUpon>
+    </Compile>
+    <Page Include="_qldocgia\WindowSuaDocGia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qlsachmuontra\WindowSuaPhieuMuon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qldocgia\WindowThemDocGia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qlsachmuontra\WindowThemPhieuMuon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qldanhmucsach\WindowSuaLoaiSach.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qldanhmucsach\WindowSuaNganhSach.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qldanhmucsach\WindowSuaNhaXuatBan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qldanhmucsach\WindowSuaSach.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qldanhmucsach\WindowThemNganhSach.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qldanhmucsach\WindowThemNhaXuatBan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qldanhmucsach\WindowThemSach.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qldanhmucsach\WindowThemLoaiSach.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_baocaothongke\PageDSSachHong.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_baocaothongke\PageDSSachItMuon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_baocaothongke\PageDSViPham.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qldocgia\PageDSDocGia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qlsachmuontra\PageDSPhieuMuon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qlsachmuontra\PageDSPhieuTra.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qldanhmucsach\PageDSLoaiSach.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="_qldocgia\PageDSDocGia.xaml.cs">
+      <DependentUpon>PageDSDocGia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="_qldanhmucsach\PageDSNganhSach.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qldanhmucsach\PageDSNhaXuatBan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qldanhmucsach\PageDSSach.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\loai-sach.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\add-icon.png" />
+    <Resource Include="images\delete-icon.png" />
+    <Resource Include="images\edit-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\nganh-sach.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\doc-gia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\sua-phieu-muon-sach.png" />
+    <Resource Include="images\them-phieu-muon-sach.png" />
+    <Resource Include="images\xoa-phieu-muon-sach.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\sach.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\phieu-muon-sach.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\sua-doc-gia.png" />
+    <Resource Include="images\them-doc-gia.png" />
+    <Resource Include="images\xoa-doc-gia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\sach-cu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\sach-it-xem.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
