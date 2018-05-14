@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BUS;
 
 namespace DACK_PTTKPM
 {
@@ -23,6 +24,12 @@ namespace DACK_PTTKPM
         public PageDSNganhSach()
         {
             InitializeComponent();
+        }
+
+        NganhKhoaBUS nsBus = new NganhKhoaBUS();
+        private void dataGridNganhSach_Loaded(object sender, RoutedEventArgs e)
+        {
+             nsBus.XemDSNGanhSach(this.dataGridNganhSach);
         }
     }
 }
