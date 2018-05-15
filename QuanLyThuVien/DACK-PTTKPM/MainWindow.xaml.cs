@@ -25,6 +25,7 @@ namespace DACK_PTTKPM
     {
         private PageDSNganhSach pageDSNganhSach = new PageDSNganhSach();
         private PageDSLoaiSach pageDSLoaiSach = new PageDSLoaiSach();
+        private PageDSNhaXuatBan pageDSNhaXuatBan = new PageDSNhaXuatBan();
         public MainWindow()
         {
             InitializeComponent();
@@ -121,24 +122,42 @@ namespace DACK_PTTKPM
         //  Nha xuat ban
         private void btnPageDSNhaXuatBanClick(object sender, RoutedEventArgs e)
         {
-            this.MainArea.Content = new PageDSNhaXuatBan();
+            this.MainArea.Content = pageDSNhaXuatBan;
         }
 
         private void btnThemNhaXuatBanClick(object sender, RoutedEventArgs e)
         {
             WindowThemNhaXuatBan wd = new WindowThemNhaXuatBan();
-            wd.Show(); 
+            if(wd.ShowDialog() == true)
+            {
+                pageDSNhaXuatBan.RefreshDanhSach();
+            }
         }
 
         private void btnSuaNhaXuatBanClick(object sender, RoutedEventArgs e)
         {
-            WindowSuaNhaXuatBan wd = new WindowSuaNhaXuatBan();
-            wd.Show();
+            NhaXuatBan nxbDangChon = pageDSNhaXuatBan.GetNhaXuatBanDangChon();
+            if (nxbDangChon == null) return;
+
+            WindowSuaNhaXuatBan wd = new WindowSuaNhaXuatBan(nxbDangChon);
+            if(wd.ShowDialog() == true)
+            {
+                pageDSNhaXuatBan.RefreshDanhSach();
+            }
         }
 
         private void btnXoaNhaXuatBanClick(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Xoa nha xuat ban sach");
+            NhaXuatBan nxbDangChon = pageDSNhaXuatBan.GetNhaXuatBanDangChon();
+            if (nxbDangChon == null) return;
+
+            MessageBoxResult result =
+                MessageBox.Show("Xác nhận xóa nhà xuất bản ?", "Thông báo", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if(result == MessageBoxResult.OK)
+            {
+                NhaXuatBanBUS.Instance.XoaNhaXuatBan(nxbDangChon.pid);
+                pageDSNhaXuatBan.RefreshDanhSach();
+            }
         }
 
         //  Sach

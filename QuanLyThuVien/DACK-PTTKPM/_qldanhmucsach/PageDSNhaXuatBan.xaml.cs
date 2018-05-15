@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BUS;
+using DTO;
 
 namespace DACK_PTTKPM
 {
@@ -23,6 +25,21 @@ namespace DACK_PTTKPM
         public PageDSNhaXuatBan()
         {
             InitializeComponent();
+        }
+
+        public void RefreshDanhSach()
+        {
+            dataGridNhaXuatBan.ItemsSource = NhaXuatBanBUS.Instance.LayDanhSach();
+        }
+
+        private void dataGridNhaXuatBan_Loaded(object sender, RoutedEventArgs e)
+        {
+            RefreshDanhSach();
+        }
+
+        public NhaXuatBan GetNhaXuatBanDangChon()
+        {
+            return (NhaXuatBan)dataGridNhaXuatBan.SelectedItem;
         }
     }
 }
