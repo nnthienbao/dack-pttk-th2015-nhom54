@@ -24,7 +24,7 @@ namespace DACK_PTTKPM
     public partial class MainWindow : Window
     {
         private PageDSNganhSach pageDSNganhSach = new PageDSNganhSach();
-
+        private PageDSLoaiSach pageDSLoaiSach = new PageDSLoaiSach();
         public MainWindow()
         {
             InitializeComponent();
@@ -38,24 +38,42 @@ namespace DACK_PTTKPM
         //  Sach
         private void btnPageDSLoaiSachClick(object sender, RoutedEventArgs e)
         {
-            this.MainArea.Content = new PageDSLoaiSach();
+            this.MainArea.Content = pageDSLoaiSach;
         }
 
         private void btnThemLoaiSachClick(object sender, RoutedEventArgs e)
         {
             WindowThemLoaiSach wd = new WindowThemLoaiSach();
-            wd.Show();
+            if(wd.ShowDialog() == true)
+            {
+                pageDSLoaiSach.RefreshDanhSach();
+            }
         }
 
         private void btnSuaLoaiSachClick(object sender, RoutedEventArgs e)
         {
-            WindowSuaLoaiSach wd = new WindowSuaLoaiSach();
-            wd.Show();
+            LoaiSach loaiSachDangChon = pageDSLoaiSach.GetLoaiSachDangChon();
+            if (loaiSachDangChon == null) return;
+
+            WindowSuaLoaiSach wd = new WindowSuaLoaiSach(loaiSachDangChon);
+            if(wd.ShowDialog() == true)
+            {
+                pageDSLoaiSach.RefreshDanhSach();
+            }
         }
 
         private void btnXoaLoaiSachClick(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Xoa loai sach");
+            LoaiSach loaiSachDangChon = pageDSLoaiSach.GetLoaiSachDangChon();
+            if (loaiSachDangChon == null) return;
+
+            MessageBoxResult result = 
+                MessageBox.Show("Xác nhận xóa loại sách ?", "Thông báo", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if(result == MessageBoxResult.OK)
+            {
+                LoaiSachBUS.Instance.XoaLoaiSach(loaiSachDangChon.pid);
+                pageDSLoaiSach.RefreshDanhSach();
+            }
         }
 
         //  Nganh sach

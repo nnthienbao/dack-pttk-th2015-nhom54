@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BUS;
+using DTO;
 
 namespace DACK_PTTKPM
 {
@@ -23,6 +25,23 @@ namespace DACK_PTTKPM
         public PageDSLoaiSach()
         {
             InitializeComponent();
+        }
+
+
+
+        public void RefreshDanhSach()
+        {
+            dataGridLoaiSach.ItemsSource = LoaiSachBUS.Instance.LayDanhSach();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            RefreshDanhSach();
+        }
+
+        public LoaiSach GetLoaiSachDangChon()
+        {
+            return (LoaiSach)dataGridLoaiSach.SelectedItem;
         }
     }
 }

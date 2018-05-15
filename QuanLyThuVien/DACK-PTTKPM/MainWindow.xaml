@@ -47,7 +47,7 @@
                         SmallImageSource="images/edit-icon.png" />
                     <RibbonButton
                         Click="btnXoaLoaiSachClick"
-                        Label="Xóa thông tin loại sách"
+                        Label="Xóa loại sách"
                         SmallImageSource="images/delete-icon.png" />
                 </RibbonGroup>
                 <RibbonGroup Header="Quản lý ngành sách">
