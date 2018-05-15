@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BUS;
+using System.Collections;
+using DTO;
 
 namespace DACK_PTTKPM
 {
@@ -26,10 +28,21 @@ namespace DACK_PTTKPM
             InitializeComponent();
         }
 
-        NganhKhoaBUS nsBus = new NganhKhoaBUS();
+        private NganhKhoaBUS nsBus = NganhKhoaBUS.Instance;
         private void dataGridNganhSach_Loaded(object sender, RoutedEventArgs e)
         {
-             nsBus.XemDSNGanhSach(this.dataGridNganhSach);
+            refreshDanhSach();
+        }
+
+        public NganhKhoa getNganhDangChon()
+        {
+            NganhKhoa nganhKhoa = (NganhKhoa)dataGridNganhSach.SelectedItem;
+            return nganhKhoa;
+        }
+
+        public void refreshDanhSach()
+        {
+            nsBus.XemDSNGanhSach(this.dataGridNganhSach);
         }
     }
 }

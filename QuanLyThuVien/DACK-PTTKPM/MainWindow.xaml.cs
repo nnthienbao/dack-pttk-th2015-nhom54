@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,10 +22,12 @@ namespace DACK_PTTKPM
     /// </summary>
     public partial class MainWindow : Window
     {
+        private PageDSNganhSach pageDSNganhSach = new PageDSNganhSach();
+
         public MainWindow()
         {
             InitializeComponent();
-            this.MainArea.Content = new PageDSLoaiSach();
+            this.MainArea.Content = pageDSNganhSach;
         }
 
         //
@@ -57,19 +60,28 @@ namespace DACK_PTTKPM
         //  Nganh sach
         private void btnPageDSNganhSachClick(object sender, RoutedEventArgs e)
         {
-            this.MainArea.Content = new PageDSNganhSach();
+            this.MainArea.Content = pageDSNganhSach;
         }
 
         private void btnThemNganhSachClick(object sender, RoutedEventArgs e)
         {
             WindowThemNganhSach wd = new WindowThemNganhSach();
-            wd.Show();
+            if(wd.ShowDialog() == true)
+            {
+                pageDSNganhSach.refreshDanhSach();
+            }
         }
 
         private void btnSuaNganhSachClick(object sender, RoutedEventArgs e)
         {
-            WindowSuaNganhSach wd = new WindowSuaNganhSach();
-            wd.Show();
+            NganhKhoa nganh = pageDSNganhSach.getNganhDangChon();
+            if (nganh == null) return;
+
+            WindowSuaNganhSach wd = new WindowSuaNganhSach(nganh);
+            if(wd.ShowDialog() == true)
+            {
+                pageDSNganhSach.refreshDanhSach();
+            }
         }
 
         private void btnXoaNganhSachClick(object sender, RoutedEventArgs e)

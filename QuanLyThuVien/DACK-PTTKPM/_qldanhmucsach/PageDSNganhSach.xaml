@@ -111,13 +111,16 @@
             <DataGrid
                 x:Name="dataGridNganhSach"
                 AutoGenerateColumns="False"
+                IsReadOnly="True"
                 Loaded="dataGridNganhSach_Loaded">
                 <DataGrid.Columns>
                     <DataGridTextColumn
+                        x:Name="pid"
                         Width="150"
                         Binding="{Binding pid}"
                         Header="Mã ngành sách" />
                     <DataGridTextColumn
+                        x:Name="ten"
                         Width="*"
                         Binding="{Binding Ten}"
                         Header="Tên ngành sách" />
