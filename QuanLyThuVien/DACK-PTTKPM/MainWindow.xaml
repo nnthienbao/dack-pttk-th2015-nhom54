@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ribbon="clr-namespace:System.Windows.Controls.Ribbon;assembly=System.Windows.Controls.Ribbon"
     Title="Phần mềm quản lý thư viện"
-    Width="1000"
+    Width="1029"
     Height="550"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
@@ -68,7 +68,7 @@
                         Label="Xóa ngành sách"
                         SmallImageSource="images/delete-icon.png" />
                 </RibbonGroup>
-                <RibbonGroup Header="Quản lý độc giả">
+                <RibbonGroup Header="Quản lý NXB">
                     <RibbonButton
                         Click="btnPageDSNhaXuatBanClick"
                         Label="Nhà xuất bản"
@@ -84,6 +84,24 @@
                     <RibbonButton
                         Click="btnXoaNhaXuatBanClick"
                         Label="Xóa thông tin NXB"
+                        SmallImageSource="images/delete-icon.png" />
+                </RibbonGroup>
+                <RibbonGroup Header="Quản lý tác giả">
+                    <RibbonButton
+                        Click="btnPageDSTacGiaClick"
+                        Label="Tác giả"
+                        LargeImageSource="images/tac-gia.png" />
+                    <RibbonButton
+                        Click="btnThemTacGiaClick"
+                        Label="Thêm tác giả"
+                        SmallImageSource="images/add-icon.png" />
+                    <RibbonButton
+                        Click="btnSuaTacGiaClick"
+                        Label="Sửa thông tin tác giả"
+                        SmallImageSource="images/edit-icon.png" />
+                    <RibbonButton
+                        Click="btnXoaTacGiaClick"
+                        Label="Xóa tác giả"
                         SmallImageSource="images/delete-icon.png" />
                 </RibbonGroup>
 

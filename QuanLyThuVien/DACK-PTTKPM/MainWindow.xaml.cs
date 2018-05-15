@@ -26,6 +26,7 @@ namespace DACK_PTTKPM
         private PageDSNganhSach pageDSNganhSach = new PageDSNganhSach();
         private PageDSLoaiSach pageDSLoaiSach = new PageDSLoaiSach();
         private PageDSNhaXuatBan pageDSNhaXuatBan = new PageDSNhaXuatBan();
+        private PageDSTacGia pageDSTacGia = new PageDSTacGia();
         public MainWindow()
         {
             InitializeComponent();
@@ -159,6 +160,48 @@ namespace DACK_PTTKPM
                 pageDSNhaXuatBan.RefreshDanhSach();
             }
         }
+
+        // Tac gia
+        private void btnPageDSTacGiaClick(object sender, RoutedEventArgs e)
+        {
+            this.MainArea.Content = pageDSTacGia;
+        }
+
+        private void btnThemTacGiaClick(object sender, RoutedEventArgs e)
+        {
+            WindowThemTacGia wd = new WindowThemTacGia();
+            if(wd.ShowDialog() == true)
+            {
+                pageDSTacGia.RefreshDanhSach();
+            }
+        }
+
+        private void btnSuaTacGiaClick(object sender, RoutedEventArgs e)
+        {
+            TacGia tacGiaDangChon = pageDSTacGia.GetTacGiaDangChon();
+            if (tacGiaDangChon == null) return;
+
+            WindowSuaTacGia wd = new WindowSuaTacGia(tacGiaDangChon);
+            if(wd.ShowDialog() == true)
+            {
+                pageDSTacGia.RefreshDanhSach();
+            }
+        }
+
+        private void btnXoaTacGiaClick(object sender, RoutedEventArgs e)
+        {
+            TacGia tacGiaDangChon = pageDSTacGia.GetTacGiaDangChon();
+            if (tacGiaDangChon == null) return;
+
+            MessageBoxResult result =
+                MessageBox.Show("Xác nhận xóa tác giả ?", "Thông báo", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.OK)
+            {
+                TacGiaBUS.Instance.XoaTacGia(tacGiaDangChon.pid);
+                pageDSTacGia.RefreshDanhSach();
+            }
+        }
+
 
         //  Sach
         private void btnPageDSSachClick(object sender, RoutedEventArgs e)

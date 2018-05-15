@@ -58,6 +58,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="_qldanhmucsach\PageDSTacGia.xaml.cs">
+      <DependentUpon>PageDSTacGia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qldanhmucsach\WindowSuaTacGia.xaml.cs">
+      <DependentUpon>WindowSuaTacGia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_qldanhmucsach\WindowThemTacGia.xaml.cs">
+      <DependentUpon>WindowThemTacGia.xaml</DependentUpon>
+    </Compile>
     <Compile Include="_qldocgia\WindowSuaDocGia.xaml.cs">
       <DependentUpon>WindowSuaDocGia.xaml</DependentUpon>
     </Compile>
@@ -121,6 +130,18 @@
     <Compile Include="_qldanhmucsach\PageDSSach.xaml.cs">
       <DependentUpon>PageDSSach.xaml</DependentUpon>
     </Compile>
+    <Page Include="_qldanhmucsach\PageDSTacGia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qldanhmucsach\WindowSuaTacGia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_qldanhmucsach\WindowThemTacGia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="_qldocgia\WindowSuaDocGia.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -297,6 +318,9 @@
       <Project>{52ac0d77-15ff-42a8-ad20-ef36ffc932c9}</Project>
       <Name>DTO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tac-gia.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
