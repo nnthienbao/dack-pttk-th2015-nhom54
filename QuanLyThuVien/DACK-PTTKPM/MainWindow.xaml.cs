@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BUS;
 
 namespace DACK_PTTKPM
 {
@@ -86,7 +87,17 @@ namespace DACK_PTTKPM
 
         private void btnXoaNganhSachClick(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Xoa Nganh sach");
+            NganhKhoa nganh = pageDSNganhSach.getNganhDangChon();
+            if (nganh == null) return;
+            string pid = nganh.pid;
+
+            MessageBoxResult result =
+                MessageBox.Show("Xác nhận xóa ngành sách ?", "Thông báo", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if(result == MessageBoxResult.OK)
+            {
+                NganhKhoaBUS.Instance.XoaNganhKhoa(pid);
+                pageDSNganhSach.refreshDanhSach();
+            }
         }
 
         //  Nha xuat ban

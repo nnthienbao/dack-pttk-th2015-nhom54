@@ -39,5 +39,10 @@ namespace BUS
         {
             nsDao.SuaNganhKhoa(nganhKhoa);
         }
+
+        public void XoaNganhKhoa(string pid)
+        {
+            nsDao.XoaNganhKhoa(pid);
+        }
     }
 }

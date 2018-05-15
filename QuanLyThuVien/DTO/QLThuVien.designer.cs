@@ -357,6 +357,8 @@ namespace DTO
 		
 		private System.DateTime _NgayMoThe;
 		
+		private bool _Disable;
+		
 		private EntitySet<PhieuMuonSach> _PhieuMuonSaches;
 		
 		private EntitySet<ViPham> _ViPhams;
@@ -375,6 +377,8 @@ namespace DTO
     partial void OnGioiTinhChanged();
     partial void OnNgayMoTheChanging(System.DateTime value);
     partial void OnNgayMoTheChanged();
+    partial void OnDisableChanging(bool value);
+    partial void OnDisableChanged();
     #endregion
 		
 		public DocGia()
@@ -484,6 +488,26 @@ namespace DTO
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Disable", DbType="Bit NOT NULL")]
+		public bool Disable
+		{
+			get
+			{
+				return this._Disable;
+			}
+			set
+			{
+				if ((this._Disable != value))
+				{
+					this.OnDisableChanging(value);
+					this.SendPropertyChanging();
+					this._Disable = value;
+					this.SendPropertyChanged("Disable");
+					this.OnDisableChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DocGia_PhieuMuonSach", Storage="_PhieuMuonSaches", ThisKey="mssv", OtherKey="NguoiMuon")]
 		public EntitySet<PhieuMuonSach> PhieuMuonSaches
 		{
@@ -567,6 +591,8 @@ namespace DTO
 		
 		private string _Ten;
 		
+		private bool _Disable;
+		
 		private EntitySet<Sach> _Saches;
 		
     #region Extensibility Method Definitions
@@ -579,6 +605,8 @@ namespace DTO
     partial void OnpidChanged();
     partial void OnTenChanging(string value);
     partial void OnTenChanged();
+    partial void OnDisableChanging(bool value);
+    partial void OnDisableChanged();
     #endregion
 		
 		public LoaiSach()
@@ -647,6 +675,26 @@ namespace DTO
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Disable", DbType="Bit NOT NULL")]
+		public bool Disable
+		{
+			get
+			{
+				return this._Disable;
+			}
+			set
+			{
+				if ((this._Disable != value))
+				{
+					this.OnDisableChanging(value);
+					this.SendPropertyChanging();
+					this._Disable = value;
+					this.SendPropertyChanged("Disable");
+					this.OnDisableChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LoaiSach_Sach", Storage="_Saches", ThisKey="id", OtherKey="LoaiSach")]
 		public EntitySet<Sach> Saches
 		{
@@ -705,6 +753,8 @@ namespace DTO
 		
 		private string _Ten;
 		
+		private bool _Disable;
+		
 		private EntitySet<Sach> _Saches;
 		
     #region Extensibility Method Definitions
@@ -717,6 +767,8 @@ namespace DTO
     partial void OnpidChanged();
     partial void OnTenChanging(string value);
     partial void OnTenChanged();
+    partial void OnDisableChanging(bool value);
+    partial void OnDisableChanged();
     #endregion
 		
 		public NganhKhoa()
@@ -781,6 +833,26 @@ namespace DTO
 					this._Ten = value;
 					this.SendPropertyChanged("Ten");
 					this.OnTenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Disable", DbType="Bit NOT NULL")]
+		public bool Disable
+		{
+			get
+			{
+				return this._Disable;
+			}
+			set
+			{
+				if ((this._Disable != value))
+				{
+					this.OnDisableChanging(value);
+					this.SendPropertyChanging();
+					this._Disable = value;
+					this.SendPropertyChanged("Disable");
+					this.OnDisableChanged();
 				}
 			}
 		}
@@ -851,6 +923,8 @@ namespace DTO
 		
 		private string _MatKhau;
 		
+		private bool _Disable;
+		
 		private EntitySet<PhieuMuonSach> _PhieuMuonSaches;
 		
     #region Extensibility Method Definitions
@@ -871,6 +945,8 @@ namespace DTO
     partial void OnChucVuChanged();
     partial void OnMatKhauChanging(string value);
     partial void OnMatKhauChanged();
+    partial void OnDisableChanging(bool value);
+    partial void OnDisableChanged();
     #endregion
 		
 		public NhanVien()
@@ -1019,6 +1095,26 @@ namespace DTO
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Disable", DbType="Bit NOT NULL")]
+		public bool Disable
+		{
+			get
+			{
+				return this._Disable;
+			}
+			set
+			{
+				if ((this._Disable != value))
+				{
+					this.OnDisableChanging(value);
+					this.SendPropertyChanging();
+					this._Disable = value;
+					this.SendPropertyChanged("Disable");
+					this.OnDisableChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NhanVien_PhieuMuonSach", Storage="_PhieuMuonSaches", ThisKey="id", OtherKey="NguoiLapPhieu")]
 		public EntitySet<PhieuMuonSach> PhieuMuonSaches
 		{
@@ -1077,6 +1173,8 @@ namespace DTO
 		
 		private string _Ten;
 		
+		private bool _Disable;
+		
 		private EntitySet<Sach> _Saches;
 		
     #region Extensibility Method Definitions
@@ -1089,6 +1187,8 @@ namespace DTO
     partial void OnpidChanged();
     partial void OnTenChanging(string value);
     partial void OnTenChanged();
+    partial void OnDisableChanging(bool value);
+    partial void OnDisableChanged();
     #endregion
 		
 		public NhaXuatBan()
@@ -1157,6 +1257,26 @@ namespace DTO
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Disable", DbType="Bit NOT NULL")]
+		public bool Disable
+		{
+			get
+			{
+				return this._Disable;
+			}
+			set
+			{
+				if ((this._Disable != value))
+				{
+					this.OnDisableChanging(value);
+					this.SendPropertyChanging();
+					this._Disable = value;
+					this.SendPropertyChanged("Disable");
+					this.OnDisableChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NhaXuatBan_Sach", Storage="_Saches", ThisKey="id", OtherKey="NhaXB")]
 		public EntitySet<Sach> Saches
 		{
@@ -1221,6 +1341,8 @@ namespace DTO
 		
 		private string _NguoiMuon;
 		
+		private bool _Disable;
+		
 		private EntitySet<ChiTietPhieuMuon> _ChiTietPhieuMuons;
 		
 		private EntityRef<NhanVien> _NhanVien;
@@ -1243,6 +1365,8 @@ namespace DTO
     partial void OnNguoiLapPhieuChanged();
     partial void OnNguoiMuonChanging(string value);
     partial void OnNguoiMuonChanged();
+    partial void OnDisableChanging(bool value);
+    partial void OnDisableChanged();
     #endregion
 		
 		public PhieuMuonSach()
@@ -1377,6 +1501,26 @@ namespace DTO
 					this._NguoiMuon = value;
 					this.SendPropertyChanged("NguoiMuon");
 					this.OnNguoiMuonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Disable", DbType="Bit NOT NULL")]
+		public bool Disable
+		{
+			get
+			{
+				return this._Disable;
+			}
+			set
+			{
+				if ((this._Disable != value))
+				{
+					this.OnDisableChanging(value);
+					this.SendPropertyChanging();
+					this._Disable = value;
+					this.SendPropertyChanged("Disable");
+					this.OnDisableChanged();
 				}
 			}
 		}
@@ -1525,6 +1669,8 @@ namespace DTO
 		
 		private int _SoLuongDaMuon;
 		
+		private bool _Disable;
+		
 		private EntitySet<ChiTietPhieuMuon> _ChiTietPhieuMuons;
 		
 		private EntityRef<LoaiSach> _LoaiSach1;
@@ -1563,6 +1709,8 @@ namespace DTO
     partial void OnSoLuongHienCoChanged();
     partial void OnSoLuongDaMuonChanging(int value);
     partial void OnSoLuongDaMuonChanged();
+    partial void OnDisableChanging(bool value);
+    partial void OnDisableChanged();
     #endregion
 		
 		public Sach()
@@ -1831,6 +1979,26 @@ namespace DTO
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Disable", DbType="Bit NOT NULL")]
+		public bool Disable
+		{
+			get
+			{
+				return this._Disable;
+			}
+			set
+			{
+				if ((this._Disable != value))
+				{
+					this.OnDisableChanging(value);
+					this.SendPropertyChanging();
+					this._Disable = value;
+					this.SendPropertyChanged("Disable");
+					this.OnDisableChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Sach_ChiTietPhieuMuon", Storage="_ChiTietPhieuMuons", ThisKey="id", OtherKey="MaSach")]
 		public EntitySet<ChiTietPhieuMuon> ChiTietPhieuMuons
 		{
@@ -2025,6 +2193,8 @@ namespace DTO
 		
 		private string _Ten;
 		
+		private bool _Disable;
+		
 		private EntitySet<Sach> _Saches;
 		
     #region Extensibility Method Definitions
@@ -2037,6 +2207,8 @@ namespace DTO
     partial void OnpidChanged();
     partial void OnTenChanging(string value);
     partial void OnTenChanged();
+    partial void OnDisableChanging(bool value);
+    partial void OnDisableChanged();
     #endregion
 		
 		public TacGia()
@@ -2105,6 +2277,26 @@ namespace DTO
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Disable", DbType="Bit NOT NULL")]
+		public bool Disable
+		{
+			get
+			{
+				return this._Disable;
+			}
+			set
+			{
+				if ((this._Disable != value))
+				{
+					this.OnDisableChanging(value);
+					this.SendPropertyChanging();
+					this._Disable = value;
+					this.SendPropertyChanged("Disable");
+					this.OnDisableChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TacGia_Sach", Storage="_Saches", ThisKey="id", OtherKey="TacGia")]
 		public EntitySet<Sach> Saches
 		{
@@ -2163,6 +2355,8 @@ namespace DTO
 		
 		private string _mssv;
 		
+		private bool _Disable;
+		
 		private EntityRef<DocGia> _DocGia;
 		
     #region Extensibility Method Definitions
@@ -2175,6 +2369,8 @@ namespace DTO
     partial void OnNoiDungChanged();
     partial void OnmssvChanging(string value);
     partial void OnmssvChanged();
+    partial void OnDisableChanging(bool value);
+    partial void OnDisableChanged();
     #endregion
 		
 		public ViPham()
@@ -2243,6 +2439,26 @@ namespace DTO
 					this._mssv = value;
 					this.SendPropertyChanged("mssv");
 					this.OnmssvChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Disable", DbType="Bit NOT NULL")]
+		public bool Disable
+		{
+			get
+			{
+				return this._Disable;
+			}
+			set
+			{
+				if ((this._Disable != value))
+				{
+					this.OnDisableChanging(value);
+					this.SendPropertyChanging();
+					this._Disable = value;
+					this.SendPropertyChanged("Disable");
+					this.OnDisableChanged();
 				}
 			}
 		}

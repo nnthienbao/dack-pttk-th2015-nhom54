@@ -28,7 +28,7 @@ namespace DAO
             List<NganhKhoa> nganhKhoas = new List<NganhKhoa>();
             using (QLThuVienDataContext db = new QLThuVienDataContext())
             {
-                nganhKhoas = db.NganhKhoas.Select(nk => nk).ToList();
+                nganhKhoas = db.NganhKhoas.Select(nk => nk).Where(nk => nk.Disable == false).ToList();
             }
 
             return nganhKhoas;
@@ -55,6 +55,16 @@ namespace DAO
             {
                 NganhKhoa nkMoi = db.NganhKhoas.Single(nk => nk.pid == nganhKhoa.pid);
                 nkMoi.Ten = nganhKhoa.Ten;
+                db.SubmitChanges();
+            }
+        }
+
+        public void XoaNganhKhoa(string pid)
+        {
+            using (QLThuVienDataContext db = new QLThuVienDataContext())
+            {
+                NganhKhoa nkXoa = db.NganhKhoas.Single(nk => nk.pid == pid);
+                nkXoa.Disable = true;
                 db.SubmitChanges();
             }
         }
