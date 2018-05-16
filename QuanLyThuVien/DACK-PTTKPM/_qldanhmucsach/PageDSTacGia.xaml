@@ -6,8 +6,8 @@
     xmlns:local="clr-namespace:DACK_PTTKPM"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="PageDSTacGia"
-    Height="380"
-    d:DesignWidth="685"
+    d:DesignHeight="400"
+    d:DesignWidth="600"
     mc:Ignorable="d">
 
     <Grid>
