@@ -233,7 +233,16 @@ namespace DACK_PTTKPM
 
         private void btnXoaSachClick(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Xoa thong tin sach");
+            Sach sachDangChon = pageDSSach.LaySachDangChon();
+            if (sachDangChon == null) return;
+
+            MessageBoxResult result =
+                MessageBox.Show("Xác nhận xóa sách ?", "Thông báo", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if(result == MessageBoxResult.OK)
+            {
+                SachBUS.Instance.XoaSach(sachDangChon.id);
+                pageDSSach.RefreshDanhSach();
+            }
         }
 
         //

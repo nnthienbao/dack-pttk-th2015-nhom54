@@ -57,5 +57,15 @@ namespace DAO
                 db.SubmitChanges();
             }
         }
+
+        public void XoaSach(int id)
+        {
+            using (QLThuVienDataContext db = new QLThuVienDataContext())
+            {
+                Sach sachXoa = db.Saches.Single(s => s.id == id);
+                sachXoa.Disable = true;
+                db.SubmitChanges();
+            }
+        }
     }
 }

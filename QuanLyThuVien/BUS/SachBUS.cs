@@ -64,5 +64,10 @@ namespace BUS
             }
             SachDAO.Instance.SuaSach(sach);
         }
+
+        public void XoaSach(int id)
+        {
+            SachDAO.Instance.XoaSach(id);
+        }
     }
 }
