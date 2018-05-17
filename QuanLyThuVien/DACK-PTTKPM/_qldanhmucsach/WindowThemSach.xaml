@@ -2,12 +2,14 @@
     x:Class="DACK_PTTKPM.WindowThemSach"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:UC="clr-namespace:DACK_PTTKPM.UC"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:DACK_PTTKPM"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Thêm sách mới"
     Width="520"
     Height="586"
+    Loaded="Window_Loaded"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
@@ -52,18 +54,33 @@
                         Margin="0,0,0,0"
                         HorizontalAlignment="Left" />
                 </StackPanel>
-
+                <StackPanel
+                    x:Name="panel_Error_TenSach"
+                    Margin="0,-8,0,0"
+                    Orientation="Horizontal"
+                    Visibility="Collapsed">
+                    <Label Width="100" />
+                    <Label
+                        x:Name="lb_Loi_TenLoaiSach"
+                        Width="250"
+                        Height="26"
+                        Margin="0,-0,0,0"
+                        HorizontalAlignment="Left"
+                        Content="Tên sách không được để trống"
+                        FontWeight="Bold"
+                        Foreground="Red" />
+                </StackPanel>
                 <StackPanel Margin="0,4,0,4" Orientation="Horizontal">
                     <Label
                         Width="100"
                         Margin="0,0,0,0"
                         Content="Loại sách"
                         FontWeight="Bold" />
-                    <ComboBox Width="300">
-                        <ComboBoxItem>Truyện</ComboBoxItem>
-                        <ComboBoxItem IsSelected="True">Giáo trình</ComboBoxItem>
-                        <ComboBoxItem>Bài giảng</ComboBoxItem>
-                    </ComboBox>
+                    <ComboBox
+                        x:Name="cbb_LoaiSach"
+                        Width="300"
+                        DisplayMemberPath="Ten"
+                        SelectedIndex="0" />
                 </StackPanel>
                 <StackPanel Margin="0,4,0,4" Orientation="Horizontal">
                     <Label
@@ -71,11 +88,11 @@
                         Margin="0,0,0,0"
                         Content="Ngành"
                         FontWeight="Bold" />
-                    <ComboBox Width="300">
-                        <ComboBoxItem>Công nghệ thông tin</ComboBoxItem>
-                        <ComboBoxItem IsSelected="True">Môi trường</ComboBoxItem>
-                        <ComboBoxItem>Địa chất</ComboBoxItem>
-                    </ComboBox>
+                    <ComboBox
+                        x:Name="cbb_Nganh"
+                        Width="300"
+                        DisplayMemberPath="Ten"
+                        SelectedIndex="0" />
                 </StackPanel>
                 <StackPanel Margin="0,4,0,4" Orientation="Horizontal">
                     <Label
@@ -83,11 +100,11 @@
                         Margin="0,0,0,0"
                         Content="Tác giả"
                         FontWeight="Bold" />
-                    <ComboBox Width="300">
-                        <ComboBoxItem>Conan Doyle</ComboBoxItem>
-                        <ComboBoxItem IsSelected="True">Nguyễn Du</ComboBoxItem>
-                        <ComboBoxItem>Nguyễn Trãi</ComboBoxItem>
-                    </ComboBox>
+                    <ComboBox
+                        x:Name="cbb_TacGia"
+                        Width="300"
+                        DisplayMemberPath="Ten"
+                        SelectedIndex="0" />
                 </StackPanel>
                 <StackPanel Margin="0,4,0,4" Orientation="Horizontal">
                     <Label
@@ -95,11 +112,11 @@
                         Margin="0,0,0,0"
                         Content="Nhà xuất bản"
                         FontWeight="Bold" />
-                    <ComboBox Width="300">
-                        <ComboBoxItem>Kim Đồng</ComboBoxItem>
-                        <ComboBoxItem IsSelected="True">Thanh niên</ComboBoxItem>
-                        <ComboBoxItem>Bộ giáo dục và đào tạo</ComboBoxItem>
-                    </ComboBox>
+                    <ComboBox
+                        x:Name="cbb_NhaXuatBan"
+                        Width="300"
+                        DisplayMemberPath="Ten"
+                        SelectedIndex="0" />
                 </StackPanel>
                 <StackPanel Margin="0,4,0,4" Orientation="Horizontal">
                     <Label
@@ -107,12 +124,27 @@
                         Margin="0,0,0,0"
                         Content="Năm xuất bản"
                         FontWeight="Bold" />
-                    <TextBox
-                        x:Name="tb_NamXuatBan"
+                    <UC:TextboxNumber
+                        x:Name="tbNumber_NamXuatBan"
                         Width="50"
                         Height="22"
                         Margin="0,0,0,0"
                         HorizontalAlignment="Left" />
+                </StackPanel>
+                <StackPanel
+                    x:Name="panel_Error_NamXuatBan"
+                    Margin="0,-8,0,0"
+                    Orientation="Horizontal"
+                    Visibility="Collapsed">
+                    <Label Width="100" />
+                    <Label
+                        Width="250"
+                        Height="26"
+                        Margin="0,-0,0,0"
+                        HorizontalAlignment="Left"
+                        Content="Năm xuất bản không hợp lệ"
+                        FontWeight="Bold"
+                        Foreground="Red" />
                 </StackPanel>
                 <StackPanel Margin="0,4,0,4" Orientation="Horizontal">
                     <Label
@@ -120,12 +152,27 @@
                         Margin="0,0,0,0"
                         Content="Số lượng"
                         FontWeight="Bold" />
-                    <TextBox
-                        x:Name="tb_SoLuong"
+                    <UC:TextboxNumber
+                        x:Name="tbNumber_SoLuong"
                         Width="50"
                         Height="22"
                         Margin="0,0,0,0"
                         HorizontalAlignment="Left" />
+                </StackPanel>
+                <StackPanel
+                    x:Name="panel_Error_SoLuong"
+                    Margin="0,-8,0,0"
+                    Orientation="Horizontal"
+                    Visibility="Collapsed">
+                    <Label Width="100" />
+                    <Label
+                        Width="250"
+                        Height="26"
+                        Margin="0,0,0,0"
+                        HorizontalAlignment="Left"
+                        Content="Số lượng không hợp lệ"
+                        FontWeight="Bold"
+                        Foreground="Red" />
                 </StackPanel>
                 <StackPanel Margin="0,4,0,4" Orientation="Horizontal">
                     <Label
@@ -157,11 +204,26 @@
                         IsEnabled="False" />
                     <Button
                         x:Name="btn_ChonAnhMinhHoa"
-                        Click="btn_ChonAnhMinhHoa_Click"
                         Width="46"
                         Height="22"
                         Margin="4,0,0,0"
+                        Click="btn_ChonAnhMinhHoa_Click"
                         Content="Chọn" />
+                </StackPanel>
+                <StackPanel
+                    x:Name="panel_Error_PathAnhBia"
+                    Margin="0,-8,0,0"
+                    Orientation="Horizontal"
+                    Visibility="Collapsed">
+                    <Label Width="100" />
+                    <Label
+                        Width="250"
+                        Height="26"
+                        Margin="0,-0,0,0"
+                        HorizontalAlignment="Left"
+                        Content="Đường dẫn ảnh không hợp lệ"
+                        FontWeight="Bold"
+                        Foreground="Red" />
                 </StackPanel>
                 <Image
                     x:Name="img_AnhMinhHoa"
@@ -177,12 +239,14 @@
                 x:Name="btn_XacNhan"
                 Width="100"
                 Height="30"
+                Click="btn_XacNhan_Click"
                 Content="Xác nhận" />
             <Button
                 x:Name="btn_HuyBo"
                 Width="100"
                 Height="30"
                 Margin="10,0,20,0"
+                Click="btn_HuyBo_Click"
                 Content="Hủy bỏ" />
         </StackPanel>
     </Grid>

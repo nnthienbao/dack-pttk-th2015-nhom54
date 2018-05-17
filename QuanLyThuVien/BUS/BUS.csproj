@@ -45,6 +45,7 @@
     <Compile Include="NganhKhoaBUS.cs" />
     <Compile Include="NhaXuatBanBUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SachBUS.cs" />
     <Compile Include="TacGiaBUS.cs" />
   </ItemGroup>
   <ItemGroup>

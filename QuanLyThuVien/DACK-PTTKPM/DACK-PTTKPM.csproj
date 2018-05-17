@@ -37,7 +37,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="system.windows.controls.ribbon" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -58,6 +60,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UC\TextboxNumber.xaml.cs">
+      <DependentUpon>TextboxNumber.xaml</DependentUpon>
+    </Compile>
     <Compile Include="_qldanhmucsach\PageDSTacGia.xaml.cs">
       <DependentUpon>PageDSTacGia.xaml</DependentUpon>
     </Compile>
@@ -130,6 +135,10 @@
     <Compile Include="_qldanhmucsach\PageDSSach.xaml.cs">
       <DependentUpon>PageDSSach.xaml</DependentUpon>
     </Compile>
+    <Page Include="UC\TextboxNumber.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="_qldanhmucsach\PageDSTacGia.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

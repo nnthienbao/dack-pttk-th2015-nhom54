@@ -25,9 +25,9 @@ namespace BUS
         }
 
         private NganhKhoaDAO nsDao = NganhKhoaDAO.Instance;
-        public void XemDSNGanhSach(DataGrid dtgrid)
+        public List<NganhKhoa> LayDanhSach()
         {
-            dtgrid.ItemsSource = nsDao.LayDanhSach();
+            return nsDao.LayDanhSach();
         }
 
         public void ThemNganhKhoa(String ten)

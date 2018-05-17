@@ -45,6 +45,7 @@
     <Compile Include="NganhKhoaDAO.cs" />
     <Compile Include="NhaXuatBanDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SachDAO.cs" />
     <Compile Include="TacGiaDAO.cs" />
   </ItemGroup>
   <ItemGroup>

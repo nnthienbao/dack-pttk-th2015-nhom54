@@ -27,6 +27,7 @@ namespace DACK_PTTKPM
         private PageDSLoaiSach pageDSLoaiSach = new PageDSLoaiSach();
         private PageDSNhaXuatBan pageDSNhaXuatBan = new PageDSNhaXuatBan();
         private PageDSTacGia pageDSTacGia = new PageDSTacGia();
+        private PageDSSach pageDSSach = new PageDSSach();
         public MainWindow()
         {
             InitializeComponent();
@@ -206,13 +207,16 @@ namespace DACK_PTTKPM
         //  Sach
         private void btnPageDSSachClick(object sender, RoutedEventArgs e)
         {
-            this.MainArea.Content = new PageDSSach();
+            this.MainArea.Content = pageDSSach;
         }
 
         private void btnThemSachClick(object sender, RoutedEventArgs e)
         {
             WindowThemSach wd = new WindowThemSach();
-            wd.Show();
+            if(wd.ShowDialog() == true)
+            {
+                pageDSSach.RefreshDanhSach();
+            }
         }
 
         private void btnSuaSachClick(object sender, RoutedEventArgs e)

@@ -42,7 +42,7 @@ namespace DACK_PTTKPM
 
         public void refreshDanhSach()
         {
-            nsBus.XemDSNGanhSach(this.dataGridNganhSach);
+            this.dataGridNganhSach.ItemsSource = nsBus.LayDanhSach();
         }
     }
 }
