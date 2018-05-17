@@ -36,5 +36,26 @@ namespace DAO
             sachs = db.Saches.Select(s => s).Where(s => s.Disable == false).ToList();
             return sachs;
         }
+
+        public void SuaSach(Sach sach)
+        {
+            using (QLThuVienDataContext db = new QLThuVienDataContext())
+            {
+                Sach sachSua = db.Saches.Single(s => s.id == sach.id);
+
+                sachSua.Ten = sach.Ten;
+                sachSua.LoaiSach = sach.LoaiSach;
+                sachSua.NganhKhoa = sach.NganhKhoa;
+                sachSua.TacGia = sach.TacGia;
+                sachSua.NhaXB = sach.NhaXB;
+                sachSua.NamXB = sach.NamXB;
+                sachSua.SoLuongHienCo = sach.SoLuongHienCo;
+                sachSua.SoLuongDaMuon = sach.SoLuongDaMuon;
+                sachSua.MoTa = sach.MoTa;
+                sachSua.DuongDanAnh = sach.DuongDanAnh;
+
+                db.SubmitChanges();
+            }
+        }
     }
 }

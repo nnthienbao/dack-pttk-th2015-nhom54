@@ -34,6 +34,10 @@ namespace DACK_PTTKPM.UC
                 int.TryParse(tb_TextBox.Text, out num);
                 return num;
             }
+            set
+            {
+                tb_TextBox.Text = value + "";
+            }
         }
 
         private void tb_TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)

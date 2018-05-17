@@ -221,8 +221,14 @@ namespace DACK_PTTKPM
 
         private void btnSuaSachClick(object sender, RoutedEventArgs e)
         {
-            WindowSuaSach wd = new WindowSuaSach();
-            wd.Show();
+            Sach sachDangChon = pageDSSach.LaySachDangChon();
+            if (sachDangChon == null) return;
+
+            WindowSuaSach wd = new WindowSuaSach(sachDangChon);
+            if(wd.ShowDialog() == true)
+            {
+                pageDSSach.RefreshDanhSach();
+            }
         }
 
         private void btnXoaSachClick(object sender, RoutedEventArgs e)

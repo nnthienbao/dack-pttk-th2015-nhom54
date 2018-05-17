@@ -36,5 +36,10 @@ namespace DACK_PTTKPM
         {
             RefreshDanhSach();
         }
+
+        public Sach LaySachDangChon()
+        {
+            return dataGridSach.SelectedItem as Sach;
+        }
     }
 }

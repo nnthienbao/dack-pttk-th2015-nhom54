@@ -55,5 +55,14 @@ namespace BUS
             DateTime now = DateTime.Now;
             return String.Format("BIA_{0}-{1}-{2}_{3}-{4}-{5}{6}", now.Day, now.Month, now.Year, now.Hour, now.Minute, now.Second, ext);
         }
+
+        public void SuaSach(Sach sach, string duongDanAnhMoi)
+        {
+            if (string.Compare(sach.DuongDanAnh, duongDanAnhMoi) != 0)
+            {
+                sach.DuongDanAnh = CopyFileAnhBia(duongDanAnhMoi);
+            }
+            SachDAO.Instance.SuaSach(sach);
+        }
     }
 }
