@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:DACK_PTTKPM"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="NganhSach"
-    d:DesignHeight="300"
+    d:DesignHeight="400"
     d:DesignWidth="600"
     mc:Ignorable="d">
 
@@ -44,23 +44,32 @@
                 BorderBrush="#B9C9DA"
                 BorderThickness="0,2,2,0">
                 <StackPanel Margin="20,10,20,10" Orientation="Vertical">
-                    <Label Content="Tìm kiếm theo mã ngành" FontWeight="Bold" />
+                    <RadioButton
+                        x:Name="rd_TimKiemNganhSachTheoMaNganh"
+                        Content="Tìm kiếm theo mã ngành sách"
+                        FontWeight="Bold"
+                        GroupName="rdGroup_TimKiemNganhSach"
+                        IsChecked="true" />
                     <TextBox
-                        x:Name="tb_TimKiemMaNganhSach"
+                        x:Name="tb_TimKiemNganhSachTheoMa"
                         Margin="20,5,0,0"
-                        Text="Nhập mã tìm kiếm" />
-                    <Label
+                        KeyDown="tb_TimKiemNganhSachTheoMa_KeyDown" />
+                    <RadioButton
+                        x:Name="rd_TimKiemNganhSachTheoTen"
                         Margin="0,15,0,0"
-                        Content="Tìm kiếm theo tên ngành"
-                        FontWeight="bold" />
+                        Content="Tìm kiếm theo tên ngành sách"
+                        FontWeight="bold"
+                        GroupName="rdGroup_TimKiemNganhSach" />
                     <TextBox
-                        x:Name="tb_TimKiemTenNganhSach"
+                        x:Name="tb_TimKiemNganhSachTheoTen"
                         Margin="20,5,0,0"
-                        Text="Nhập tên ngành sách tìm kiếm" />
+                        KeyDown="tb_TimKiemNganhSachTheoTen_KeyDown" />
                     <Button
                         x:Name="btn_TimKiemNganhSach"
+                        Width="100"
                         Height="25"
-                        Margin="40,10,40,0"
+                        Margin="8"
+                        Click="btn_TimKiemNganhSach_Click"
                         Content="Tìm kiếm" />
                 </StackPanel>
             </Border>
@@ -75,14 +84,17 @@
                         FontSize="14"
                         FontWeight="Bold"
                         Foreground="Red" />
-                    <StackPanel Height="25" Orientation="Horizontal">
+                    <StackPanel
+                        Height="25"
+                        Margin="0,5,0,0"
+                        Orientation="Horizontal">
                         <Label
                             Width="100"
                             Content="Mã ngành sách:"
                             FontWeight="Bold"
                             Foreground="Red" />
                         <Label
-                            x:Name="lb_KQTK_MaNganhSach"
+                            x:Name="lb_MaNganhSachChon"
                             Content=""
                             FontWeight="Bold" />
                     </StackPanel>
@@ -96,7 +108,7 @@
                             FontWeight="Bold"
                             Foreground="Red" />
                         <Label
-                            x:Name="lb_KQTK_TenNganhSach"
+                            x:Name="lb_TenNganhSachChon"
                             Content=""
                             FontWeight="Bold" />
                     </StackPanel>
@@ -112,7 +124,8 @@
                 x:Name="dataGridNganhSach"
                 AutoGenerateColumns="False"
                 IsReadOnly="True"
-                Loaded="dataGridNganhSach_Loaded">
+                Loaded="dataGridNganhSach_Loaded"
+                SelectionChanged="dataGridNganhSach_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         x:Name="pid"

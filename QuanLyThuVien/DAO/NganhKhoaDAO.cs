@@ -49,6 +49,16 @@ namespace DAO
             }
         }
 
+        public List<NganhKhoa> TimKiemTheoMa(string keywordMa)
+        {
+            List<NganhKhoa> nks = null;
+            using (QLThuVienDataContext db = new QLThuVienDataContext())
+            {
+                nks = db.NganhKhoas.Select(nk => nk).Where(nk => nk.Disable == false && nk.pid.Contains(keywordMa)).ToList();
+            }
+            return nks;
+        }
+
         public void SuaNganhKhoa(NganhKhoa nganhKhoa)
         {
             using (QLThuVienDataContext db = new QLThuVienDataContext())
@@ -57,6 +67,16 @@ namespace DAO
                 nkMoi.Ten = nganhKhoa.Ten;
                 db.SubmitChanges();
             }
+        }
+
+        public List<NganhKhoa> TimKiemTheoTen(string keywordTen)
+        {
+            List<NganhKhoa> nks = null;
+            using (QLThuVienDataContext db = new QLThuVienDataContext())
+            {
+                nks = db.NganhKhoas.Select(nk => nk).Where(nk => nk.Disable == false && nk.Ten.Contains(keywordTen)).ToList();
+            }
+            return nks;
         }
 
         public void XoaNganhKhoa(string pid)
