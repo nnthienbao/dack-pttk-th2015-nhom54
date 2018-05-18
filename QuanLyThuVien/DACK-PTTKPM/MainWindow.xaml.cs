@@ -40,7 +40,13 @@ namespace DACK_PTTKPM
         //  Sach
         private void btnPageDSLoaiSachClick(object sender, RoutedEventArgs e)
         {
-            this.MainArea.Content = pageDSLoaiSach;
+            if (this.MainArea.Content != pageDSLoaiSach)
+            {
+                this.MainArea.Content = pageDSLoaiSach;
+            } else
+            {
+                pageDSLoaiSach.RefreshDanhSach();
+            }
         }
 
         private void btnThemLoaiSachClick(object sender, RoutedEventArgs e)
@@ -81,7 +87,13 @@ namespace DACK_PTTKPM
         //  Nganh sach
         private void btnPageDSNganhSachClick(object sender, RoutedEventArgs e)
         {
-            this.MainArea.Content = pageDSNganhSach;
+            if (this.MainArea.Content != pageDSNganhSach)
+            {
+                this.MainArea.Content = pageDSNganhSach;
+            } else
+            {
+                pageDSNganhSach.refreshDanhSach();
+            }
         }
 
         private void btnThemNganhSachClick(object sender, RoutedEventArgs e)
@@ -123,7 +135,13 @@ namespace DACK_PTTKPM
         //  Nha xuat ban
         private void btnPageDSNhaXuatBanClick(object sender, RoutedEventArgs e)
         {
-            this.MainArea.Content = pageDSNhaXuatBan;
+            if (this.MainArea.Content != pageDSNhaXuatBan)
+            {
+                this.MainArea.Content = pageDSNhaXuatBan;
+            } else
+            {
+                pageDSNhaXuatBan.RefreshDanhSach();
+            }
         }
 
         private void btnThemNhaXuatBanClick(object sender, RoutedEventArgs e)
@@ -164,7 +182,13 @@ namespace DACK_PTTKPM
         //  Sach
         private void btnPageDSSachClick(object sender, RoutedEventArgs e)
         {
-            this.MainArea.Content = pageDSSach;
+            if (this.MainArea.Content != pageDSSach)
+            {
+                this.MainArea.Content = pageDSSach;
+            } else
+            {
+                pageDSSach.RefreshDanhSach();
+            }
         }
 
         private void btnThemSachClick(object sender, RoutedEventArgs e)
