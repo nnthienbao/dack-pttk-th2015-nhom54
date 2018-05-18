@@ -81,5 +81,35 @@ namespace DACK_PTTKPM
                 TimKiemSachTheoTen();
             }
         }
+
+        private void dataGridSach_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            Sach sachDangChon = dataGridSach.SelectedItem as Sach;
+            if (sachDangChon == null) return;
+
+            LoadAnhBiaSach(sachDangChon.DuongDanAnh);
+            lb_MaSachChon.Content = sachDangChon.pid;
+            lb_TenSachChon.Content = sachDangChon.Ten;
+            lb_SoLuongTonSachChon.Content = sachDangChon.SoLuongHienCo + "";
+            lb_SoLuongMuonSachChon.Content = sachDangChon.SoLuongDaMuon + "";
+            tb_MoTaSachChon.Text = sachDangChon.MoTa;
+            tb_TacGiaSachChon.Text = sachDangChon.TacGia;
+            lb_NamXuatBanSachChon.Content = sachDangChon.NamXB + "";
+            lb_NhaXuatBanSachChon.Content = sachDangChon.NhaXuatBan.Ten;
+            lb_LoaiSachChon.Content = sachDangChon.LoaiSach1.Ten;
+            lb_NganhSachChon.Content = sachDangChon.NganhKhoa1.Ten;
+        }
+
+        private void LoadAnhBiaSach(string path)
+        {
+            try
+            {
+                this.img_AnhSachChon.Source = new BitmapImage(new Uri(path));
+            }
+            catch
+            {
+                this.img_AnhSachChon.Source = new BitmapImage(new Uri("/images/no-image.img", UriKind.Relative));
+            }
+        }
     }
 }
