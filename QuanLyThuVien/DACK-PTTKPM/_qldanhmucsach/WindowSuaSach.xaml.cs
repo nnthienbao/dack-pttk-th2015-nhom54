@@ -116,7 +116,13 @@ namespace DACK_PTTKPM
             this.tbNumber_SoLuongMuon.Number = (int)sachSua.SoLuongDaMuon;
             this.tb_MoTa.Text = sachSua.MoTa;
             this.tb_DuongDanAnhMinhHoa.Text = sachSua.DuongDanAnh;
-            this.img_AnhMinhHoa.Source = this.img_AnhMinhHoa.Source = new BitmapImage(new Uri(sachSua.DuongDanAnh));
+            try
+            {
+                this.img_AnhMinhHoa.Source = this.img_AnhMinhHoa.Source = new BitmapImage(new Uri(sachSua.DuongDanAnh));
+            } catch
+            {
+                this.img_AnhMinhHoa.Source = this.img_AnhMinhHoa.Source = new BitmapImage(new Uri(@"/images/no-image.jpg", UriKind.Relative));
+            }
         }
 
         private void btn_ChonAnhMinhHoa_Click(object sender, RoutedEventArgs e)
