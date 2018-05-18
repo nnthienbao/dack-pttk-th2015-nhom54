@@ -44,9 +44,21 @@ namespace BUS
             return destFile;
         }
 
+        public List<Sach> TimKiemTheoMa(string keywordMa)
+        {
+            keywordMa = keywordMa.ToLower();
+            return SachDAO.Instance.TimKiemTheoMa(keywordMa);
+        }
+
         public List<Sach> LayDanhSach()
         {
             return SachDAO.Instance.LayDanhSach();
+        }
+
+        public List<Sach> TimKiemTheoTen(string keywordTen)
+        {
+            keywordTen = keywordTen.ToLower();
+            return SachDAO.Instance.TimKiemTheoTen(keywordTen);
         }
 
         private string TaoTenFileAnhBia(string rawFilePath)

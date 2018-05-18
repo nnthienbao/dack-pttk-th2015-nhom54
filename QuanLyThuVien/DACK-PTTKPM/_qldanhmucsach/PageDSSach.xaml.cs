@@ -41,5 +41,45 @@ namespace DACK_PTTKPM
         {
             return dataGridSach.SelectedItem as Sach;
         }
+
+        private void btn_TimKiemSach_Click(object sender, RoutedEventArgs e)
+        {
+            if(rd_TimKiemSachTheoMa.IsChecked == true)
+            {
+                TimKiemSachTheoMa();
+
+            } else if(rd_TimKiemSachTheoTen.IsChecked == true)
+            {
+                TimKiemSachTheoTen();
+            }
+        }
+
+        private void TimKiemSachTheoMa()
+        {
+            string keywordMa = tb_TimKiemTheoMaSach.Text;
+            dataGridSach.ItemsSource = SachBUS.Instance.TimKiemTheoMa(keywordMa);
+        }
+
+        private void TimKiemSachTheoTen()
+        {
+            string keywordTen = tb_TimKiemTheoTenSach.Text;
+            dataGridSach.ItemsSource = SachBUS.Instance.TimKiemTheoTen(keywordTen);
+        }
+
+        private void tb_TimKiemTheoMaSach_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return && rd_TimKiemSachTheoMa.IsChecked == true)
+            {
+                TimKiemSachTheoMa();
+            }
+        }
+
+        private void tb_TimKiemTheoTenSach_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return && rd_TimKiemSachTheoTen.IsChecked == true)
+            {
+                TimKiemSachTheoTen();
+            }
+        }
     }
 }

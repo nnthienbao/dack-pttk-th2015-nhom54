@@ -45,27 +45,31 @@
                 BorderThickness="0,2,2,0">
                 <StackPanel Margin="20,10,20,10" Orientation="Vertical">
                     <RadioButton
-                        Content="Tìm kiếm theo mã loại"
+                        x:Name="rd_TimKiemSachTheoMa"
+                        Content="Tìm kiếm theo mã sách"
                         FontWeight="Bold"
-                        GroupName="rdoBtn_TimKiemSach"
+                        GroupName="rdGroup_TimKiemSach"
                         IsChecked="true" />
                     <TextBox
-                        x:Name="tb_TimKiemMaSach"
+                        x:Name="tb_TimKiemTheoMaSach"
                         Margin="20,5,0,0"
-                        Text="Nhập mã sách tìm kiếm" />
+                        KeyDown="tb_TimKiemTheoMaSach_KeyDown" />
                     <RadioButton
+                        x:Name="rd_TimKiemSachTheoTen"
                         Margin="0,15,0,0"
-                        Content="Tìm kiếm theo tên loại"
+                        Content="Tìm kiếm theo tên sách"
                         FontWeight="bold"
-                        GroupName="rdoBtn_TimKiemSach" />
+                        GroupName="rdGroup_TimKiemSach" />
                     <TextBox
-                        x:Name="tb_TimKiemTenSach"
+                        x:Name="tb_TimKiemTheoTenSach"
                         Margin="20,5,0,0"
-                        Text="Nhập tên sách tìm kiếm" />
+                        KeyDown="tb_TimKiemTheoTenSach_KeyDown" />
                     <Button
                         x:Name="btn_TimKiemSach"
+                        Width="100"
                         Height="25"
-                        Margin="40,10,40,0"
+                        Margin="8"
+                        Click="btn_TimKiemSach_Click"
                         Content="Tìm kiếm" />
                 </StackPanel>
             </Border>
