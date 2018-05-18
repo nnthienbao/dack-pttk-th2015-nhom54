@@ -97,7 +97,7 @@
                                 Foreground="Red" />
                             <Label
                                 x:Name="lb_MaSachChon"
-                                Content="aa"
+                                Content=""
                                 FontWeight="Bold" />
                         </StackPanel>
                         <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
@@ -109,7 +109,7 @@
                                 Foreground="Red" />
                             <Label
                                 x:Name="lb_TenSachChon"
-                                Content="â"
+                                Content=""
                                 FontWeight="Bold" />
                         </StackPanel>
 

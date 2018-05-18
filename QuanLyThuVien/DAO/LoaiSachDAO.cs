@@ -46,6 +46,26 @@ namespace DAO
             }
         }
 
+        public List<LoaiSach> TimKiemTheoMa(string keywordMa)
+        {
+            List<LoaiSach> loaiSachs = null;
+            using (QLThuVienDataContext db = new QLThuVienDataContext())
+            {
+                loaiSachs = db.LoaiSaches.Select(ls => ls).Where(ls => ls.Disable == false && ls.pid.Contains(keywordMa)).ToList();
+            }
+            return loaiSachs;
+        }
+
+        public List<LoaiSach> TimKiemTheoTen(string keywordTen)
+        {
+            List<LoaiSach> loaiSachs = null;
+            using (QLThuVienDataContext db = new QLThuVienDataContext())
+            {
+                loaiSachs = db.LoaiSaches.Select(ls => ls).Where(ls => ls.Disable == false && ls.Ten.Contains(keywordTen)).ToList();
+            }
+            return loaiSachs;
+        }
+
         public void XoaLoaiSach(string pid)
         {
             using (QLThuVienDataContext db = new QLThuVienDataContext())

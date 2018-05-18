@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -42,6 +43,18 @@ namespace BUS
         public void XoaLoaiSach(string pid)
         {
             LoaiSachDAO.Instance.XoaLoaiSach(pid);
+        }
+
+        public List<LoaiSach> TimKiemTheoMa(string keywordMa)
+        {
+            keywordMa = keywordMa.ToLower();
+            return LoaiSachDAO.Instance.TimKiemTheoMa(keywordMa);
+        }
+
+        public List<LoaiSach> TimKiemTheoTen(string keywordTen)
+        {
+            keywordTen = keywordTen.ToLower();
+            return LoaiSachDAO.Instance.TimKiemTheoTen(keywordTen);
         }
     }
 }
