@@ -41,5 +41,17 @@ namespace BUS
         {
             NhaXuatBanDAO.Instance.XoaNhaXuatBan(pid);
         }
+
+        public List<NhaXuatBan> TimKiemTheoMa(string keywordMa)
+        {
+            keywordMa = keywordMa.ToLower();
+            return NhaXuatBanDAO.Instance.TimKiemTheoMa(keywordMa);
+        }
+
+        public List<NhaXuatBan> TimKiemTheoTen(string keywordTen)
+        {
+            keywordTen = keywordTen.ToLower();
+            return NhaXuatBanDAO.Instance.TimKiemTheoTen(keywordTen);
+        }
     }
 }

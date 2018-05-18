@@ -43,6 +43,16 @@ namespace DAO
             }
         }
 
+        public List<NhaXuatBan> TimKiemTheoMa(string keywordMa)
+        {
+            List<NhaXuatBan> nxbs = null;
+            using (QLThuVienDataContext db = new QLThuVienDataContext())
+            {
+                nxbs = db.NhaXuatBans.Select(nxb => nxb).Where(nxb => nxb.Disable == false && nxb.pid.Contains(keywordMa)).ToList();
+            }
+            return nxbs;
+        }
+
         public void XoaNhaXuatBan(string pid)
         {
             using (QLThuVienDataContext db = new QLThuVienDataContext())
@@ -51,6 +61,16 @@ namespace DAO
                 nxbXoa.Disable = true;
                 db.SubmitChanges();
             }
+        }
+
+        public List<NhaXuatBan> TimKiemTheoTen(string keywordTen)
+        {
+            List<NhaXuatBan> nxbs = null;
+            using (QLThuVienDataContext db = new QLThuVienDataContext())
+            {
+                nxbs = db.NhaXuatBans.Select(nxb => nxb).Where(nxb => nxb.Disable == false && nxb.Ten.Contains(keywordTen)).ToList();
+            }
+            return nxbs;
         }
 
         public void SuaNhaXuatBan(NhaXuatBan nhaXuatBan)

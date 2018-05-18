@@ -44,23 +44,32 @@
                 BorderBrush="#B9C9DA"
                 BorderThickness="0,2,2,0">
                 <StackPanel Margin="20,10,20,10" Orientation="Vertical">
-                    <Label Content="Tìm kiếm theo mã nhà xuất bản" FontWeight="Bold" />
+                    <RadioButton
+                        x:Name="rd_TimKiemNXBTheoMa"
+                        Content="Tìm kiếm theo mã nhà xuất bản"
+                        FontWeight="Bold"
+                        GroupName="rdGroup_TimKiemNXB"
+                        IsChecked="true" />
                     <TextBox
-                        x:Name="tb_TimKiemNhaXuatBan"
+                        x:Name="tb_TimKiemNXBTheoMa"
                         Margin="20,5,0,0"
-                        Text="Nhập mã tìm kiếm" />
-                    <Label
+                        KeyDown="tb_TimKiemNXBTheoMa_KeyDown" />
+                    <RadioButton
+                        x:Name="rd_TimKiemNXBTheoTen"
                         Margin="0,15,0,0"
                         Content="Tìm kiếm theo tên nhà xuất bản"
-                        FontWeight="bold" />
+                        FontWeight="bold"
+                        GroupName="rdGroup_TimKiemNXB" />
                     <TextBox
-                        x:Name="tb_TimKiemTenNhaXuatBan"
+                        x:Name="tb_TimKiemNXBTheoTen"
                         Margin="20,5,0,0"
-                        Text="Nhập tên nhà xuất bản tìm kiếm" />
+                        KeyDown="tb_TimKiemNXBTheoTen_KeyDown" />
                     <Button
-                        x:Name="btn_TimKiemNhaXuatBan"
+                        x:Name="btn_TimKiemNXB"
+                        Width="100"
                         Height="25"
-                        Margin="40,10,40,0"
+                        Margin="8"
+                        Click="btn_TimKiemNXB_Click"
                         Content="Tìm kiếm" />
                 </StackPanel>
             </Border>
@@ -75,29 +84,33 @@
                         FontSize="14"
                         FontWeight="Bold"
                         Foreground="Red" />
-                    <StackPanel Height="25" Orientation="Horizontal">
+                    <StackPanel
+                        Height="25"
+                        Margin="0,5,0,0"
+                        Orientation="Horizontal">
                         <Label
-                            Width="100"
-                            Content="Mã loại sách:"
+                            Width="120"
+                            Content="Mã nhà xuất bản:"
                             FontWeight="Bold"
                             Foreground="Red" />
                         <Label
-                            x:Name="lb_KQTK_MaNhaXuatBan"
+                            x:Name="lb_MaNXBChon"
+                            Width="238"
                             Content=""
                             FontWeight="Bold" />
                     </StackPanel>
-                    <Label
-                        Width="150"
-                        Margin="0,5,0,0"
-                        HorizontalAlignment="Left"
-                        Content="Tên nhà xuất bản:"
-                        FontWeight="Bold"
-                        Foreground="Red" />
-                    <Label
-                        x:Name="lb_KQTK_TenNhaXuatBan"
-                        Margin="0,0,0,0"
-                        Content="asdfsadf"
-                        FontWeight="Bold" />
+                    <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
+                        <Label
+                            Width="120"
+                            HorizontalAlignment="Left"
+                            Content="Tên nhà xuất bản:"
+                            FontWeight="Bold"
+                            Foreground="Red" />
+                        <Label
+                            x:Name="lb_TenNXBChon"
+                            Content=""
+                            FontWeight="Bold" />
+                    </StackPanel>
                 </StackPanel>
             </Border>
         </Grid>
@@ -110,7 +123,8 @@
                 x:Name="dataGridNhaXuatBan"
                 AutoGenerateColumns="False"
                 IsReadOnly="True"
-                Loaded="dataGridNhaXuatBan_Loaded">
+                Loaded="dataGridNhaXuatBan_Loaded"
+                SelectionChanged="dataGridNhaXuatBan_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Width="150"
