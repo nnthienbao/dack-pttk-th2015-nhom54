@@ -79,7 +79,7 @@
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="pid" Type="System.String" DbType="VarChar(10)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="Ten" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="TacGia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TacGia" Type="System.String" DbType="NVarChar(70)" CanBeNull="true" />
       <Column Name="NamXB" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NhaXB" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MoTa" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
@@ -93,16 +93,6 @@
       <Association Name="LoaiSach_Sach" Member="LoaiSach1" ThisKey="LoaiSach" OtherKey="id" Type="LoaiSach" IsForeignKey="true" />
       <Association Name="NganhKhoa_Sach" Member="NganhKhoa1" ThisKey="NganhKhoa" OtherKey="id" Type="NganhKhoa" IsForeignKey="true" />
       <Association Name="NhaXuatBan_Sach" Member="NhaXuatBan" ThisKey="NhaXB" OtherKey="id" Type="NhaXuatBan" IsForeignKey="true" />
-      <Association Name="TacGia_Sach" Member="TacGia1" ThisKey="TacGia" OtherKey="id" Type="TacGia" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TacGia" Member="TacGias">
-    <Type Name="TacGia">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="pid" Type="System.String" DbType="VarChar(8)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="Ten" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Disable" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Association Name="TacGia_Sach" Member="Saches" ThisKey="id" OtherKey="TacGia" Type="Sach" />
     </Type>
   </Table>
   <Table Name="dbo.ViPham" Member="ViPhams">

@@ -54,9 +54,6 @@ namespace DTO
     partial void InsertSach(Sach instance);
     partial void UpdateSach(Sach instance);
     partial void DeleteSach(Sach instance);
-    partial void InsertTacGia(TacGia instance);
-    partial void UpdateTacGia(TacGia instance);
-    partial void DeleteTacGia(TacGia instance);
     partial void InsertViPham(ViPham instance);
     partial void UpdateViPham(ViPham instance);
     partial void DeleteViPham(ViPham instance);
@@ -153,14 +150,6 @@ namespace DTO
 			get
 			{
 				return this.GetTable<Sach>();
-			}
-		}
-		
-		public System.Data.Linq.Table<TacGia> TacGias
-		{
-			get
-			{
-				return this.GetTable<TacGia>();
 			}
 		}
 		
@@ -1651,7 +1640,7 @@ namespace DTO
 		
 		private string _Ten;
 		
-		private System.Nullable<int> _TacGia;
+		private string _TacGia;
 		
 		private System.Nullable<int> _NamXB;
 		
@@ -1679,8 +1668,6 @@ namespace DTO
 		
 		private EntityRef<NhaXuatBan> _NhaXuatBan;
 		
-		private EntityRef<TacGia> _TacGia1;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1691,7 +1678,7 @@ namespace DTO
     partial void OnpidChanged();
     partial void OnTenChanging(string value);
     partial void OnTenChanged();
-    partial void OnTacGiaChanging(System.Nullable<int> value);
+    partial void OnTacGiaChanging(string value);
     partial void OnTacGiaChanged();
     partial void OnNamXBChanging(System.Nullable<int> value);
     partial void OnNamXBChanged();
@@ -1719,7 +1706,6 @@ namespace DTO
 			this._LoaiSach1 = default(EntityRef<LoaiSach>);
 			this._NganhKhoa1 = default(EntityRef<NganhKhoa>);
 			this._NhaXuatBan = default(EntityRef<NhaXuatBan>);
-			this._TacGia1 = default(EntityRef<TacGia>);
 			OnCreated();
 		}
 		
@@ -1783,8 +1769,8 @@ namespace DTO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TacGia", DbType="Int")]
-		public System.Nullable<int> TacGia
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TacGia", DbType="NVarChar(70)")]
+		public string TacGia
 		{
 			get
 			{
@@ -1794,10 +1780,6 @@ namespace DTO
 			{
 				if ((this._TacGia != value))
 				{
-					if (this._TacGia1.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnTacGiaChanging(value);
 					this.SendPropertyChanging();
 					this._TacGia = value;
@@ -2114,40 +2096,6 @@ namespace DTO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TacGia_Sach", Storage="_TacGia1", ThisKey="TacGia", OtherKey="id", IsForeignKey=true)]
-		public TacGia TacGia1
-		{
-			get
-			{
-				return this._TacGia1.Entity;
-			}
-			set
-			{
-				TacGia previousValue = this._TacGia1.Entity;
-				if (((previousValue != value) 
-							|| (this._TacGia1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TacGia1.Entity = null;
-						previousValue.Saches.Remove(this);
-					}
-					this._TacGia1.Entity = value;
-					if ((value != null))
-					{
-						value.Saches.Add(this);
-						this._TacGia = value.id;
-					}
-					else
-					{
-						this._TacGia = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TacGia1");
-				}
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2178,168 +2126,6 @@ namespace DTO
 		{
 			this.SendPropertyChanging();
 			entity.Sach = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TacGia")]
-	public partial class TacGia : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private string _pid;
-		
-		private string _Ten;
-		
-		private bool _Disable;
-		
-		private EntitySet<Sach> _Saches;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnpidChanging(string value);
-    partial void OnpidChanged();
-    partial void OnTenChanging(string value);
-    partial void OnTenChanged();
-    partial void OnDisableChanging(bool value);
-    partial void OnDisableChanged();
-    #endregion
-		
-		public TacGia()
-		{
-			this._Saches = new EntitySet<Sach>(new Action<Sach>(this.attach_Saches), new Action<Sach>(this.detach_Saches));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pid", AutoSync=AutoSync.Always, DbType="VarChar(8)", IsDbGenerated=true, UpdateCheck=UpdateCheck.Never)]
-		public string pid
-		{
-			get
-			{
-				return this._pid;
-			}
-			set
-			{
-				if ((this._pid != value))
-				{
-					this.OnpidChanging(value);
-					this.SendPropertyChanging();
-					this._pid = value;
-					this.SendPropertyChanged("pid");
-					this.OnpidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ten", DbType="NVarChar(50)")]
-		public string Ten
-		{
-			get
-			{
-				return this._Ten;
-			}
-			set
-			{
-				if ((this._Ten != value))
-				{
-					this.OnTenChanging(value);
-					this.SendPropertyChanging();
-					this._Ten = value;
-					this.SendPropertyChanged("Ten");
-					this.OnTenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Disable", DbType="Bit NOT NULL")]
-		public bool Disable
-		{
-			get
-			{
-				return this._Disable;
-			}
-			set
-			{
-				if ((this._Disable != value))
-				{
-					this.OnDisableChanging(value);
-					this.SendPropertyChanging();
-					this._Disable = value;
-					this.SendPropertyChanged("Disable");
-					this.OnDisableChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TacGia_Sach", Storage="_Saches", ThisKey="id", OtherKey="TacGia")]
-		public EntitySet<Sach> Saches
-		{
-			get
-			{
-				return this._Saches;
-			}
-			set
-			{
-				this._Saches.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Saches(Sach entity)
-		{
-			this.SendPropertyChanging();
-			entity.TacGia1 = this;
-		}
-		
-		private void detach_Saches(Sach entity)
-		{
-			this.SendPropertyChanging();
-			entity.TacGia1 = null;
 		}
 	}
 	

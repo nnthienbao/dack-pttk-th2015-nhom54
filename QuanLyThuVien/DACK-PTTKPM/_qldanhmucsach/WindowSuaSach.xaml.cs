@@ -37,9 +37,9 @@ namespace DACK_PTTKPM
             panel_Error_PathAnhBia.Visibility = Visibility.Collapsed;
 
             string tenSach = tb_TenSach.Text;
+            string tacGia = tb_TacGia.Text;
             LoaiSach loaiSach = (LoaiSach)cbb_LoaiSach.SelectedItem;
             NganhKhoa nganh = (NganhKhoa)cbb_Nganh.SelectedItem;
-            TacGia tacGia = (TacGia)cbb_TacGia.SelectedItem;
             NhaXuatBan nhaXuatBan = (NhaXuatBan)cbb_NhaXuatBan.SelectedItem;
             int namXuatBan = tbNumber_NamXuatBan.Number;
             int soLuongTon = tbNumber_SoLuongTon.Number;
@@ -72,7 +72,7 @@ namespace DACK_PTTKPM
             {
                 id = sachSua.id,
                 Ten = tenSach,
-                TacGia = tacGia.id,
+                TacGia = tacGia,
                 NamXB = namXuatBan,
                 NhaXB = nhaXuatBan.id,
                 MoTa = moTa,
@@ -102,14 +102,13 @@ namespace DACK_PTTKPM
         {
             this.cbb_LoaiSach.ItemsSource = LoaiSachBUS.Instance.LayDanhSach();
             this.cbb_Nganh.ItemsSource = NganhKhoaBUS.Instance.LayDanhSach();
-            this.cbb_TacGia.ItemsSource = TacGiaBUS.Instance.LayDanhSach();
             this.cbb_NhaXuatBan.ItemsSource = NhaXuatBanBUS.Instance.LayDanhSach();
 
             this.tb_MaSach.Text = sachSua.pid;
             this.tb_TenSach.Text = sachSua.Ten;
+            this.tb_TacGia.Text = sachSua.TacGia;
             this.cbb_LoaiSach.SelectedValue = sachSua.LoaiSach1.id;
             this.cbb_Nganh.SelectedValue = sachSua.NganhKhoa1.id;
-            this.cbb_TacGia.SelectedValue = sachSua.TacGia1.id;
             this.cbb_NhaXuatBan.SelectedValue = sachSua.NhaXuatBan.id;
             this.tbNumber_NamXuatBan.Number = (int)sachSua.NamXB;
             this.tbNumber_SoLuongTon.Number = (int)sachSua.SoLuongHienCo;

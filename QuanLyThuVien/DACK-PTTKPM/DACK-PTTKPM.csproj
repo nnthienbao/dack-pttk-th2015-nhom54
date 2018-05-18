@@ -63,15 +63,6 @@
     <Compile Include="UC\TextboxNumber.xaml.cs">
       <DependentUpon>TextboxNumber.xaml</DependentUpon>
     </Compile>
-    <Compile Include="_qldanhmucsach\PageDSTacGia.xaml.cs">
-      <DependentUpon>PageDSTacGia.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="_qldanhmucsach\WindowSuaTacGia.xaml.cs">
-      <DependentUpon>WindowSuaTacGia.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="_qldanhmucsach\WindowThemTacGia.xaml.cs">
-      <DependentUpon>WindowThemTacGia.xaml</DependentUpon>
-    </Compile>
     <Compile Include="_qldocgia\WindowSuaDocGia.xaml.cs">
       <DependentUpon>WindowSuaDocGia.xaml</DependentUpon>
     </Compile>
@@ -136,18 +127,6 @@
       <DependentUpon>PageDSSach.xaml</DependentUpon>
     </Compile>
     <Page Include="UC\TextboxNumber.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="_qldanhmucsach\PageDSTacGia.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="_qldanhmucsach\WindowSuaTacGia.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="_qldanhmucsach\WindowThemTacGia.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

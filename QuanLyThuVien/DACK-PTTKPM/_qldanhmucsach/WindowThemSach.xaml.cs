@@ -54,9 +54,9 @@ namespace DACK_PTTKPM
             panel_Error_PathAnhBia.Visibility = Visibility.Collapsed;
 
             string tenSach = tb_TenSach.Text;
+            string tacGia = tb_TacGia.Text;
             LoaiSach loaiSach = (LoaiSach)cbb_LoaiSach.SelectedItem;
             NganhKhoa nganh = (NganhKhoa)cbb_Nganh.SelectedItem;
-            TacGia tacGia = (TacGia)cbb_TacGia.SelectedItem;
             NhaXuatBan nhaXuatBan = (NhaXuatBan)cbb_NhaXuatBan.SelectedItem;
             int namXuatBan = tbNumber_NamXuatBan.Number;
             int soLuong = tbNumber_SoLuong.Number;
@@ -87,7 +87,7 @@ namespace DACK_PTTKPM
             Sach sach = new Sach
             {
                 Ten = tenSach,
-                TacGia = tacGia.id,
+                TacGia = tacGia,
                 NamXB = namXuatBan,
                 NhaXB = nhaXuatBan.id,
                 MoTa = moTa,
@@ -115,7 +115,6 @@ namespace DACK_PTTKPM
         {
             this.cbb_LoaiSach.ItemsSource = LoaiSachBUS.Instance.LayDanhSach();
             this.cbb_Nganh.ItemsSource = NganhKhoaBUS.Instance.LayDanhSach();
-            this.cbb_TacGia.ItemsSource = TacGiaBUS.Instance.LayDanhSach();
             this.cbb_NhaXuatBan.ItemsSource = NhaXuatBanBUS.Instance.LayDanhSach();
         }
     }

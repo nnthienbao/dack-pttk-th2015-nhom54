@@ -68,6 +68,19 @@
                         Margin="0,0,0,0"
                         HorizontalAlignment="Left" />
                 </StackPanel>
+                <StackPanel Margin="0,4,0,4" Orientation="Horizontal">
+                    <Label
+                        Width="100"
+                        Margin="0,0,0,0"
+                        Content="Tác giả"
+                        FontWeight="Bold" />
+                    <TextBox
+                        x:Name="tb_TacGia"
+                        Width="300"
+                        Height="22"
+                        Margin="0,0,0,0"
+                        HorizontalAlignment="Left" />
+                </StackPanel>
                 <StackPanel
                     x:Name="panel_Error_TenSach"
                     Margin="0,-8,0,0"
@@ -104,18 +117,6 @@
                         FontWeight="Bold" />
                     <ComboBox
                         x:Name="cbb_Nganh"
-                        Width="300"
-                        DisplayMemberPath="Ten"
-                        SelectedValuePath="id" />
-                </StackPanel>
-                <StackPanel Margin="0,4,0,4" Orientation="Horizontal">
-                    <Label
-                        Width="100"
-                        Margin="0,0,0,0"
-                        Content="Tác giả"
-                        FontWeight="Bold" />
-                    <ComboBox
-                        x:Name="cbb_TacGia"
                         Width="300"
                         DisplayMemberPath="Ten"
                         SelectedValuePath="id" />

@@ -63,7 +63,7 @@ namespace DAO
             List<Sach> sachs = null;
 
             QLThuVienDataContext db = new QLThuVienDataContext();
-            sachs = db.Saches.Select(s => s).Where(s => s.Ten.ToLower().Contains(keywordTen)).ToList();
+            sachs = db.Saches.Select(s => s).Where(s => s.Disable == false && s.Ten.ToLower().Contains(keywordTen)).ToList();
 
             return sachs;
         }
@@ -73,7 +73,7 @@ namespace DAO
             List<Sach> sachs = null;
 
             QLThuVienDataContext db = new QLThuVienDataContext();
-            sachs = db.Saches.Select(s => s).Where(s => s.pid.ToLower().Contains(keywordMa)).ToList();
+            sachs = db.Saches.Select(s => s).Where(s => s.Disable == false && s.pid.ToLower().Contains(keywordMa)).ToList();
 
             return sachs;
         }

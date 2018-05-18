@@ -86,24 +86,6 @@
                         Label="Xóa thông tin NXB"
                         SmallImageSource="images/delete-icon.png" />
                 </RibbonGroup>
-                <RibbonGroup Header="Quản lý tác giả">
-                    <RibbonButton
-                        Click="btnPageDSTacGiaClick"
-                        Label="Tác giả"
-                        LargeImageSource="images/tac-gia.png" />
-                    <RibbonButton
-                        Click="btnThemTacGiaClick"
-                        Label="Thêm tác giả"
-                        SmallImageSource="images/add-icon.png" />
-                    <RibbonButton
-                        Click="btnSuaTacGiaClick"
-                        Label="Sửa thông tin tác giả"
-                        SmallImageSource="images/edit-icon.png" />
-                    <RibbonButton
-                        Click="btnXoaTacGiaClick"
-                        Label="Xóa tác giả"
-                        SmallImageSource="images/delete-icon.png" />
-                </RibbonGroup>
 
             </RibbonTab>
             <RibbonTab Header="Quản lý độc giả">

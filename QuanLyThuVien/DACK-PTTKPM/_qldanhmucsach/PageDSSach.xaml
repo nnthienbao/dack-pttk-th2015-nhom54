@@ -249,7 +249,7 @@
                         Header="Ngành sách" />
                     <DataGridTextColumn
                         Width="100"
-                        Binding="{Binding TacGia1.Ten}"
+                        Binding="{Binding TacGia}"
                         Header="Tác giả" />
                     <DataGridTextColumn
                         Width="200"
