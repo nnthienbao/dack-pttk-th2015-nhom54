@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BUS;
 
 namespace DACK_PTTKPM
 {
@@ -26,8 +27,18 @@ namespace DACK_PTTKPM
 
         private void btnXacNhanClick(object sender, RoutedEventArgs e)
         {
-            this.Hide();
-            this.Close();
+            lb_Loi_TenLoaiSach.Content = "";
+
+            string tenLoai = tb_TenLoaiSach.Text;
+
+            if(string.IsNullOrEmpty(tenLoai))
+            {
+                lb_Loi_TenLoaiSach.Content = "Tên loại sách không được để trống";
+            } else
+            {
+                LoaiSachBUS.Instance.ThemLoaiSach(tenLoai);
+                this.DialogResult = true;
+            }
         }
 
         private void btnHuyBoClick(object sender, RoutedEventArgs e)

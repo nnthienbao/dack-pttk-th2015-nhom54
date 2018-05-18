@@ -37,7 +37,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="system.windows.controls.ribbon" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -58,6 +60,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UC\TextboxNumber.xaml.cs">
+      <DependentUpon>TextboxNumber.xaml</DependentUpon>
+    </Compile>
     <Compile Include="_qldocgia\WindowSuaDocGia.xaml.cs">
       <DependentUpon>WindowSuaDocGia.xaml</DependentUpon>
     </Compile>
@@ -121,6 +126,10 @@
     <Compile Include="_qldanhmucsach\PageDSSach.xaml.cs">
       <DependentUpon>PageDSSach.xaml</DependentUpon>
     </Compile>
+    <Page Include="UC\TextboxNumber.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="_qldocgia\WindowSuaDocGia.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -293,6 +302,16 @@
       <Project>{9c1b7550-b342-41d6-a813-6213c5597d2e}</Project>
       <Name>BUS</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{52ac0d77-15ff-42a8-ad20-ef36ffc932c9}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tac-gia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\no-image.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

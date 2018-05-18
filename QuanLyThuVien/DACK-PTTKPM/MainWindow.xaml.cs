@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BUS;
 
 namespace DACK_PTTKPM
 {
@@ -21,10 +23,14 @@ namespace DACK_PTTKPM
     /// </summary>
     public partial class MainWindow : Window
     {
+        private PageDSNganhSach pageDSNganhSach = new PageDSNganhSach();
+        private PageDSLoaiSach pageDSLoaiSach = new PageDSLoaiSach();
+        private PageDSNhaXuatBan pageDSNhaXuatBan = new PageDSNhaXuatBan();
+        private PageDSSach pageDSSach = new PageDSSach();
         public MainWindow()
         {
             InitializeComponent();
-            this.MainArea.Content = new PageDSLoaiSach();
+            this.MainArea.Content = pageDSNganhSach;
         }
 
         //
@@ -34,93 +40,190 @@ namespace DACK_PTTKPM
         //  Sach
         private void btnPageDSLoaiSachClick(object sender, RoutedEventArgs e)
         {
-            this.MainArea.Content = new PageDSLoaiSach();
+            if (this.MainArea.Content != pageDSLoaiSach)
+            {
+                this.MainArea.Content = pageDSLoaiSach;
+            } else
+            {
+                pageDSLoaiSach.RefreshDanhSach();
+            }
         }
 
         private void btnThemLoaiSachClick(object sender, RoutedEventArgs e)
         {
             WindowThemLoaiSach wd = new WindowThemLoaiSach();
-            wd.Show();
+            if(wd.ShowDialog() == true)
+            {
+                pageDSLoaiSach.RefreshDanhSach();
+            }
         }
 
         private void btnSuaLoaiSachClick(object sender, RoutedEventArgs e)
         {
-            WindowSuaLoaiSach wd = new WindowSuaLoaiSach();
-            wd.Show();
+            LoaiSach loaiSachDangChon = pageDSLoaiSach.GetLoaiSachDangChon();
+            if (loaiSachDangChon == null) return;
+
+            WindowSuaLoaiSach wd = new WindowSuaLoaiSach(loaiSachDangChon);
+            if(wd.ShowDialog() == true)
+            {
+                pageDSLoaiSach.RefreshDanhSach();
+            }
         }
 
         private void btnXoaLoaiSachClick(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Xoa loai sach");
+            LoaiSach loaiSachDangChon = pageDSLoaiSach.GetLoaiSachDangChon();
+            if (loaiSachDangChon == null) return;
+
+            MessageBoxResult result = 
+                MessageBox.Show("Xác nhận xóa loại sách ?", "Thông báo", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if(result == MessageBoxResult.OK)
+            {
+                LoaiSachBUS.Instance.XoaLoaiSach(loaiSachDangChon.pid);
+                pageDSLoaiSach.RefreshDanhSach();
+            }
         }
 
         //  Nganh sach
         private void btnPageDSNganhSachClick(object sender, RoutedEventArgs e)
         {
-            this.MainArea.Content = new PageDSNganhSach();
+            if (this.MainArea.Content != pageDSNganhSach)
+            {
+                this.MainArea.Content = pageDSNganhSach;
+            } else
+            {
+                pageDSNganhSach.refreshDanhSach();
+            }
         }
 
         private void btnThemNganhSachClick(object sender, RoutedEventArgs e)
         {
             WindowThemNganhSach wd = new WindowThemNganhSach();
-            wd.Show();
+            if(wd.ShowDialog() == true)
+            {
+                pageDSNganhSach.refreshDanhSach();
+            }
         }
 
         private void btnSuaNganhSachClick(object sender, RoutedEventArgs e)
         {
-            WindowSuaNganhSach wd = new WindowSuaNganhSach();
-            wd.Show();
+            NganhKhoa nganh = pageDSNganhSach.getNganhDangChon();
+            if (nganh == null) return;
+
+            WindowSuaNganhSach wd = new WindowSuaNganhSach(nganh);
+            if(wd.ShowDialog() == true)
+            {
+                pageDSNganhSach.refreshDanhSach();
+            }
         }
 
         private void btnXoaNganhSachClick(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Xoa Nganh sach");
+            NganhKhoa nganh = pageDSNganhSach.getNganhDangChon();
+            if (nganh == null) return;
+            string pid = nganh.pid;
+
+            MessageBoxResult result =
+                MessageBox.Show("Xác nhận xóa ngành sách ?", "Thông báo", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if(result == MessageBoxResult.OK)
+            {
+                NganhKhoaBUS.Instance.XoaNganhKhoa(pid);
+                pageDSNganhSach.refreshDanhSach();
+            }
         }
 
         //  Nha xuat ban
         private void btnPageDSNhaXuatBanClick(object sender, RoutedEventArgs e)
         {
-            this.MainArea.Content = new PageDSNhaXuatBan();
+            if (this.MainArea.Content != pageDSNhaXuatBan)
+            {
+                this.MainArea.Content = pageDSNhaXuatBan;
+            } else
+            {
+                pageDSNhaXuatBan.RefreshDanhSach();
+            }
         }
 
         private void btnThemNhaXuatBanClick(object sender, RoutedEventArgs e)
         {
             WindowThemNhaXuatBan wd = new WindowThemNhaXuatBan();
-            wd.Show(); 
+            if(wd.ShowDialog() == true)
+            {
+                pageDSNhaXuatBan.RefreshDanhSach();
+            }
         }
 
         private void btnSuaNhaXuatBanClick(object sender, RoutedEventArgs e)
         {
-            WindowSuaNhaXuatBan wd = new WindowSuaNhaXuatBan();
-            wd.Show();
+            NhaXuatBan nxbDangChon = pageDSNhaXuatBan.GetNhaXuatBanDangChon();
+            if (nxbDangChon == null) return;
+
+            WindowSuaNhaXuatBan wd = new WindowSuaNhaXuatBan(nxbDangChon);
+            if(wd.ShowDialog() == true)
+            {
+                pageDSNhaXuatBan.RefreshDanhSach();
+            }
         }
 
         private void btnXoaNhaXuatBanClick(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Xoa nha xuat ban sach");
+            NhaXuatBan nxbDangChon = pageDSNhaXuatBan.GetNhaXuatBanDangChon();
+            if (nxbDangChon == null) return;
+
+            MessageBoxResult result =
+                MessageBox.Show("Xác nhận xóa nhà xuất bản ?", "Thông báo", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.OK)
+            {
+                NhaXuatBanBUS.Instance.XoaNhaXuatBan(nxbDangChon.pid);
+                pageDSNhaXuatBan.RefreshDanhSach();
+            }
         }
 
         //  Sach
         private void btnPageDSSachClick(object sender, RoutedEventArgs e)
         {
-            this.MainArea.Content = new PageDSSach();
+            if (this.MainArea.Content != pageDSSach)
+            {
+                this.MainArea.Content = pageDSSach;
+            } else
+            {
+                pageDSSach.RefreshDanhSach();
+            }
         }
 
         private void btnThemSachClick(object sender, RoutedEventArgs e)
         {
             WindowThemSach wd = new WindowThemSach();
-            wd.Show();
+            if(wd.ShowDialog() == true)
+            {
+                pageDSSach.RefreshDanhSach();
+            }
         }
 
         private void btnSuaSachClick(object sender, RoutedEventArgs e)
         {
-            WindowSuaSach wd = new WindowSuaSach();
-            wd.Show();
+            Sach sachDangChon = pageDSSach.LaySachDangChon();
+            if (sachDangChon == null) return;
+
+            WindowSuaSach wd = new WindowSuaSach(sachDangChon);
+            if(wd.ShowDialog() == true)
+            {
+                pageDSSach.RefreshDanhSach();
+            }
         }
 
         private void btnXoaSachClick(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Xoa thong tin sach");
+            Sach sachDangChon = pageDSSach.LaySachDangChon();
+            if (sachDangChon == null) return;
+
+            MessageBoxResult result =
+                MessageBox.Show("Xác nhận xóa sách ?", "Thông báo", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if(result == MessageBoxResult.OK)
+            {
+                SachBUS.Instance.XoaSach(sachDangChon.id);
+                pageDSSach.RefreshDanhSach();
+            }
         }
 
         //

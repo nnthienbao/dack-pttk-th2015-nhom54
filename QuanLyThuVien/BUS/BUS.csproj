@@ -41,9 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LoaiSachBUS.cs" />
     <Compile Include="NganhKhoaBUS.cs" />
+    <Compile Include="NhaXuatBanBUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TacGiaBUS.cs" />
+    <Compile Include="SachBUS.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAO\DAO.csproj">

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BUS;
 
 namespace DACK_PTTKPM
 {
@@ -26,14 +27,28 @@ namespace DACK_PTTKPM
 
         private void btnXacNhanClick(object sender, RoutedEventArgs e)
         {
-            this.Hide();
-            this.Close();
+            lb_Loi_TenNhaXuatBan.Content = "";
+            string tenNXB = tb_TenNhaXuatBan.Text;
+            
+            if(string.IsNullOrEmpty(tenNXB))
+            {
+                lb_Loi_TenNhaXuatBan.Content = "Tên nhà xuất bản không được để trống";
+            } else
+            {
+                try
+                {
+                    NhaXuatBanBUS.Instance.ThemNhaXuatBan(tenNXB);
+                    this.DialogResult = true;
+                } catch(Exception ex)
+                {
+                    lb_Loi_TenNhaXuatBan.Content = "Tên nhà xuất bản phải từ 1-50 ký tự";
+                }
+            }
         }
 
         private void btnHuyBoClick(object sender, RoutedEventArgs e)
         {
-            this.Hide();
-            this.Close();
+            this.DialogResult = false;
         }
     }
 }
