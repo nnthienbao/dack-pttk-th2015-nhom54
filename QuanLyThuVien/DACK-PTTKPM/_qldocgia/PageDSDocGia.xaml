@@ -6,8 +6,12 @@
       xmlns:local="clr-namespace:DACK_PTTKPM"
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="800"
+      Loaded="Page_Loaded"
       Title="DocGia">
-
+    <Page.Resources>
+        <local:cvt_booleanToText x:Key="cvt_booleanToText"/>
+    </Page.Resources>
+    
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -34,48 +38,57 @@
             </Grid.RowDefinitions>
             <Border Grid.Row="0" BorderThickness="0 2 2 0" BorderBrush="#B9C9DA">
                 <StackPanel Orientation="Vertical" Margin="20, 10, 20, 10">
-                    <Label Content="Tìm kiếm theo mã độc giả" FontWeight="Bold" />
-                    <TextBox x:Name="tb_TimKiemMaDocGia" Text="Nhập mã độc giả tìm kiếm" Margin="20,5,0,0"/>
-                    <Label Content="Tìm kiếm theo họ tên độc giả"  Margin="0,15,0,0" FontWeight="bold" />
-                    <TextBox x:Name="tb_TimKiemTenDocGia" Text="Nhập họ tên độc giả tìm kiếm" Margin="20,5,0,0" />
+                    <RadioButton x:Name="rd_TimKiemDocGiaTheoMa" GroupName="rdGroup_TimKiemDocGia" Content="Tìm kiếm theo mã độc giả" FontWeight="Bold" IsChecked="True" />
+                    <TextBox x:Name="tb_TimKiemDocGiaTheoMa" Text="Nhập mã độc giả tìm kiếm" Margin="20,5,0,0"/>
+                    <RadioButton x:Name="rd_TimKiemDocGiaTheoTen" GroupName="rdGroup_TimKiemDocGia" Content="Tìm kiếm theo họ tên độc giả"  Margin="0,15,0,0" FontWeight="bold" />
+                    <TextBox x:Name="tb_TimKiemDocGiaTheoTen" Text="Nhập họ tên độc giả tìm kiếm" Margin="20,5,0,0" />
                     <Button x:Name="btn_TimKiemDocGia" Content="Tìm kiếm" Height="25" Margin="40,10,40,0"></Button>
                 </StackPanel>
             </Border>
             <Border Grid.Row="1" BorderThickness="0 1 2 0" BorderBrush="#B9C9DA">
                 <ScrollViewer>
-                    <StackPanel Orientation="Vertical"  Margin="20, 0, 20, 10">
-                        <Label Content="Thông tin sách" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold" Foreground="Red"/>
-                        <StackPanel Height="25" Orientation="Horizontal">
-                            <Label Content="Mã độc giả:" FontWeight="Bold" Foreground="Red" Width="120" />
-                            <Label x:Name="lb_KQTK_MaDocGia" Content="" FontWeight="Bold" />
+                    <ItemsControl>
+                        <StackPanel Orientation="Vertical"  Margin="20, 0, 20, 10">
+                            <Label Content="Thông tin Độc giả" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold" Foreground="Red"/>
+                            <StackPanel Height="25" Orientation="Horizontal">
+                                <Label Content="Mã độc giả:" FontWeight="Bold" Foreground="Red" Width="120" />
+                                <Label Content="{Binding mssv}" FontWeight="Bold" />
+                            </StackPanel>
+                            <StackPanel Height="25" Orientation="Horizontal" Margin="0,5,0,0">
+                                <Label Content="Họ tên độc giả:" FontWeight="Bold" Foreground="Red" Width="120" />
+                                <Label Content="{Binding HoTen}" FontWeight="Bold" />
+                            </StackPanel>
+                            <StackPanel Height="25" Orientation="Horizontal" Margin="0,5,0,0">
+                                <Label Content="Ngày sinh:" FontWeight="Bold" Foreground="Red" Width="120" />
+                                <Label Content="{Binding NgaySinh, StringFormat=d}" FontWeight="Bold" />
+                            </StackPanel>
+                            <StackPanel Height="25" Orientation="Horizontal" Margin="0,5,0,0">
+                                <Label Content="Giới tính:" FontWeight="Bold" Foreground="Red" Width="120" />
+                                <Label Content="{Binding GioiTinh}" FontWeight="Bold" />
+                            </StackPanel>
+                            <StackPanel Height="25" Orientation="Horizontal" Margin="0,5,0,0">
+                                <Label Content="Ngày mở thẻ:" FontWeight="Bold" Foreground="Red" Width="120" />
+                                <Label Content="{Binding NgayMoThe, StringFormat=d}" FontWeight="Bold" />
+                            </StackPanel>
                         </StackPanel>
-                        <StackPanel Height="25" Orientation="Horizontal" Margin="0,5,0,0">
-                            <Label Content="Họ tên độc giả:" FontWeight="Bold" Foreground="Red" Width="120" />
-                            <Label x:Name="lb_KQTK_HoTenDocgia" Content="" FontWeight="Bold" />
-                        </StackPanel>
-                        <StackPanel Height="25" Orientation="Horizontal" Margin="0,5,0,0">
-                            <Label Content="Ngày sinh:" FontWeight="Bold" Foreground="Red" Width="120" />
-                            <Label x:Name="lb_KQTK_NgaySinh" Content="" FontWeight="Bold" />
-                        </StackPanel>
-                        <StackPanel Height="25" Orientation="Horizontal" Margin="0,5,0,0">
-                            <Label Content="Giới tính:" FontWeight="Bold" Foreground="Red" Width="120" />
-                            <Label x:Name="lb_KQTK_GioiTinh" Content="" FontWeight="Bold" />
-                        </StackPanel>
-                    </StackPanel>
+                    </ItemsControl>
                 </ScrollViewer>
             </Border>
         </Grid>
         <Border Grid.Row="1" Grid.Column="1" BorderThickness="0 2 0 0" BorderBrush="#B9C9DA" >
             <DataGrid x:Name="dataGridDocGia"
                       SelectionMode="Single" 
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
                       ScrollViewer.CanContentScroll="True" 
                       ScrollViewer.HorizontalScrollBarVisibility="Auto" 
                       ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Mã độc giả" Width="80"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Họ tên độc giả" Width="200"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Ngày sinh" Width="200"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Giới tính" Width="200"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Mã độc giả" Binding="{Binding mssv}" Width="*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Họ tên độc giả" Binding="{Binding HoTen}" Width="3*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Ngày sinh" Binding="{Binding NgaySinh, StringFormat=d}" Width="*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Giới tính" Binding="{Binding GioiTinh, Converter={StaticResource cvt_booleanToText}}" Width="*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Ngày mở thẻ" Binding="{Binding NgayMoThe, StringFormat=d}" Width="*"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Border>

@@ -26,8 +26,8 @@ namespace DTO.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-RJTPAIM;Initial Catalog=QLThuVien;Integrated Security=True;En" +
-            "crypt=False;TrustServerCertificate=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-G0Q133G\\SQLEXPRESS;Initial Catalog=QLThuVien;Persist Security" +
+            " Info=True;User ID=sa;Password=1234")]
         public string QLThuVienConnectionString {
             get {
                 return ((string)(this["QLThuVienConnectionString"]));
