@@ -87,5 +87,12 @@ namespace DAO
                 db.SubmitChanges();
             }
         }
+
+        public Sach LaySach(string pid)
+        {
+            QLThuVienDataContext db = new QLThuVienDataContext();
+            Sach sach = db.Saches.Single(s => s.pid == pid && s.Disable == false);
+            return sach;
+        }
     }
 }

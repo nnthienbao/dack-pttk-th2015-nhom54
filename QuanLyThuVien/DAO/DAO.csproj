@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DocGiaDAO.cs" />
     <Compile Include="LoaiSachDAO.cs" />
     <Compile Include="NganhKhoaDAO.cs" />
+    <Compile Include="NhanVienDAO.cs" />
     <Compile Include="NhaXuatBanDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SachDAO.cs" />

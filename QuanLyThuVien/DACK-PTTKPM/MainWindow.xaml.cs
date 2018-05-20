@@ -23,16 +23,32 @@ namespace DACK_PTTKPM
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static NhanVien nhanVienSuDung = null;
+
         private PageDSNganhSach pageDSNganhSach = new PageDSNganhSach();
         private PageDSLoaiSach pageDSLoaiSach = new PageDSLoaiSach();
         private PageDSNhaXuatBan pageDSNhaXuatBan = new PageDSNhaXuatBan();
         private PageDSSach pageDSSach = new PageDSSach();
+        private PageDSPhieuMuon pageDSPhieuMuon = new PageDSPhieuMuon();
+
         public MainWindow()
         {
             InitializeComponent();
             this.MainArea.Content = pageDSNganhSach;
         }
 
+        static MainWindow()
+        {
+            nhanVienSuDung = NhanVienBUS.Instance.LayNhanVien("NV0001");
+        }
+
+        public static NhanVien NhanVienSuDung
+        {
+            get
+            {
+                return nhanVienSuDung;
+            }
+        }
         //
         //  Quan ly danh muc sach
         //
@@ -255,13 +271,16 @@ namespace DACK_PTTKPM
         //
         private void btnPageDSPhieuMuonClick(object sender, RoutedEventArgs e)
         {
-            this.MainArea.Content = new PageDSPhieuMuon();
+            this.MainArea.Content = pageDSPhieuMuon;
         }
 
         private void btnThemPhieuMuonClick(object sender, RoutedEventArgs e)
         {
             WindowThemPhieuMuon wd = new WindowThemPhieuMuon();
-            wd.Show();
+            if(wd.ShowDialog() == true)
+            {
+
+            }
         }
 
         private void btnSuaPhieuMuonClick(object sender, RoutedEventArgs e)

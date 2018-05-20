@@ -1659,6 +1659,19 @@ namespace DTO
 		private int _SoLuongDaMuon;
 		
 		private bool _Disable;
+
+        private ChiTietPhieuMuon _phieuMuonRef;
+
+        public ChiTietPhieuMuon PhieuMuonRef
+        {
+            get
+            {
+                return _phieuMuonRef;
+            } set
+            {
+                _phieuMuonRef = value;
+            }
+        }
 		
 		private EntitySet<ChiTietPhieuMuon> _ChiTietPhieuMuons;
 		
@@ -1708,6 +1721,11 @@ namespace DTO
 			this._NhaXuatBan = default(EntityRef<NhaXuatBan>);
 			OnCreated();
 		}
+
+        public Sach(ChiTietPhieuMuon phieuMuonRef) : this()
+        {
+            _phieuMuonRef = phieuMuonRef;
+        }
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int id
@@ -1721,7 +1739,7 @@ namespace DTO
 				if ((this._id != value))
 				{
 					this.OnidChanging(value);
-					this.SendPropertyChanging();
+					this.SendPropertyChanging("id", _id, value);
 					this._id = value;
 					this.SendPropertyChanged("id");
 					this.OnidChanged();
@@ -1741,10 +1759,12 @@ namespace DTO
 				if ((this._pid != value))
 				{
 					this.OnpidChanging(value);
-					this.SendPropertyChanging();
-					this._pid = value;
-					this.SendPropertyChanged("pid");
-					this.OnpidChanged();
+                    if (this.SendPropertyChanging("pid", _pid, value))
+                    {
+                        this._pid = value;
+                        this.SendPropertyChanged("pid");
+                        this.OnpidChanged();
+                    }
 				}
 			}
 		}
@@ -1761,7 +1781,7 @@ namespace DTO
 				if ((this._Ten != value))
 				{
 					this.OnTenChanging(value);
-					this.SendPropertyChanging();
+					this.SendPropertyChanging("Ten", _Ten, value);
 					this._Ten = value;
 					this.SendPropertyChanged("Ten");
 					this.OnTenChanged();
@@ -1781,7 +1801,7 @@ namespace DTO
 				if ((this._TacGia != value))
 				{
 					this.OnTacGiaChanging(value);
-					this.SendPropertyChanging();
+					this.SendPropertyChanging("TacGia", _TacGia, value);
 					this._TacGia = value;
 					this.SendPropertyChanged("TacGia");
 					this.OnTacGiaChanged();
@@ -1801,7 +1821,7 @@ namespace DTO
 				if ((this._NamXB != value))
 				{
 					this.OnNamXBChanging(value);
-					this.SendPropertyChanging();
+					this.SendPropertyChanging("NamXB", _NamXB, value);
 					this._NamXB = value;
 					this.SendPropertyChanged("NamXB");
 					this.OnNamXBChanged();
@@ -1825,7 +1845,7 @@ namespace DTO
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
 					this.OnNhaXBChanging(value);
-					this.SendPropertyChanging();
+					this.SendPropertyChanging("NhaXB", _NhaXB, value);
 					this._NhaXB = value;
 					this.SendPropertyChanged("NhaXB");
 					this.OnNhaXBChanged();
@@ -1845,7 +1865,7 @@ namespace DTO
 				if ((this._MoTa != value))
 				{
 					this.OnMoTaChanging(value);
-					this.SendPropertyChanging();
+					this.SendPropertyChanging("MoTa", _MoTa, value);
 					this._MoTa = value;
 					this.SendPropertyChanged("MoTa");
 					this.OnMoTaChanged();
@@ -1865,7 +1885,7 @@ namespace DTO
 				if ((this._DuongDanAnh != value))
 				{
 					this.OnDuongDanAnhChanging(value);
-					this.SendPropertyChanging();
+					this.SendPropertyChanging("DuongDanAnh", _DuongDanAnh, value);
 					this._DuongDanAnh = value;
 					this.SendPropertyChanged("DuongDanAnh");
 					this.OnDuongDanAnhChanged();
@@ -1889,7 +1909,7 @@ namespace DTO
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
 					this.OnLoaiSachChanging(value);
-					this.SendPropertyChanging();
+					this.SendPropertyChanging("LoaiSach", _LoaiSach, value);
 					this._LoaiSach = value;
 					this.SendPropertyChanged("LoaiSach");
 					this.OnLoaiSachChanged();
@@ -1913,7 +1933,7 @@ namespace DTO
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
 					this.OnNganhKhoaChanging(value);
-					this.SendPropertyChanging();
+					this.SendPropertyChanging("NganhKhoa", _NganhKhoa, value);
 					this._NganhKhoa = value;
 					this.SendPropertyChanged("NganhKhoa");
 					this.OnNganhKhoaChanged();
@@ -1933,7 +1953,7 @@ namespace DTO
 				if ((this._SoLuongHienCo != value))
 				{
 					this.OnSoLuongHienCoChanging(value);
-					this.SendPropertyChanging();
+					this.SendPropertyChanging("SoLuongHienCo", _SoLuongHienCo, value);
 					this._SoLuongHienCo = value;
 					this.SendPropertyChanged("SoLuongHienCo");
 					this.OnSoLuongHienCoChanged();
@@ -1953,8 +1973,8 @@ namespace DTO
 				if ((this._SoLuongDaMuon != value))
 				{
 					this.OnSoLuongDaMuonChanging(value);
-					this.SendPropertyChanging();
-					this._SoLuongDaMuon = value;
+					this.SendPropertyChanging("SoLuongDaMuon", _SoLuongDaMuon, value);
+                    this._SoLuongDaMuon = value;
 					this.SendPropertyChanged("SoLuongDaMuon");
 					this.OnSoLuongDaMuonChanged();
 				}
@@ -1973,7 +1993,7 @@ namespace DTO
 				if ((this._Disable != value))
 				{
 					this.OnDisableChanging(value);
-					this.SendPropertyChanging();
+					this.SendPropertyChanging("Disable", _Disable, value);
 					this._Disable = value;
 					this.SendPropertyChanged("Disable");
 					this.OnDisableChanged();
@@ -2007,8 +2027,8 @@ namespace DTO
 				if (((previousValue != value) 
 							|| (this._LoaiSach1.HasLoadedOrAssignedValue == false)))
 				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
+					this.SendPropertyChanging("LoaiSach1", _LoaiSach1.Entity, value);
+                    if ((previousValue != null))
 					{
 						this._LoaiSach1.Entity = null;
 						previousValue.Saches.Remove(this);
@@ -2041,8 +2061,8 @@ namespace DTO
 				if (((previousValue != value) 
 							|| (this._NganhKhoa1.HasLoadedOrAssignedValue == false)))
 				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
+					this.SendPropertyChanging("NganhKhoa1", _NganhKhoa1.Entity, value);
+                    if ((previousValue != null))
 					{
 						this._NganhKhoa1.Entity = null;
 						previousValue.Saches.Remove(this);
@@ -2075,7 +2095,7 @@ namespace DTO
 				if (((previousValue != value) 
 							|| (this._NhaXuatBan.HasLoadedOrAssignedValue == false)))
 				{
-					this.SendPropertyChanging();
+					this.SendPropertyChanging("NhaXuatBan", _NhaXuatBan.Entity, value);
 					if ((previousValue != null))
 					{
 						this._NhaXuatBan.Entity = null;
@@ -2099,13 +2119,16 @@ namespace DTO
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
+
+        protected virtual bool SendPropertyChanging<T>(string propertyName, T previousValue, T currentValue)
 		{
 			if ((this.PropertyChanging != null))
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+                var args = new PropertyChangingCancelEventArgs<T>(propertyName, previousValue, currentValue);
+                this.PropertyChanging(this, args);
+                return !args.Cancel;
 			}
+            return true;
 		}
 		
 		protected virtual void SendPropertyChanged(String propertyName)
@@ -2118,13 +2141,13 @@ namespace DTO
 		
 		private void attach_ChiTietPhieuMuons(ChiTietPhieuMuon entity)
 		{
-			this.SendPropertyChanging();
+			//this.SendPropertyChanging("ChiTietPhieuMuon", entity, _ChiTietPhieuMuons);
 			entity.Sach = this;
 		}
 		
 		private void detach_ChiTietPhieuMuons(ChiTietPhieuMuon entity)
 		{
-			this.SendPropertyChanging();
+			//this.SendPropertyChanging();
 			entity.Sach = null;
 		}
 	}

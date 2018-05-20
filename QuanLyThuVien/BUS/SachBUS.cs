@@ -81,5 +81,17 @@ namespace BUS
         {
             SachDAO.Instance.XoaSach(id);
         }
+
+        public Sach LaySach(string pid)
+        {
+            try
+            {
+                Sach sach = SachDAO.Instance.LaySach(pid);
+                return sach;
+            } catch
+            {
+                return null;
+            }
+        }
     }
 }

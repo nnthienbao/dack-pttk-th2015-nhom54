@@ -47,6 +47,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="PropertyChangingCancelEventArgs.cs" />
     <Compile Include="QLThuVien.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
