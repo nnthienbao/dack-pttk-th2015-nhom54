@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DACK_PTTKPM"
         mc:Ignorable="d"
-        Title="Sửa thông tin độc giả" Height="315" Width="480">
+        Loaded="Window_Loaded"
+        Title="Sửa thông tin độc giả" Height="380" Width="480">
     <Grid Margin="0,0,0,0">
         <Grid.Background>
             <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
@@ -45,7 +46,8 @@
                         Width="300"
                         Height="22"
                         Margin="0,3,0,0"
-                        HorizontalAlignment="Left" />
+                        HorizontalAlignment="Left" 
+                        IsEnabled="False"/>
                 </StackPanel>
                 <StackPanel
                     x:Name="panel_Error_MaSoDocGia"
@@ -99,7 +101,7 @@
                         Content="Giới tính"
                         FontWeight="Bold" />
                     <RadioButton x:Name="rd_GioiTinhNam" GroupName="rd_GioiTinh" Content="Nam" Margin="0,5,35,0" IsChecked="True"/>
-                    <RadioButton GroupName="rd_GioiTinh" Content="Nữ"  Margin="0,5" />
+                    <RadioButton x:Name="rd_GioiTinhNu" GroupName="rd_GioiTinh" Content="Nữ"  Margin="0,5" />
                 </StackPanel>
                 <StackPanel Margin="0,4,0,4" Orientation="Horizontal">
                     <Label
@@ -134,6 +136,7 @@
                 Width="100"
                 Height="30"
                 Margin="10,0,20,0"
+                Click="btn_HuyBo_Click"
                 Content="Hủy bỏ" />
         </StackPanel>
     </Grid>

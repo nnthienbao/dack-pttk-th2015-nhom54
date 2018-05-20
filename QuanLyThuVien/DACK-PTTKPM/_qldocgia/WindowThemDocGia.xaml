@@ -7,7 +7,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DACK_PTTKPM"
         mc:Ignorable="d"
-        Title="Thêm độc giả mới" Height="315" Width="480"
+        Title="Thêm độc giả mới" Height="380" Width="480"
         WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,0,0">
         <Grid.Background>
@@ -136,6 +136,7 @@
                 x:Name="btn_HuyBo"
                 Width="100"
                 Height="30"
+                Click="btn_HuyBo_Click"
                 Margin="10,0,20,0"
                 Content="Hủy bỏ" />
         </StackPanel>

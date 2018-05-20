@@ -254,7 +254,6 @@ namespace DACK_PTTKPM
 
         private void btnSuaDocGiaClick(object sender, RoutedEventArgs e)
         {
-            
             DocGia docGia = pageDSDocGia.LayDocGiaDangChon();
             if (docGia == null)
                 return;
@@ -268,7 +267,16 @@ namespace DACK_PTTKPM
 
         private void btnXoaDocGiaClick(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Xoa doc gia click");
+            DocGia docGia = pageDSDocGia.LayDocGiaDangChon();
+            if (docGia == null) return;
+
+            MessageBoxResult result =
+                MessageBox.Show("Xác nhận xóa Độc giả ?", "Thông báo", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.OK)
+            {
+                DocGiaBUS.Instance.XoaDocGia(docGia.mssv);
+                pageDSDocGia.RefreshDanhSach();
+            }
         }
         //
         //  Quan ly phieu muon tra

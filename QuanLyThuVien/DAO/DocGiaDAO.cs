@@ -24,6 +24,16 @@ namespace DAO
             }
         }  
 
+        public List<DocGia> LayDanhSach()
+        {
+            List<DocGia> listDocGia = null;
+
+            QLThuVienDataContext db = new QLThuVienDataContext();
+            listDocGia = db.DocGias.Select(dg => dg).Where(dg => dg.Disable == false).ToList();
+
+            return listDocGia;
+        }
+
         public void ThemDocGia(DocGia docGia)
         {
             using (QLThuVienDataContext db = new QLThuVienDataContext())
@@ -33,14 +43,48 @@ namespace DAO
             }
         }
 
-        public List<DocGia> LayDanhSach()
+        public void SuaDocGia(DocGia docGia)
         {
-            List<DocGia> listDocGia = null;
+            using (QLThuVienDataContext db = new QLThuVienDataContext())
+            {
+                DocGia docGiaSua = db.DocGias.Single(dg => dg.mssv == docGia.mssv);
+
+                docGiaSua.HoTen = docGia.HoTen;
+                docGiaSua.GioiTinh = docGia.GioiTinh;
+                docGiaSua.NgaySinh = docGia.NgaySinh;
+
+                db.SubmitChanges();
+            }
+        }
+
+        public void XoaDocGia(String maDocGia)
+        {
+            using (QLThuVienDataContext db = new QLThuVienDataContext())
+            {
+                DocGia docGiaXoa = db.DocGias.Single(s => s.mssv == maDocGia);
+                docGiaXoa.Disable = true;
+                db.SubmitChanges();
+            }
+        }
+
+        public List<DocGia> TimKiemTheoMa(String keywordMa)
+        {
+            List<DocGia> docgias = null;
 
             QLThuVienDataContext db = new QLThuVienDataContext();
-            listDocGia = db.DocGias.Select(dg => dg).Where(dg => dg.Disable == false).ToList();
+            docgias = db.DocGias.Select(dg => dg).Where(dg => dg.Disable == false && dg.mssv.ToLower().Contains(keywordMa)).ToList();
 
-            return listDocGia;
+            return docgias;
+        }
+
+        public List<DocGia> TimKiemTheoTen(String keywordTen)
+        {
+            List<DocGia> docgias = null;
+
+            QLThuVienDataContext db = new QLThuVienDataContext();
+            docgias = db.DocGias.Select(dg => dg).Where(dg => dg.Disable == false && dg.HoTen.ToLower().Contains(keywordTen)).ToList();
+
+            return docgias;
         }
     }
 }

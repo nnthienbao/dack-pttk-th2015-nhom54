@@ -56,7 +56,14 @@ namespace DACK_PTTKPM
                         error = true;
                     } 
                 }
+            } 
+            if (DocGiaBUS.Instance.TimKiemTheoMa(maSoDocGia) != null)
+            {
+                lb_Error_MaSoDocGia.Content = "Đã tồn tại mã số này trong cơ sở dữ liệu";
+                panel_Error_MaSoDocGia.Visibility = Visibility.Visible;
+                error = true;
             }
+
 
             if (String.IsNullOrEmpty(hoTenDocGia))
             {
@@ -79,6 +86,11 @@ namespace DACK_PTTKPM
                 NgayMoThe = ngayMoThe,
             };
 
+            if (error == true)
+            {
+                return;
+            }
+
             try
             {
                 BUS.DocGiaBUS.Instance.ThemDocGia(docGia);
@@ -87,6 +99,11 @@ namespace DACK_PTTKPM
             {
                 MessageBox.Show("Có lỗi xảy ra !", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void btn_HuyBo_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = false;
         }
     }
 }

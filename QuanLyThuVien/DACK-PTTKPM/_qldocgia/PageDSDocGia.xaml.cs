@@ -42,6 +42,54 @@ namespace DACK_PTTKPM
         {
             return dataGridDocGia.SelectedItem as DocGia;
         }
+
+        private void btn_TimKiemDocGia_Click(object sender, RoutedEventArgs e)
+        {
+            if (rd_TimKiemDocGiaTheoMa.IsChecked == true)
+            {
+                TimKiemDocGiaTheoMa();
+
+            }
+            else if (rd_TimKiemDocGiaTheoTen.IsChecked == true)
+            {
+                TimKiemDocGiaTheoTen();
+            }
+        }
+
+        private void TimKiemDocGiaTheoMa()
+        {
+            String keywordMa = tb_TimKiemDocGiaTheoMa.Text;
+            dataGridDocGia.ItemsSource = DocGiaBUS.Instance.TimKiemTheoMa(keywordMa);
+        }
+
+        private void TimKiemDocGiaTheoTen()
+        {
+            String keywordTen = tb_TimKiemDocGiaTheoTen.Text;
+            dataGridDocGia.ItemsSource = DocGiaBUS.Instance.TimKiemTheoTen(keywordTen);
+        }
+
+        private void tb_TimKiemTheoMaSach_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return && rd_TimKiemDocGiaTheoMa.IsChecked == true)
+            {
+                TimKiemDocGiaTheoMa();
+            }
+        }
+
+        private void tb_TimKiemTheoTenSach_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return && rd_TimKiemDocGiaTheoTen.IsChecked == true)
+            {
+                TimKiemDocGiaTheoTen();
+            }
+        }
+
+        private void dataGridDocGia_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            DocGia docGiaDangChon = dataGridDocGia.SelectedItem as DocGia;
+
+            stackpanel_HienThiThongTinDocGia.DataContext = docGiaDangChon;
+        }
     }
 
     public class cvt_booleanToText : IValueConverter

@@ -25,14 +25,34 @@ namespace BUS
             }
         }
 
+        public List<DocGia> LayDanhSach()
+        { 
+            return DocGiaDAO.Instance.LayDanhSach();
+        }
+
         public void ThemDocGia(DocGia docGia)
         {
             DocGiaDAO.Instance.ThemDocGia(docGia);
         }
 
-        public List<DocGia> LayDanhSach()
-        { 
-            return DocGiaDAO.Instance.LayDanhSach();
+        public void SuaDocGia(DocGia docGia)
+        {
+            DocGiaDAO.Instance.SuaDocGia(docGia);
+        }
+
+        public void XoaDocGia(String maDocGia)
+        {
+            DocGiaDAO.Instance.XoaDocGia(maDocGia);
+        }
+
+        public List<DocGia> TimKiemTheoMa(String maDocGia)
+        {
+            return DocGiaDAO.Instance.TimKiemTheoMa(maDocGia);
+        }
+
+        public List<DocGia> TimKiemTheoTen(String tenDocGia)
+        {
+            return DocGiaDAO.Instance.TimKiemTheoTen(tenDocGia);
         }
     }
 }
