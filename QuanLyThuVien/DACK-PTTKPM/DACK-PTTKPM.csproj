@@ -60,6 +60,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="converter\SoSanhHaiSoConverter.cs" />
+    <Compile Include="converter\SoSanhVoiMotSoConverter.cs" />
+    <Compile Include="custom_template\DataGridNumericColumn.cs" />
     <Compile Include="UC\TextboxNumber.xaml.cs">
       <DependentUpon>TextboxNumber.xaml</DependentUpon>
     </Compile>

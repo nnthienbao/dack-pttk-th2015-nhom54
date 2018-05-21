@@ -171,6 +171,8 @@ namespace DTO
 		private int _MaPhieuMuon;
 		
 		private int _MaSach;
+
+        private int _SoLuong;
 		
 		private EntityRef<PhieuMuonSach> _PhieuMuonSach;
 		
@@ -184,6 +186,8 @@ namespace DTO
     partial void OnMaPhieuMuonChanged();
     partial void OnMaSachChanging(int value);
     partial void OnMaSachChanged();
+    partial void OnSoLuongChanging(int value);
+    partial void OnSoLuongChanged();
     #endregion
 		
 		public ChiTietPhieuMuon()
@@ -209,7 +213,7 @@ namespace DTO
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
 					this.OnMaPhieuMuonChanging(value);
-					this.SendPropertyChanging();
+					this.SendPropertyChanging("MaPhieuMuon", _MaPhieuMuon, value);
 					this._MaPhieuMuon = value;
 					this.SendPropertyChanged("MaPhieuMuon");
 					this.OnMaPhieuMuonChanged();
@@ -233,7 +237,7 @@ namespace DTO
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
 					this.OnMaSachChanging(value);
-					this.SendPropertyChanging();
+					this.SendPropertyChanging("MaSach", _MaSach, value);
 					this._MaSach = value;
 					this.SendPropertyChanged("MaSach");
 					this.OnMaSachChanged();
@@ -254,7 +258,7 @@ namespace DTO
 				if (((previousValue != value) 
 							|| (this._PhieuMuonSach.HasLoadedOrAssignedValue == false)))
 				{
-					this.SendPropertyChanging();
+					this.SendPropertyChanging("PhieuMuonSach", _PhieuMuonSach.Entity, value);
 					if ((previousValue != null))
 					{
 						this._PhieuMuonSach.Entity = null;
@@ -288,7 +292,7 @@ namespace DTO
 				if (((previousValue != value) 
 							|| (this._Sach.HasLoadedOrAssignedValue == false)))
 				{
-					this.SendPropertyChanging();
+					this.SendPropertyChanging("Sach", _Sach.Entity, value);
 					if ((previousValue != null))
 					{
 						this._Sach.Entity = null;
@@ -308,18 +312,41 @@ namespace DTO
 				}
 			}
 		}
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_SoLuong", DbType = "Int NOT NULL", IsPrimaryKey = false)]
+        public int SoLuong
+        {
+            get
+            {
+                return this._SoLuong;
+            }
+            set
+            {
+                if ((this._SoLuong != value))
+                {
+                    this.OnSoLuongChanging(value);
+                    this.SendPropertyChanging("SoLuong", _SoLuong, value);
+                    this._SoLuong = value;
+                    this.SendPropertyChanged("SoLuong");
+                    this.OnSoLuongChanged();
+                }
+            }
+        }
 		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
 		
-		protected virtual void SendPropertyChanging()
+		protected virtual bool SendPropertyChanging<T>(string propertyName, T previousValue, T currentValue)
 		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
+            if ((this.PropertyChanging != null))
+            {
+                var args = new PropertyChangingCancelEventArgs<T>(propertyName, previousValue, currentValue);
+                this.PropertyChanging(this, args);
+                return !args.Cancel;
+            }
+            return true;
+        }
 		
 		protected virtual void SendPropertyChanged(String propertyName)
 		{

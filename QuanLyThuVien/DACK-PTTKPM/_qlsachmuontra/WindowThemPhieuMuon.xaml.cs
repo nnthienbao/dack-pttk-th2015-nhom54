@@ -106,6 +106,19 @@ namespace DACK_PTTKPM
 
         private void ChiTietPhieuMuon_PropertyChanging(Object sender, PropertyChangingEventArgs e)
         {
+            ChiTietPhieuMuon ctpm = sender as ChiTietPhieuMuon;
+            if(e.PropertyName == nameof(ChiTietPhieuMuon.SoLuong))
+            {
+
+                PropertyChangingCancelEventArgs<int> cancelArgs = e as PropertyChangingCancelEventArgs<int>;
+                int soLuongNhap = cancelArgs.NewValue;
+                if(soLuongNhap > ctpm.Sach.SoLuongHienCo)
+                {
+                    datagrid_ChiTietPhieuMuon.CancelEdit();
+                    cancelArgs.Cancel = true;
+                    return;
+                }
+            }
         }
 
         private void ChiTietPhieuMuon_Sach_PropertyChanged(Object sender, PropertyChangedEventArgs e)
