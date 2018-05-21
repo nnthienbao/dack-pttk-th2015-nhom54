@@ -199,12 +199,14 @@
                 x:Name="btn_XacNhan"
                 Width="100"
                 Height="30"
+                Click="btn_XacNhan_Click"
                 Content="Xác nhận" />
             <Button
                 x:Name="btn_HuyBo"
                 Width="100"
                 Height="30"
                 Margin="10,0,20,0"
+                Click="btn_HuyBo_Click"
                 Content="Hủy bỏ" />
         </StackPanel>
     </Grid>

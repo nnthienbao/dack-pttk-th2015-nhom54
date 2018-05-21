@@ -279,14 +279,20 @@ namespace DACK_PTTKPM
             WindowThemPhieuMuon wd = new WindowThemPhieuMuon();
             if(wd.ShowDialog() == true)
             {
-
+                pageDSPhieuMuon.RefreshDanhSach();
             }
         }
 
         private void btnSuaPhieuMuonClick(object sender, RoutedEventArgs e)
         {
+            PhieuMuonSach pmsDangChon = pageDSPhieuMuon.LayPhieuMuonSachDangChon();
+            if (pmsDangChon == null) return;
+
             WindowSuaPhieuMuon wd = new WindowSuaPhieuMuon();
-            wd.Show();
+            if(wd.ShowDialog() == true)
+            {
+                pageDSPhieuMuon.RefreshDanhSach();
+            }
         }
 
         private void btnXoaPhieuMuonClick(object sender, RoutedEventArgs e)

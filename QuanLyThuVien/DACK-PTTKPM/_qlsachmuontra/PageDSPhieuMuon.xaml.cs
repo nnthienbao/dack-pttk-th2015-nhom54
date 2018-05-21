@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BUS;
+using DTO;
 
 namespace DACK_PTTKPM
 {
@@ -23,6 +25,29 @@ namespace DACK_PTTKPM
         public PageDSPhieuMuon()
         {
             InitializeComponent();
+        }
+
+        public void RefreshDanhSach()
+        {
+            this.dataGridPhieuMuon.ItemsSource = PhieuMuonSachBUS.Instance.LayDanhSach();
+        }
+
+        private void dataGridPhieuMuon_Loaded(object sender, RoutedEventArgs e)
+        {
+            RefreshDanhSach();
+        }
+
+        public PhieuMuonSach LayPhieuMuonSachDangChon()
+        {
+            return dataGridPhieuMuon.SelectedItem as PhieuMuonSach;
+        }
+
+        private void dataGridPhieuMuon_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            PhieuMuonSach phieuMuonsachDangChon = LayPhieuMuonSachDangChon();
+            if (phieuMuonsachDangChon == null) return;
+
+            dataGridChiTietPhieuMuon.ItemsSource = phieuMuonsachDangChon.ChiTietPhieuMuons;
         }
     }
 }

@@ -16,6 +16,7 @@ using DTO;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Data.Linq;
 
 namespace DACK_PTTKPM
 {
@@ -24,7 +25,6 @@ namespace DACK_PTTKPM
     /// </summary>
     public partial class WindowThemPhieuMuon : Window
     {
-        private PhieuMuonSach phieuMuonsach = new PhieuMuonSach();
         private DocGia docGia = null;
         private ObservableCollection<ChiTietPhieuMuon> dsChiTietPhieuMuon = new ObservableCollection<ChiTietPhieuMuon>();
         private NhanVien nguoiLapPhieu = MainWindow.NhanVienSuDung;
@@ -38,7 +38,7 @@ namespace DACK_PTTKPM
 
         private void tb_MaDocGia_KeyDown(object sender, KeyEventArgs e)
         {
-            phieuMuonsach.DocGia = null;
+            docGia = null;
             if(e.Key == Key.Return)
             {
                 string maDocGia = tb_MaDocGia.Text;
@@ -177,6 +177,62 @@ namespace DACK_PTTKPM
                     return true;
             }
             return false;
+        }
+
+        private void btn_XacNhan_Click(object sender, RoutedEventArgs e)
+        {
+            if (!KiemTraDocGiaHopLe()) return;
+
+            var dsChiTietPhieuMuonFinal = KiemTraDSSachMuonHopLe();
+            if (dsChiTietPhieuMuonFinal == null) return;
+
+            try
+            {
+                PhieuMuonSachBUS.Instance.ThemPhieuMuon(docGia.mssv, nguoiLapPhieu.id, ngayMuon, ngayTra, dsChiTietPhieuMuonFinal);
+                this.DialogResult = true;
+            } catch (Exception ex)
+            {
+                MessageBox.Show("Thông báo", "Có lỗi xảy ra với dữ liệu", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private List<ChiTietPhieuMuon> KiemTraDSSachMuonHopLe()
+        {
+            List<ChiTietPhieuMuon> dsChiTietPhieuMuonFinal = new List<ChiTietPhieuMuon>();
+            foreach(ChiTietPhieuMuon phieuMuon in dsChiTietPhieuMuon)
+            {
+                if (string.IsNullOrEmpty(phieuMuon.Sach.pid)) continue;
+
+                if(phieuMuon.SoLuong == 0)
+                {
+                    MessageBox.Show("Số lượng mỗi loại sách mượn phải lớn hơn 0", "Thông báo");
+                    return null;
+                }
+                if(phieuMuon.SoLuong > phieuMuon.Sach.SoLuongHienCo)
+                {
+                    MessageBox.Show("Có một vài sách không đủ số lượng", "Thông báo");
+                    return null;
+                }
+                dsChiTietPhieuMuonFinal.Add(new ChiTietPhieuMuon() { MaSach = phieuMuon.MaSach, SoLuong = phieuMuon.SoLuong });
+            }
+            if (dsChiTietPhieuMuonFinal.Count == 0)
+            {
+                MessageBox.Show("Chưa nhập sách để mượn", "Thông báo");
+                return null;
+            }
+            return dsChiTietPhieuMuonFinal;
+        }
+
+        private bool KiemTraDocGiaHopLe()
+        {
+            if (this.docGia != null) return true;
+            MessageBox.Show("Chưa nhập thông tin độc giả", "Thông báo");
+            return false;
+        }
+
+        private void btn_HuyBo_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = false;
         }
     }
 }
