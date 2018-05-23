@@ -17,6 +17,9 @@
     <Window.Resources>
         <CV:SoSanhVoiMotSoConverter x:Key="SoSanhVoiMotSoConverter" />
         <CV:SoSanhHaiSoConverter x:Key="SoSanhHaiSoConverter" />
+        <CV:GioiTinhConverter x:Key="GioiTinhConverter" />
+        <CV:DateConverter x:Key="DateConverter" />
+        <CV:KTDuSoLuongSachKhiSua x:Key="KTDuSoLuongSachKhiSua" />
     </Window.Resources>
     <Grid Margin="0,0,0,0">
         <Grid.Background>
@@ -82,14 +85,14 @@
                                 Width="90"
                                 Content="Ngày sinh"
                                 FontWeight="Bold" />
-                            <Label x:Name="lb_NgaySinh" Content="" />
+                            <Label x:Name="lb_NgaySinh" Content="{Binding DocGia.NgaySinh, Converter={StaticResource DateConverter}, ConverterParameter=dd/MM/yyyy}" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label
                                 Width="90"
                                 Content="Giới tính"
                                 FontWeight="Bold" />
-                            <Label x:Name="lb_GioiTinh" Content="" />
+                            <Label x:Name="lb_GioiTinh" Content="{Binding DocGia.GioiTinh, Converter={StaticResource GioiTinhConverter}}" />
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Grid.Column="1" Orientation="Vertical">
@@ -98,19 +101,19 @@
                                 Width="80"
                                 Content="Ngày mượn"
                                 FontWeight="Bold" />
-                            <Label x:Name="lb_NgayMuon" Content="" />
+                            <Label x:Name="lb_NgayMuon" Content="{Binding NgayMuon, Converter={StaticResource DateConverter}, ConverterParameter=dd/MM/yyyy}" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label
                                 Width="80"
                                 Content="Ngày trả"
                                 FontWeight="Bold" />
-                            <Label x:Name="lb_NgayTra" Content="" />
+                            <Label x:Name="lb_NgayTra" Content="{Binding HanTra, Converter={StaticResource DateConverter}, ConverterParameter=dd/MM/yyyy}" />
                         </StackPanel>
                         <Separator />
                         <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
                             <Label Content="Người lập phiếu" FontWeight="Bold" />
-                            <Label x:Name="lb_TenNguoiLapPhieu" Content="" />
+                            <Label x:Name="lb_TenNguoiLapPhieu" Content="{Binding NhanVien.Ten}" />
                         </StackPanel>
                     </StackPanel>
                 </Grid>
@@ -173,11 +176,12 @@
                                                 <Setter TargetName="lb_Status" Property="Content" Value="Số lượng sách mượn phải lớn hơn 0" />
                                                 <Setter TargetName="lb_Status" Property="Foreground" Value="Red" />
                                             </DataTrigger>
-                                            <DataTrigger Value="1">
+                                            <DataTrigger Value="false">
                                                 <DataTrigger.Binding>
-                                                    <MultiBinding Converter="{StaticResource ResourceKey=SoSanhHaiSoConverter}">
+                                                    <MultiBinding Converter="{StaticResource ResourceKey=KTDuSoLuongSachKhiSua}">
+                                                        <Binding FallbackValue="0" Path="MaPhieuMuon" />
+                                                        <Binding FallbackValue="0" Path="MaSach" />
                                                         <Binding FallbackValue="0" Path="SoLuong" />
-                                                        <Binding FallbackValue="0" Path="Sach.SoLuongHienCo" />
                                                     </MultiBinding>
                                                 </DataTrigger.Binding>
                                                 <Setter TargetName="lb_Status" Property="Content" Value="Không đủ sách để mượn" />

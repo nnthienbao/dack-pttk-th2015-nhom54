@@ -325,10 +325,12 @@ namespace DTO
                 if ((this._SoLuong != value))
                 {
                     this.OnSoLuongChanging(value);
-                    this.SendPropertyChanging("SoLuong", _SoLuong, value);
-                    this._SoLuong = value;
-                    this.SendPropertyChanged("SoLuong");
-                    this.OnSoLuongChanged();
+                    if (this.SendPropertyChanging("SoLuong", _SoLuong, value))
+                    {
+                        this._SoLuong = value;
+                        this.SendPropertyChanged("SoLuong");
+                        this.OnSoLuongChanged();
+                    }
                 }
             }
         }
@@ -1653,7 +1655,7 @@ namespace DTO
 			this.SendPropertyChanging();
 			entity.PhieuMuonSach = null;
 		}
-	}
+    }
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Sach")]
 	public partial class Sach : INotifyPropertyChanging, INotifyPropertyChanged

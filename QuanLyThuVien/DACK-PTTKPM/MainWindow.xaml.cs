@@ -288,7 +288,7 @@ namespace DACK_PTTKPM
             PhieuMuonSach pmsDangChon = pageDSPhieuMuon.LayPhieuMuonSachDangChon();
             if (pmsDangChon == null) return;
 
-            WindowSuaPhieuMuon wd = new WindowSuaPhieuMuon();
+            WindowSuaPhieuMuon wd = new WindowSuaPhieuMuon(pmsDangChon);
             if(wd.ShowDialog() == true)
             {
                 pageDSPhieuMuon.RefreshDanhSach();

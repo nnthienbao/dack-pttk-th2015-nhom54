@@ -40,9 +40,19 @@ namespace BUS
             PhieuMuonSachDAO.Instance.ThemPhieuMuon(phieuMuonSach);
         }
 
+        public PhieuMuonSach LayPhieuMuonSach(int id)
+        {
+            return PhieuMuonSachDAO.Instance.LayPhieuMuonSach(id);
+        }
+
         public List<PhieuMuonSach> LayDanhSach()
         {
             return PhieuMuonSachDAO.Instance.LayDanhSach();
+        }
+
+        public void SuaPhieuMuon(PhieuMuonSach phieuMuonSach, List<ChiTietPhieuMuon> dsChiTietPhieuMuonFinal)
+        {
+            PhieuMuonSachDAO.Instance.SuaPhieuMuon(phieuMuonSach, dsChiTietPhieuMuonFinal);
         }
     }
 }

@@ -39,6 +39,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="system.windows.controls.ribbon" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -61,6 +62,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="converter\DateConverter.cs" />
+    <Compile Include="converter\GioiTinhConverter.cs" />
+    <Compile Include="converter\KTDuSoLuongSachKhiSua.cs" />
     <Compile Include="converter\SoSanhHaiSoConverter.cs" />
     <Compile Include="converter\SoSanhVoiMotSoConverter.cs" />
     <Compile Include="custom_template\DataGridNumericColumn.cs" />
@@ -316,6 +320,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\no-image.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

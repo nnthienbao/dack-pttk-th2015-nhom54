@@ -44,6 +44,25 @@ namespace BUS
             return destFile;
         }
 
+        public int LaySoLuongSachHienCo(int idSach)
+        {
+            Sach sach = this.LaySachTheoId(idSach);
+            if (sach == null) return -1;
+            return sach.SoLuongHienCo;
+            
+        }
+
+        private Sach LaySachTheoId(int idSach)
+        {
+            try
+            {
+                return SachDAO.Instance.LaySachTheoId(idSach);
+            } catch
+            {
+                return null;
+            }
+        }
+
         public List<Sach> TimKiemTheoMa(string keywordMa)
         {
             keywordMa = keywordMa.ToLower();

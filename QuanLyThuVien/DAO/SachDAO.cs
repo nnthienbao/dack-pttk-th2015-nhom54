@@ -58,6 +58,13 @@ namespace DAO
             }
         }
 
+        public Sach LaySachTheoId(int idSach)
+        {
+            QLThuVienDataContext db = new QLThuVienDataContext();
+            Sach sach = db.Saches.Single(s => s.id == idSach && s.Disable == false);
+            return sach;
+        }
+
         public List<Sach> TimKiemTheoTen(string keywordTen)
         {
             List<Sach> sachs = null;
