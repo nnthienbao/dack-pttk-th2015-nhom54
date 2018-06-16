@@ -102,7 +102,10 @@
                         Click="btnSuaDocGiaClick"
                         Label="Sửa thông tin độc giả"
                         LargeImageSource="images/sua-doc-gia.png" />
-                    <RibbonButton Label="Xóa thông tin độc giả" LargeImageSource="images/xoa-doc-gia.png" />
+                    <RibbonButton 
+                        Click="btnXoaDocGiaClick"
+                        Label="Xóa thông tin độc giả" 
+                        LargeImageSource="images/xoa-doc-gia.png" />
                 </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="Quản lý sách mượn - trả">

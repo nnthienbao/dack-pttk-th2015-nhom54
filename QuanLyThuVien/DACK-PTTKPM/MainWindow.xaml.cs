@@ -30,7 +30,7 @@ namespace DACK_PTTKPM
         private PageDSNhaXuatBan pageDSNhaXuatBan = new PageDSNhaXuatBan();
         private PageDSSach pageDSSach = new PageDSSach();
         private PageDSPhieuMuon pageDSPhieuMuon = new PageDSPhieuMuon();
-
+        private PageDSDocGia pageDSDocGia = new PageDSDocGia();
         public MainWindow()
         {
             InitializeComponent();
@@ -247,24 +247,51 @@ namespace DACK_PTTKPM
         //
         private void btnPageDSDocGiaClick(object sender, RoutedEventArgs e)
         {
-            this.MainArea.Content = new PageDSDocGia();
+            if (this.MainArea.Content != pageDSDocGia)
+            {
+                this.MainArea.Content = pageDSDocGia;
+            }
+            else
+            {
+                pageDSDocGia.RefreshDanhSach();
+            }
+            
         }
 
         private void btnThemDocGiaClick(object sender, RoutedEventArgs e)
         {
             WindowThemDocGia wd = new WindowThemDocGia();
-            wd.Show();
+            if (wd.ShowDialog() == true)
+            {
+                pageDSDocGia.RefreshDanhSach();
+            }
         }
 
         private void btnSuaDocGiaClick(object sender, RoutedEventArgs e)
         {
-            WindowSuaDocGia wd = new WindowSuaDocGia();
-            wd.Show();
+            DocGia docGia = pageDSDocGia.LayDocGiaDangChon();
+            if (docGia == null)
+                return;
+
+            WindowSuaDocGia wd = new WindowSuaDocGia(docGia);
+            if (wd.ShowDialog() == true)
+            {
+                pageDSDocGia.RefreshDanhSach();
+            }
         }
 
         private void btnXoaDocGiaClick(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Xoa doc gia click");
+            DocGia docGia = pageDSDocGia.LayDocGiaDangChon();
+            if (docGia == null) return;
+
+            MessageBoxResult result =
+                MessageBox.Show("Xác nhận xóa Độc giả ?", "Thông báo", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.OK)
+            {
+                DocGiaBUS.Instance.XoaDocGia(docGia.mssv);
+                pageDSDocGia.RefreshDanhSach();
+            }
         }
         //
         //  Quan ly phieu muon tra

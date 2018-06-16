@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DTO;
 using DAO;
 
+
 namespace BUS
 {
     public class DocGiaBUS
@@ -16,11 +17,14 @@ namespace BUS
         {
             get
             {
-                if (instance == null) instance = new DocGiaBUS();
+                if (instance == null)
+                {
+                    instance = new DocGiaBUS();
+                }
                 return instance;
             }
         }
-
+        
         public DocGia LayDocGia(string maDocGia)
         {
             try
@@ -31,6 +35,36 @@ namespace BUS
             {
                 return null;
             }
+        }
+        
+        public List<DocGia> LayDanhSach()
+        { 
+            return DocGiaDAO.Instance.LayDanhSach();
+        }
+
+        public void ThemDocGia(DocGia docGia)
+        {
+            DocGiaDAO.Instance.ThemDocGia(docGia);
+        }
+
+        public void SuaDocGia(DocGia docGia)
+        {
+            DocGiaDAO.Instance.SuaDocGia(docGia);
+        }
+
+        public void XoaDocGia(String maDocGia)
+        {
+            DocGiaDAO.Instance.XoaDocGia(maDocGia);
+        }
+
+        public List<DocGia> TimKiemTheoMa(String maDocGia)
+        {
+            return DocGiaDAO.Instance.TimKiemTheoMa(maDocGia);
+        }
+
+        public List<DocGia> TimKiemTheoTen(String tenDocGia)
+        {
+            return DocGiaDAO.Instance.TimKiemTheoTen(tenDocGia);
         }
     }
 }
