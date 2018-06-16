@@ -132,20 +132,29 @@
                 </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="Báo cáo - thống kê">
-                <RibbonGroup>
+                <RibbonGroup Header="Thống kê sách">
                     <RibbonButton
                         x:Name="btnThongKeSLSachMuong"
                         Click="btnThongKeSLSachMuong_Click"
-                        Label=" Thống kê số lượng sách mượn"
+                        Label=" Thống kê sách mượn"
                         LargeImageSource="images/phieu-muon-sach.png" />
                     <RibbonButton
-                        Click="btnPageDSSachItMuonClick"
-                        Label="Thống kê sách ít mượn"
+                        x:Name="btnThongKeSachConLai"
+                        Click="btnThongKeSachConLai_Click"
+                        Label="Thống kê sách còn lại"
                         LargeImageSource="images/sach-it-xem.png" />
+                </RibbonGroup>
+                <RibbonGroup Header="Thống kê độc giả">
                     <RibbonButton
-                        Click="btnPageDSSachHongClick"
-                        Label="Thống kê sách hỏng"
-                        LargeImageSource="images/sach-cu.png" />
+                        x:Name="btnBaoCaoDocGiaDangKy"
+                        Click="btnBaoCaoDocGiaDangKy_Click"
+                        Label="Thống kê độc giả đăng ký"
+                        LargeImageSource="images/phieu-muon-sach.png" />
+                    <RibbonButton
+                        x:Name="btnBaoCaoDocGiaViPham"
+                        Click="btnBaoCaoDocGiaViPham_Click"
+                        Label="Thống kê độc giả vi phạm"
+                        LargeImageSource="images/phieu-muon-sach.png" />
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>

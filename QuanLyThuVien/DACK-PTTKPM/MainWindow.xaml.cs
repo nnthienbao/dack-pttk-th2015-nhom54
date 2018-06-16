@@ -363,5 +363,14 @@ namespace DACK_PTTKPM
                 this.MainArea.Content = pageBaoCaoSachMuon;
             }
         }
+
+        private void btnThongKeSachConLai_Click(object sender, RoutedEventArgs e)
+        {
+            Page pageBaoCaoSachConLai = new BaoCaoSachConLai();
+            if (this.MainArea.Content != pageBaoCaoSachConLai)
+            {
+                this.MainArea.Content = pageBaoCaoSachConLai;
+            }
+        }
     }
 }
