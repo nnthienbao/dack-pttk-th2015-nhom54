@@ -42,6 +42,11 @@ namespace BUS
             return DocGiaDAO.Instance.LayDanhSach();
         }
 
+        public List<DocGia> LayDanhSach(DateTime begin, DateTime end)
+        {
+            return DocGiaDAO.Instance.LayDanhSach(begin, end);
+        }
+
         public void ThemDocGia(DocGia docGia)
         {
             DocGiaDAO.Instance.ThemDocGia(docGia);

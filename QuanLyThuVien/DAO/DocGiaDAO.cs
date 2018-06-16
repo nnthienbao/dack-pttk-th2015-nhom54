@@ -44,6 +44,12 @@ namespace DAO
             return listDocGia;
         }
 
+        public List<DocGia> LayDanhSach(DateTime begin, DateTime end)
+        {
+            QLThuVienDataContext db = new QLThuVienDataContext();
+            return db.DocGias.Select(dg => dg).Where(dg => dg.NgayMoThe >= begin && dg.NgayMoThe <= end).ToList();
+        }
+
         public void ThemDocGia(DocGia docGia)
         {
             using (QLThuVienDataContext db = new QLThuVienDataContext())

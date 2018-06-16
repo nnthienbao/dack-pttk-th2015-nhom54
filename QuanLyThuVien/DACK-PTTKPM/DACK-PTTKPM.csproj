@@ -136,6 +136,9 @@
     <Compile Include="_qldanhmucsach\PageDSSach.xaml.cs">
       <DependentUpon>PageDSSach.xaml</DependentUpon>
     </Compile>
+    <Compile Include="_report\BaoCaoDocGiaDangKy.xaml.cs">
+      <DependentUpon>BaoCaoDocGiaDangKy.xaml</DependentUpon>
+    </Compile>
     <Compile Include="_report\BaoCaoSachMuon.xaml.cs">
       <DependentUpon>BaoCaoSachMuon.xaml</DependentUpon>
     </Compile>
@@ -249,6 +252,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="_report\BaoCaoDocGiaDangKy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="_report\BaoCaoSachMuon.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -276,8 +283,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="_report\BaoCaoDocGiaDangKy.rdlc" />
     <EmbeddedResource Include="_report\BaoCaoSachConLai.rdlc" />
     <EmbeddedResource Include="_report\BaoCaoSachMuon.rdlc" />
+    <None Include="Properties\DataSources\DTO.DocGia.datasource" />
     <None Include="Properties\DataSources\DTO.Sach.datasource" />
     <None Include="Properties\DataSources\DTO.SoLuongSachMuon.datasource" />
     <None Include="Properties\Settings.settings">

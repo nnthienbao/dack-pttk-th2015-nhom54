@@ -358,19 +358,24 @@ namespace DACK_PTTKPM
         private void btnThongKeSLSachMuong_Click(object sender, RoutedEventArgs e)
         {
             Page pageBaoCaoSachMuon = new BaoCaoSachMuon();
-            if (this.MainArea.Content != pageBaoCaoSachMuon)
-            {
-                this.MainArea.Content = pageBaoCaoSachMuon;
-            }
+            this.MainArea.Content = pageBaoCaoSachMuon;
         }
 
         private void btnThongKeSachConLai_Click(object sender, RoutedEventArgs e)
         {
             Page pageBaoCaoSachConLai = new BaoCaoSachConLai();
-            if (this.MainArea.Content != pageBaoCaoSachConLai)
-            {
-                this.MainArea.Content = pageBaoCaoSachConLai;
-            }
+            this.MainArea.Content = pageBaoCaoSachConLai;
+        }
+
+        private void btnBaoCaoDocGiaDangKy_Click(object sender, RoutedEventArgs e)
+        {
+            Page pageBaoCaoDocGiaDangKy = new BaoCaoDocGiaDangKy();
+            this.MainArea.Content = pageBaoCaoDocGiaDangKy;
+        }
+
+        private void btnBaoCaoDocGiaViPham_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
