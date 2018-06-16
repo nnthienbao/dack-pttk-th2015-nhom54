@@ -375,7 +375,8 @@ namespace DACK_PTTKPM
 
         private void btnBaoCaoDocGiaViPham_Click(object sender, RoutedEventArgs e)
         {
-
+            Page pageDocGiaViPham = new BaoCaoDocGiaViPham();
+            this.MainArea.Content = pageDocGiaViPham;
         }
     }
 }

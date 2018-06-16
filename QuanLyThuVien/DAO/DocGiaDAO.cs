@@ -50,6 +50,19 @@ namespace DAO
             return db.DocGias.Select(dg => dg).Where(dg => dg.NgayMoThe >= begin && dg.NgayMoThe <= end).ToList();
         }
 
+        public List<DocGiaViPham> LayDanhSachViPham(DateTime begin, DateTime end)
+        {
+            using (QLThuVienDataContext db = new QLThuVienDataContext())
+            {
+                return db.PhieuMuonSaches
+                    .Where(p => p.TinhTrang == TinhTrangPhieuMuon.CHUA_TRA && p.HanTra >= begin && p.HanTra <= end)
+                    .GroupBy(p => p.DocGia)
+                    .Select(group => 
+                        new DocGiaViPham(group.Key.mssv, group.Key.HoTen, (bool)group.Key.GioiTinh, group.Key.NgaySinh, group.Count()))
+                    .ToList();
+            }
+        }
+
         public void ThemDocGia(DocGia docGia)
         {
             using (QLThuVienDataContext db = new QLThuVienDataContext())
