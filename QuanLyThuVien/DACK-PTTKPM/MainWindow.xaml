@@ -12,7 +12,7 @@
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <DockPanel>
-        <Ribbon DockPanel.Dock="Top" SelectedIndex="3">
+        <Ribbon DockPanel.Dock="Top" SelectedIndex="2">
             <RibbonTab Header="Quản lý danh mục sách">
                 <RibbonGroup Header="Quản lý sách">
                     <RibbonButton
@@ -89,7 +89,7 @@
 
             </RibbonTab>
             <RibbonTab Header="Quản lý độc giả">
-                <RibbonGroup Header="Quản lý mượn sách">
+                <RibbonGroup Header="Quản lý độc giả">
                     <RibbonButton
                         Click="btnPageDSDocGiaClick"
                         Label="Danh sách độc giả"
@@ -108,8 +108,8 @@
                         LargeImageSource="images/xoa-doc-gia.png" />
                 </RibbonGroup>
             </RibbonTab>
-            <RibbonTab Header="Quản lý sách mượn - trả">
-                <RibbonGroup Header="Quản lý mượn sách">
+            <RibbonTab Header="Quản lý sách phiếu mượn sách">
+                <RibbonGroup Header="Quản lý phiếu mượn sách">
                     <RibbonButton
                         Click="btnPageDSPhieuMuonClick"
                         Label="Danh sách phiếu mượn"
@@ -123,12 +123,6 @@
                         Label="Sửa thông tin phiếu mượn"
                         LargeImageSource="images/sua-phieu-muon-sach.png" />
                     <RibbonButton Label="Xóa thông tin phiếu mượn" LargeImageSource="images/xoa-phieu-muon-sach.png" />
-                </RibbonGroup>
-                <RibbonGroup Header="Quản lý trả sách">
-                    <RibbonButton
-                        Click="btnPageDSPhieuTraClick"
-                        Label="Danh sách phiếu mượn đã trả"
-                        LargeImageSource="images/phieu-muon-sach.png" />
                 </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="Báo cáo - thống kê">

@@ -202,6 +202,9 @@
                   <CellContents>
                     <Textbox Name="Textbox7">
                       <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!NgayMoThe.Value</SortExpression>
+                      </UserSort>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -230,6 +233,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -468,7 +472,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>THỐNG KÊ ĐỘC GIẢ ĐĂNG KÝ</Value>
+                <Value>DANH SÁCH ĐỘC GIẢ ĐĂNG KÝ</Value>
                 <Style>
                   <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>

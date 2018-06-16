@@ -163,7 +163,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -340,7 +339,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>THỐNG KÊ SÁCH CÒN LẠI</Value>
+                <Value>THỐNG KÊ SỐ LƯỢNG SÁCH CÒN LẠI</Value>
                 <Style>
                   <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
@@ -354,9 +353,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
         <Top>0.12972in</Top>
-        <Left>2.6048in</Left>
+        <Left>2.19604in</Left>
         <Height>0.31125in</Height>
-        <Width>2.63542in</Width>
+        <Width>3.91667in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>

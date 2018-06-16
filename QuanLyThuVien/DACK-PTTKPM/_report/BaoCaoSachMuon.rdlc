@@ -163,7 +163,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -339,7 +338,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>THỐNG KÊ SÁCH MƯỢN</Value>
+                <Value>DANH SÁCH SÁCH MƯỢN</Value>
                 <Style>
                   <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
@@ -353,9 +352,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox17</rd:DefaultName>
         <Top>0.125in</Top>
-        <Left>2.07167in</Left>
+        <Left>1.96865in</Left>
         <Height>0.28125in</Height>
-        <Width>2.48958in</Width>
+        <Width>3.01041in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
