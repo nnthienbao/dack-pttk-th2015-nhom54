@@ -18,6 +18,8 @@ namespace DACK_PTTKPM.CV
             int maSach = System.Convert.ToInt32(values[1]);
             int soLuongNhap = System.Convert.ToInt32(values[2]);
 
+            if (maPhieuMuon == 0 && maSach == 0 && soLuongNhap == 0) return true;
+
             try
             {
                 return ChiTietPhieuMuonBUS.Instance.KiemTraDuSoLuongMuon(maSach, maPhieuMuon, soLuongNhap);

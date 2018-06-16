@@ -76,7 +76,7 @@ namespace DACK_PTTKPM
                 foreach(Object item in e.NewItems)
                 {
                     (item as INotifyPropertyChanged).PropertyChanged += new PropertyChangedEventHandler(ChiTietPhieuMuon_PropertyChanged);
-                    (item as INotifyPropertyChanging).PropertyChanging += new PropertyChangingEventHandler(ChiTietPhieuMuon_PropertyChanging);
+                    //(item as INotifyPropertyChanging).PropertyChanging += new PropertyChangingEventHandler(ChiTietPhieuMuon_PropertyChanging);
                     (item as ChiTietPhieuMuon).Sach = new Sach(item as ChiTietPhieuMuon);
                 }
             }
@@ -88,7 +88,7 @@ namespace DACK_PTTKPM
                     ((item as ChiTietPhieuMuon).Sach).PropertyChanged -= new PropertyChangedEventHandler(ChiTietPhieuMuon_Sach_PropertyChanged);
                     ((item as ChiTietPhieuMuon).Sach).PropertyChanging -= new PropertyChangingEventHandler(ChiTietPhieuMuon_Sach_PropertyChanging);
                     (item as INotifyPropertyChanged).PropertyChanged -= new PropertyChangedEventHandler(ChiTietPhieuMuon_PropertyChanged);
-                    (item as INotifyPropertyChanging).PropertyChanging -= new PropertyChangingEventHandler(ChiTietPhieuMuon_PropertyChanging);
+                    //(item as INotifyPropertyChanging).PropertyChanging -= new PropertyChangingEventHandler(ChiTietPhieuMuon_PropertyChanging);
                 }
             }
         }
@@ -104,22 +104,22 @@ namespace DACK_PTTKPM
             
         }
 
-        private void ChiTietPhieuMuon_PropertyChanging(Object sender, PropertyChangingEventArgs e)
-        {
-            ChiTietPhieuMuon ctpm = sender as ChiTietPhieuMuon;
-            if(e.PropertyName == nameof(ChiTietPhieuMuon.SoLuong))
-            {
+        //private void ChiTietPhieuMuon_PropertyChanging(Object sender, PropertyChangingEventArgs e)
+        //{
+        //    ChiTietPhieuMuon ctpm = sender as ChiTietPhieuMuon;
+        //    if(e.PropertyName == nameof(ChiTietPhieuMuon.SoLuong))
+        //    {
 
-                PropertyChangingCancelEventArgs<int> cancelArgs = e as PropertyChangingCancelEventArgs<int>;
-                int soLuongNhap = cancelArgs.NewValue;
-                if(soLuongNhap > ctpm.Sach.SoLuongHienCo)
-                {
-                    datagrid_ChiTietPhieuMuon.CancelEdit();
-                    cancelArgs.Cancel = true;
-                    return;
-                }
-            }
-        }
+        //        PropertyChangingCancelEventArgs<int> cancelArgs = e as PropertyChangingCancelEventArgs<int>;
+        //        int soLuongNhap = cancelArgs.NewValue;
+        //        if (soLuongNhap > ctpm.Sach.SoLuongHienCo)
+        //        {
+        //            datagrid_ChiTietPhieuMuon.CancelEdit();
+        //            cancelArgs.Cancel = true;
+        //            return;
+        //        }
+        //    }
+        //}
 
         private void ChiTietPhieuMuon_Sach_PropertyChanged(Object sender, PropertyChangedEventArgs e)
         {
