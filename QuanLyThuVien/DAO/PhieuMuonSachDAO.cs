@@ -105,13 +105,36 @@ namespace DAO
             }
         }
 
+        public bool XoaPhieuMuon(int id)
+        {
+            using (QLThuVienDataContext db = new QLThuVienDataContext())
+            {
+                try
+                {
+                    PhieuMuonSach pms = db.PhieuMuonSaches.Single(p => p.id == id);
+                    pms.Disable = true;
+                    foreach(ChiTietPhieuMuon ctpm in pms.ChiTietPhieuMuons)
+                    {
+                        ctpm.Sach.SoLuongDaMuon -= ctpm.SoLuong;
+                        ctpm.Sach.SoLuongHienCo += ctpm.SoLuong;
+                    }
+                    db.SubmitChanges();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+
         public bool HuyTraSach(int idPhieuMuon)
         {
             using (QLThuVienDataContext db = new QLThuVienDataContext())
             {
                 try
                 {
-                    PhieuMuonSach pms = db.PhieuMuonSaches.Single(p => p.id == idPhieuMuon);
+                    PhieuMuonSach pms = db.PhieuMuonSaches.Single(p => p.id == idPhieuMuon && p.Disable == false);
                     pms.TinhTrang = TinhTrangPhieuMuon.CHUA_TRA;
                     foreach (ChiTietPhieuMuon ctpm in pms.ChiTietPhieuMuons)
                     {
@@ -134,7 +157,7 @@ namespace DAO
             {
                 try
                 {
-                    PhieuMuonSach pms = db.PhieuMuonSaches.Single(p => p.id == idPhieuMuon);
+                    PhieuMuonSach pms = db.PhieuMuonSaches.Single(p => p.id == idPhieuMuon && p.Disable == false);
                     pms.TinhTrang = TinhTrangPhieuMuon.DA_TRA;
                     foreach(ChiTietPhieuMuon ctpm in pms.ChiTietPhieuMuons)
                     {

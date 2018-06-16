@@ -122,7 +122,11 @@
                         Click="btnSuaPhieuMuonClick"
                         Label="Sửa thông tin phiếu mượn"
                         LargeImageSource="images/sua-phieu-muon-sach.png" />
-                    <RibbonButton Label="Xóa thông tin phiếu mượn" LargeImageSource="images/xoa-phieu-muon-sach.png" />
+                    <RibbonButton
+                        x:Name="btnXoaPhieuMuon"
+                        Click="btnXoaPhieuMuon_Click"
+                        Label="Xóa thông tin phiếu mượn"
+                        LargeImageSource="images/xoa-phieu-muon-sach.png" />
                 </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="Báo cáo - thống kê">

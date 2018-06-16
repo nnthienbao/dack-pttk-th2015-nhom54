@@ -55,7 +55,7 @@ namespace DAO
             using (QLThuVienDataContext db = new QLThuVienDataContext())
             {
                 return db.PhieuMuonSaches
-                    .Where(p => p.TinhTrang == TinhTrangPhieuMuon.CHUA_TRA && p.HanTra >= begin && p.HanTra <= end)
+                    .Where(p => p.Disable == false && p.TinhTrang == TinhTrangPhieuMuon.CHUA_TRA && p.HanTra >= begin && p.HanTra <= end)
                     .GroupBy(p => p.DocGia)
                     .Select(group => 
                         new DocGiaViPham(group.Key.mssv, group.Key.HoTen, (bool)group.Key.GioiTinh, group.Key.NgaySinh, group.Count()))

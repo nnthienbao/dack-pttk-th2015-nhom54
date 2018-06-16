@@ -322,9 +322,21 @@ namespace DACK_PTTKPM
             }
         }
 
-        private void btnXoaPhieuMuonClick(object sender, RoutedEventArgs e)
+        private void btnXoaPhieuMuon_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Xoa phieu muon click");
+            PhieuMuonSach pmsDangChon = pageDSPhieuMuon.LayPhieuMuonSachDangChon();
+            if (pmsDangChon == null) return;
+            MessageBoxResult msgResult = MessageBox.Show("Xác nhận xóa phiếu mượn", "Thông báo", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if(msgResult == MessageBoxResult.OK)
+            {
+                if (PhieuMuonSachBUS.Instance.XoaPhieuMuon(pmsDangChon.id))
+                {
+                    pageDSPhieuMuon.RefreshDanhSach();
+                } else
+                {
+                    MessageBox.Show("Có lỗi xảy ra", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
 
         private void btnPageDSPhieuTraClick(object sender, RoutedEventArgs e)

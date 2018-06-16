@@ -64,5 +64,10 @@ namespace BUS
         {
             return PhieuMuonSachDAO.Instance.HuyTraSach(idPhieuMuon);
         }
+
+        public bool XoaPhieuMuon(int id)
+        {
+            return PhieuMuonSachDAO.Instance.XoaPhieuMuon(id);
+        }
     }
 }
