@@ -349,5 +349,19 @@ namespace DACK_PTTKPM
         {
             this.MainArea.Content = new PageDSSachHong();
         }
+
+        private void RibbonButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnThongKeSLSachMuong_Click(object sender, RoutedEventArgs e)
+        {
+            Page pageBaoCaoSachMuon = new BaoCaoSachMuon();
+            if (this.MainArea.Content != pageBaoCaoSachMuon)
+            {
+                this.MainArea.Content = pageBaoCaoSachMuon;
+            }
+        }
     }
 }

@@ -101,5 +101,15 @@ namespace DAO
             Sach sach = db.Saches.Single(s => s.pid == pid && s.Disable == false);
             return sach;
         }
+
+        public List<SoLuongSachMuon> LayDanhSachSachMuon(DateTime begin, DateTime end)
+        {
+            List<SoLuongSachMuon> dsSLSachMuon = null;
+            QLThuVienDataContext db = new QLThuVienDataContext();
+            dsSLSachMuon = db.ChiTietPhieuMuons
+                .Where(ct => ct.PhieuMuonSach.NgayMuon >= begin && ct.PhieuMuonSach.NgayMuon <= end)
+                .GroupBy(ct => ct.Sach).Select(group => new SoLuongSachMuon(group.Key.pid, group.Key.Ten, group.Sum(ct => ct.SoLuong))).ToList();
+            return dsSLSachMuon;
+        }
     }
 }

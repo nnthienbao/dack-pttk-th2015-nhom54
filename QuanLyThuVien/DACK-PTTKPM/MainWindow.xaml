@@ -12,7 +12,7 @@
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <DockPanel>
-        <Ribbon DockPanel.Dock="Top" SelectedIndex="2">
+        <Ribbon DockPanel.Dock="Top" SelectedIndex="3">
             <RibbonTab Header="Quản lý danh mục sách">
                 <RibbonGroup Header="Quản lý sách">
                     <RibbonButton
@@ -102,9 +102,9 @@
                         Click="btnSuaDocGiaClick"
                         Label="Sửa thông tin độc giả"
                         LargeImageSource="images/sua-doc-gia.png" />
-                    <RibbonButton 
+                    <RibbonButton
                         Click="btnXoaDocGiaClick"
-                        Label="Xóa thông tin độc giả" 
+                        Label="Xóa thông tin độc giả"
                         LargeImageSource="images/xoa-doc-gia.png" />
                 </RibbonGroup>
             </RibbonTab>
@@ -134,8 +134,9 @@
             <RibbonTab Header="Báo cáo - thống kê">
                 <RibbonGroup>
                     <RibbonButton
-                        Click="btnPageDSViPhamClick"
-                        Label=" Thống kê  vi phạm"
+                        x:Name="btnThongKeSLSachMuong"
+                        Click="btnThongKeSLSachMuong_Click"
+                        Label=" Thống kê số lượng sách mượn"
                         LargeImageSource="images/phieu-muon-sach.png" />
                     <RibbonButton
                         Click="btnPageDSSachItMuonClick"

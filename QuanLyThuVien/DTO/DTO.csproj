@@ -53,6 +53,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLThuVien.dbml</DependentUpon>
     </Compile>
+    <Compile Include="SoLuongSachMuon.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

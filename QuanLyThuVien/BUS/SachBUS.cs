@@ -112,5 +112,10 @@ namespace BUS
                 return null;
             }
         }
+
+        public List<SoLuongSachMuon> LayDanhSachSachMuon(DateTime begin, DateTime end)
+        {
+            return SachDAO.Instance.LayDanhSachSachMuon(begin, end);
+        }
     }
 }
