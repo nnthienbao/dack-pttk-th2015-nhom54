@@ -24,6 +24,7 @@ namespace DAO
         {
             using (QLThuVienDataContext db = new QLThuVienDataContext())
             {
+                phieuMuonsach.TinhTrang = TinhTrangPhieuMuon.CHUA_TRA;
                 db.PhieuMuonSaches.InsertOnSubmit(phieuMuonsach);
                 foreach(ChiTietPhieuMuon ctpm in phieuMuonsach.ChiTietPhieuMuons)
                 {
@@ -101,6 +102,52 @@ namespace DAO
 
 
                 db.SubmitChanges();
+            }
+        }
+
+        public bool HuyTraSach(int idPhieuMuon)
+        {
+            using (QLThuVienDataContext db = new QLThuVienDataContext())
+            {
+                try
+                {
+                    PhieuMuonSach pms = db.PhieuMuonSaches.Single(p => p.id == idPhieuMuon);
+                    pms.TinhTrang = TinhTrangPhieuMuon.CHUA_TRA;
+                    foreach (ChiTietPhieuMuon ctpm in pms.ChiTietPhieuMuons)
+                    {
+                        ctpm.Sach.SoLuongHienCo -= ctpm.SoLuong;
+                        ctpm.Sach.SoLuongDaMuon += ctpm.SoLuong;
+                    }
+                    db.SubmitChanges();
+                }
+                catch
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
+
+        public bool TraSach(int idPhieuMuon)
+        {
+            using (QLThuVienDataContext db = new QLThuVienDataContext())
+            {
+                try
+                {
+                    PhieuMuonSach pms = db.PhieuMuonSaches.Single(p => p.id == idPhieuMuon);
+                    pms.TinhTrang = TinhTrangPhieuMuon.DA_TRA;
+                    foreach(ChiTietPhieuMuon ctpm in pms.ChiTietPhieuMuons)
+                    {
+                        ctpm.Sach.SoLuongHienCo += ctpm.SoLuong;
+                        ctpm.Sach.SoLuongDaMuon -= ctpm.SoLuong;
+                    }
+                    db.SubmitChanges();
+                }
+                catch
+                {
+                    return false;
+                }
+                return true;
             }
         }
     }

@@ -54,6 +54,7 @@
       <DependentUpon>QLThuVien.dbml</DependentUpon>
     </Compile>
     <Compile Include="SoLuongSachMuon.cs" />
+    <Compile Include="TinhTrangPhieuMuon.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

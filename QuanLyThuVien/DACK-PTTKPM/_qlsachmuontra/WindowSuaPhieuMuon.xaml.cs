@@ -145,6 +145,14 @@ namespace DACK_PTTKPM
         {
             this.DataContext = this.phieuMuonSach;
             this.datagrid_ChiTietPhieuMuon.ItemsSource = dsChiTietPhieuMuon;
+
+            if(this.phieuMuonSach.TinhTrang == TinhTrangPhieuMuon.DA_TRA)
+            {
+                btn_TraSach.Visibility = Visibility.Collapsed;
+            } else
+            {
+                btn_HuyTraSach.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void tb_MaDocGia_KeyDown(object sender, KeyEventArgs e)
@@ -224,6 +232,31 @@ namespace DACK_PTTKPM
         private void btn_HuyBo_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;
+        }
+
+        private void btn_TraSach_Click(object sender, RoutedEventArgs e)
+        {
+            if(PhieuMuonSachBUS.Instance.TraSach(phieuMuonSach.id))
+            {
+                MessageBox.Show("Đã trả sách", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.DialogResult = true;
+            } else
+            {
+                MessageBox.Show("Có lỗi xảy ra", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void btn_HuyTraSach_Click(object sender, RoutedEventArgs e)
+        {
+            if (PhieuMuonSachBUS.Instance.HuyTraSach(phieuMuonSach.id))
+            {
+                MessageBox.Show("Đã hủy trả sách", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.DialogResult = true;
+            }
+            else
+            {
+                MessageBox.Show("Có lỗi xảy ra", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

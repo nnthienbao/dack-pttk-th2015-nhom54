@@ -1360,6 +1360,8 @@ namespace DTO
 		private string _NguoiMuon;
 		
 		private bool _Disable;
+
+        private string _TinhTrang;
 		
 		private EntitySet<ChiTietPhieuMuon> _ChiTietPhieuMuons;
 		
@@ -1385,9 +1387,10 @@ namespace DTO
     partial void OnNguoiMuonChanged();
     partial void OnDisableChanging(bool value);
     partial void OnDisableChanged();
+    partial void OnTinhTrangChanging(string value);
     #endregion
-		
-		public PhieuMuonSach()
+
+        public PhieuMuonSach()
 		{
 			this._ChiTietPhieuMuons = new EntitySet<ChiTietPhieuMuon>(new Action<ChiTietPhieuMuon>(this.attach_ChiTietPhieuMuons), new Action<ChiTietPhieuMuon>(this.detach_ChiTietPhieuMuons));
 			this._NhanVien = default(EntityRef<NhanVien>);
@@ -1542,6 +1545,26 @@ namespace DTO
 				}
 			}
 		}
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_TinhTrang", DbType = "NVarChar(11)")]
+        public string TinhTrang
+        {
+            get
+            {
+                return this._TinhTrang;
+            }
+            set
+            {
+                if ((this._TinhTrang != value))
+                {
+                    this.OnTinhTrangChanging(value);
+                    this.SendPropertyChanging();
+                    this._TinhTrang = value;
+                    this.SendPropertyChanged("TinhTrang");
+                    this.OnDisableChanged();
+                }
+            }
+        }
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PhieuMuonSach_ChiTietPhieuMuon", Storage="_ChiTietPhieuMuons", ThisKey="id", OtherKey="MaPhieuMuon")]
 		public EntitySet<ChiTietPhieuMuon> ChiTietPhieuMuons
