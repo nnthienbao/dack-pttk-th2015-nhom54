@@ -23,7 +23,7 @@ namespace DACK_PTTKPM
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static NhanVien nhanVienSuDung = null;
+        private NhanVien nhanVienSuDung = null;
 
         private PageDSNganhSach pageDSNganhSach = new PageDSNganhSach();
         private PageDSLoaiSach pageDSLoaiSach = new PageDSLoaiSach();
@@ -31,18 +31,14 @@ namespace DACK_PTTKPM
         private PageDSSach pageDSSach = new PageDSSach();
         private PageDSPhieuMuon pageDSPhieuMuon = new PageDSPhieuMuon();
         private PageDSDocGia pageDSDocGia = new PageDSDocGia();
-        public MainWindow()
+        public MainWindow(NhanVien nhanVienSuDung)
         {
             InitializeComponent();
+            this.nhanVienSuDung = nhanVienSuDung;
             this.MainArea.Content = pageDSNganhSach;
         }
 
-        static MainWindow()
-        {
-            nhanVienSuDung = NhanVienBUS.Instance.LayNhanVien("NV0001");
-        }
-
-        public static NhanVien NhanVienSuDung
+        public NhanVien NhanVienSuDung
         {
             get
             {
@@ -303,7 +299,7 @@ namespace DACK_PTTKPM
 
         private void btnThemPhieuMuonClick(object sender, RoutedEventArgs e)
         {
-            WindowThemPhieuMuon wd = new WindowThemPhieuMuon();
+            WindowThemPhieuMuon wd = new WindowThemPhieuMuon(this.nhanVienSuDung);
             if(wd.ShowDialog() == true)
             {
                 pageDSPhieuMuon.RefreshDanhSach();

@@ -25,5 +25,10 @@ namespace BUS
         {
             return NhanVienDAO.Instance.LayNhanVien(maNhanVien);
         }
+
+        public NhanVien Authenticate(string maNhanVien, string matKhau)
+        {
+            return NhanVienDAO.Instance.Authenticate(maNhanVien, matKhau);
+        }
     }
 }

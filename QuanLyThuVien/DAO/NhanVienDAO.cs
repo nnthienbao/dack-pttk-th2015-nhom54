@@ -25,9 +25,31 @@ namespace DAO
             NhanVien nhanVien = null;
             using (QLThuVienDataContext db = new QLThuVienDataContext())
             {
-                nhanVien = db.NhanViens.Single(nv => nv.pid == maNhanVien);
+                try
+                {
+                    nhanVien = db.NhanViens.Single(nv => nv.pid == maNhanVien);
+                }
+                catch
+                {
+                    return null;
+                }
             }
             return nhanVien;
+        }
+
+        public NhanVien Authenticate(string maNhanVien, string matKhau)
+        {
+            using (QLThuVienDataContext db = new QLThuVienDataContext())
+            {
+                try
+                {
+                    return db.NhanViens.Select(nv => nv).Single(nv => nv.pid == maNhanVien && nv.MatKhau == matKhau);
+                }
+                catch
+                {
+                    return null;
+                }
+            }
         }
     }
 }

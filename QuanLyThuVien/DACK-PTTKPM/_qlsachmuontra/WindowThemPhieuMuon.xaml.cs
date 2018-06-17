@@ -27,12 +27,17 @@ namespace DACK_PTTKPM
     {
         private DocGia docGia = null;
         private ObservableCollection<ChiTietPhieuMuon> dsChiTietPhieuMuon = new ObservableCollection<ChiTietPhieuMuon>();
-        private NhanVien nguoiLapPhieu = MainWindow.NhanVienSuDung;
+        private NhanVien nguoiLapPhieu = null;
         private DateTime ngayMuon = DateTime.Now;
         private DateTime ngayTra;
 
-        public WindowThemPhieuMuon()
+        public WindowThemPhieuMuon(NhanVien nhanVienSuDung)
         {
+            this.nguoiLapPhieu = nhanVienSuDung;
+            if(nguoiLapPhieu == null)
+            {
+                throw new Exception("Chưa đăng nhập");
+            }
             InitializeComponent();
         }
 
