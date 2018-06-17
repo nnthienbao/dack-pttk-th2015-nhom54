@@ -29,7 +29,7 @@ namespace DAO
             DocGia docGia = null;
             using (QLThuVienDataContext db = new QLThuVienDataContext())
             {
-                docGia = db.DocGias.Single(dg => dg.mssv == maDocGia);
+                docGia = db.DocGias.Single(dg => dg.mssv == maDocGia && dg.Disable == false);
             }
             return docGia;
         }
@@ -47,7 +47,7 @@ namespace DAO
         public List<DocGia> LayDanhSach(DateTime begin, DateTime end)
         {
             QLThuVienDataContext db = new QLThuVienDataContext();
-            return db.DocGias.Select(dg => dg).Where(dg => dg.NgayMoThe >= begin && dg.NgayMoThe <= end).ToList();
+            return db.DocGias.Select(dg => dg).Where(dg => dg.Disable == false && dg.NgayMoThe >= begin && dg.NgayMoThe <= end).ToList();
         }
 
         public List<DocGiaViPham> LayDanhSachViPham(DateTime begin, DateTime end)

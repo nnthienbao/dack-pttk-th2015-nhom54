@@ -12,11 +12,14 @@
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <DockPanel>
-        <Ribbon DockPanel.Dock="Top" SelectedIndex="2">
+        <Ribbon
+            DockPanel.Dock="Top"
+            SelectedIndex="0"
+            SelectionChanged="Ribbon_SelectionChanged">
             <Ribbon.ApplicationMenu>
                 <RibbonApplicationMenu Width="60" Visibility="Collapsed" />
             </Ribbon.ApplicationMenu>
-            <RibbonTab Header="Quản lý danh mục sách">
+            <RibbonTab Name="QLDanhMucSach" Header="Quản lý danh mục sách">
                 <RibbonGroup Header="Quản lý sách">
                     <RibbonButton
                         Click="btnPageDSSachClick"
@@ -91,7 +94,7 @@
                 </RibbonGroup>
 
             </RibbonTab>
-            <RibbonTab Header="Quản lý độc giả">
+            <RibbonTab Name="QLDocGia" Header="Quản lý độc giả">
                 <RibbonGroup Header="Quản lý độc giả">
                     <RibbonButton
                         Click="btnPageDSDocGiaClick"
@@ -111,7 +114,7 @@
                         LargeImageSource="images/xoa-doc-gia.png" />
                 </RibbonGroup>
             </RibbonTab>
-            <RibbonTab Header="Quản lý sách phiếu mượn sách">
+            <RibbonTab Name="QLDanhPhieuMuonSach" Header="Quản lý sách phiếu mượn sách">
                 <RibbonGroup Header="Quản lý phiếu mượn sách">
                     <RibbonButton
                         Click="btnPageDSPhieuMuonClick"
@@ -132,7 +135,7 @@
                         LargeImageSource="images/xoa-phieu-muon-sach.png" />
                 </RibbonGroup>
             </RibbonTab>
-            <RibbonTab Header="Báo cáo - thống kê">
+            <RibbonTab Name="BaoCaoThongKe" Header="Báo cáo - thống kê">
                 <RibbonGroup Header="Thống kê sách">
                     <RibbonButton
                         x:Name="btnThongKeSLSachMuong"

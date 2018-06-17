@@ -27,7 +27,7 @@ namespace DAO
             {
                 try
                 {
-                    nhanVien = db.NhanViens.Single(nv => nv.pid == maNhanVien);
+                    nhanVien = db.NhanViens.Single(nv => nv.Disable == false && nv.pid == maNhanVien);
                 }
                 catch
                 {
@@ -43,7 +43,7 @@ namespace DAO
             {
                 try
                 {
-                    return db.NhanViens.Select(nv => nv).Single(nv => nv.pid == maNhanVien && nv.MatKhau == matKhau);
+                    return db.NhanViens.Select(nv => nv).Single(nv => nv.Disable == false && nv.pid == maNhanVien && nv.MatKhau == matKhau);
                 }
                 catch
                 {

@@ -35,7 +35,7 @@ namespace DACK_PTTKPM
         {
             InitializeComponent();
             this.nhanVienSuDung = nhanVienSuDung;
-            this.MainArea.Content = pageDSNganhSach;
+            this.MainArea.Content = pageDSSach;
         }
 
         public NhanVien NhanVienSuDung
@@ -363,28 +363,50 @@ namespace DACK_PTTKPM
 
         }
 
+        Page pageBaoCaoSachMuon = new BaoCaoSachMuon();
+        Page pageBaoCaoSachConLai = new BaoCaoSachConLai();
+        Page pageBaoCaoDocGiaDangKy = new BaoCaoDocGiaDangKy();
+        Page pageDocGiaViPham = new BaoCaoDocGiaViPham();
         private void btnThongKeSLSachMuong_Click(object sender, RoutedEventArgs e)
         {
-            Page pageBaoCaoSachMuon = new BaoCaoSachMuon();
             this.MainArea.Content = pageBaoCaoSachMuon;
         }
 
         private void btnThongKeSachConLai_Click(object sender, RoutedEventArgs e)
         {
-            Page pageBaoCaoSachConLai = new BaoCaoSachConLai();
             this.MainArea.Content = pageBaoCaoSachConLai;
         }
 
         private void btnBaoCaoDocGiaDangKy_Click(object sender, RoutedEventArgs e)
         {
-            Page pageBaoCaoDocGiaDangKy = new BaoCaoDocGiaDangKy();
             this.MainArea.Content = pageBaoCaoDocGiaDangKy;
         }
 
         private void btnBaoCaoDocGiaViPham_Click(object sender, RoutedEventArgs e)
         {
-            Page pageDocGiaViPham = new BaoCaoDocGiaViPham();
             this.MainArea.Content = pageDocGiaViPham;
+        }
+
+        private void Ribbon_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.MainArea == null) return;
+            RibbonTab tab = e.AddedItems[0] as RibbonTab;
+            if (tab == null) return;
+            switch(tab.Name)
+            {
+                case "QLDanhMucSach":
+                    this.MainArea.Content = pageDSSach;
+                    break;
+                case "QLDocGia":
+                    this.MainArea.Content = pageDSDocGia;
+                    break;
+                case "QLDanhPhieuMuonSach":
+                    this.MainArea.Content = pageDSPhieuMuon;
+                    break;
+                case "BaoCaoThongKe":
+                    this.MainArea.Content = pageBaoCaoSachMuon;
+                    break;
+            }
         }
     }
 }

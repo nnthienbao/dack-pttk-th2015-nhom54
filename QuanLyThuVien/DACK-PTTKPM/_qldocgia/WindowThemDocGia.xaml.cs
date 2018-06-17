@@ -57,7 +57,7 @@ namespace DACK_PTTKPM
                     } 
                 }
             } 
-            if (DocGiaBUS.Instance.TimKiemTheoMa(maSoDocGia) != null)
+            if (DocGiaBUS.Instance.LayDocGia(maSoDocGia) != null)
             {
                 lb_Error_MaSoDocGia.Content = "Đã tồn tại mã số này trong cơ sở dữ liệu";
                 panel_Error_MaSoDocGia.Visibility = Visibility.Visible;

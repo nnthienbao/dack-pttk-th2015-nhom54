@@ -107,7 +107,7 @@ namespace DAO
             List<SoLuongSachMuon> dsSLSachMuon = null;
             QLThuVienDataContext db = new QLThuVienDataContext();
             dsSLSachMuon = db.ChiTietPhieuMuons
-                .Where(ct => ct.PhieuMuonSach.NgayMuon >= begin && ct.PhieuMuonSach.NgayMuon <= end)
+                .Where(ct => ct.PhieuMuonSach.Disable == false && ct.PhieuMuonSach.NgayMuon >= begin && ct.PhieuMuonSach.NgayMuon <= end)
                 .GroupBy(ct => ct.Sach).Select(group => new SoLuongSachMuon(group.Key.pid, group.Key.Ten, group.Sum(ct => ct.SoLuong))).ToList();
             return dsSLSachMuon;
         }

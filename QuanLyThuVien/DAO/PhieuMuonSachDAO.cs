@@ -110,7 +110,7 @@ namespace DAO
             keyword = keyword.ToLower();
 
             QLThuVienDataContext db = new QLThuVienDataContext();
-            return db.PhieuMuonSaches.Where(p => p.NguoiMuon.Contains(keyword)).Select(p => p).ToList();
+            return db.PhieuMuonSaches.Where(p => p.Disable == false && p.NguoiMuon.Contains(keyword)).Select(p => p).ToList();
         }
 
         public List<PhieuMuonSach> TimKiemTheoMaPhieu(string keyword)
@@ -118,7 +118,7 @@ namespace DAO
             keyword = keyword.ToLower();
 
             QLThuVienDataContext db = new QLThuVienDataContext();
-            return db.PhieuMuonSaches.Where(p => p.pid.Contains(keyword)).Select(p => p).ToList();
+            return db.PhieuMuonSaches.Where(p => p.Disable == false && p.pid.Contains(keyword)).Select(p => p).ToList();
         }
 
         public bool XoaPhieuMuon(int id)
