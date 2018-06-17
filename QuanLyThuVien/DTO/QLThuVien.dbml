@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLThuVien" Class="QLThuVienDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-RJTPAIM;Initial Catalog=QLThuVien;Integrated Security=True;Encrypt=False;TrustServerCertificate=True" SettingsObjectName="DTO.Properties.Settings" SettingsPropertyName="QLThuVienConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-RJTPAIM;Initial Catalog=QLThuVien;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False" SettingsObjectName="DTO.Properties.Settings" SettingsPropertyName="QLThuVienConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.ChiTietPhieuMuon" Member="ChiTietPhieuMuons">
     <Type Name="ChiTietPhieuMuon">
       <Column Name="MaPhieuMuon" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -69,6 +69,7 @@
       <Column Name="NguoiLapPhieu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NguoiMuon" Type="System.String" DbType="NChar(11)" CanBeNull="true" />
       <Column Name="Disable" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TinhTrang" Type="System.String" DbType="nchar(11)" CanBeNull="false" />
       <Association Name="PhieuMuonSach_ChiTietPhieuMuon" Member="ChiTietPhieuMuons" ThisKey="id" OtherKey="MaPhieuMuon" Type="ChiTietPhieuMuon" />
       <Association Name="NhanVien_PhieuMuonSach" Member="NhanVien" ThisKey="NguoiLapPhieu" OtherKey="id" Type="NhanVien" IsForeignKey="true" />
       <Association Name="DocGia_PhieuMuonSach" Member="DocGia" ThisKey="NguoiMuon" OtherKey="mssv" Type="DocGia" IsForeignKey="true" />

@@ -58,6 +58,13 @@ namespace DAO
             }
         }
 
+        public Sach LaySachTheoId(int idSach)
+        {
+            QLThuVienDataContext db = new QLThuVienDataContext();
+            Sach sach = db.Saches.Single(s => s.id == idSach && s.Disable == false);
+            return sach;
+        }
+
         public List<Sach> TimKiemTheoTen(string keywordTen)
         {
             List<Sach> sachs = null;
@@ -86,6 +93,23 @@ namespace DAO
                 sachXoa.Disable = true;
                 db.SubmitChanges();
             }
+        }
+
+        public Sach LaySach(string pid)
+        {
+            QLThuVienDataContext db = new QLThuVienDataContext();
+            Sach sach = db.Saches.Single(s => s.pid == pid && s.Disable == false);
+            return sach;
+        }
+
+        public List<SoLuongSachMuon> LayDanhSachSachMuon(DateTime begin, DateTime end)
+        {
+            List<SoLuongSachMuon> dsSLSachMuon = null;
+            QLThuVienDataContext db = new QLThuVienDataContext();
+            dsSLSachMuon = db.ChiTietPhieuMuons
+                .Where(ct => ct.PhieuMuonSach.Disable == false && ct.PhieuMuonSach.NgayMuon >= begin && ct.PhieuMuonSach.NgayMuon <= end)
+                .GroupBy(ct => ct.Sach).Select(group => new SoLuongSachMuon(group.Key.pid, group.Key.Ten, group.Sum(ct => ct.SoLuong))).ToList();
+            return dsSLSachMuon;
         }
     }
 }
