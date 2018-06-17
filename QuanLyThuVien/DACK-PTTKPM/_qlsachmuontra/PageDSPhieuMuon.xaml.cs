@@ -61,5 +61,19 @@ namespace DACK_PTTKPM
             lb_TT_NgayMuon.Content = dateConverter.Convert(phieuMuonsachDangChon.NgayMuon, null, "dd/MM/yyyy", null);
             lb_TT_HanTra.Content = dateConverter.Convert(phieuMuonsachDangChon.HanTra, null, "dd/MM/yyyy", null);
         }
+
+        private void btn_TimKiemPhieu_Click(object sender, RoutedEventArgs e)
+        {
+            string keyword = "";
+            if((bool)rd_TimKiemPhieuTheoMaPhieu.IsChecked)
+            {
+                keyword = tb_TimKiemPhieuTheoMaPhieu.Text;
+                dataGridPhieuMuon.ItemsSource = PhieuMuonSachBUS.Instance.TimKiemTheoMaPhieu(keyword);
+            } else if((bool)rd_TimKiemPhieuTheoMaDocGia.IsChecked)
+            {
+                keyword = tb_TimKiemPhieuTheoMaDocGia.Text;
+                dataGridPhieuMuon.ItemsSource = PhieuMuonSachBUS.Instance.TimKiemTheoMaDocGia(keyword);
+            }
+        }
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DTO;
 using DAO;
+using System.Collections;
 
 namespace BUS
 {
@@ -68,6 +69,16 @@ namespace BUS
         public bool XoaPhieuMuon(int id)
         {
             return PhieuMuonSachDAO.Instance.XoaPhieuMuon(id);
+        }
+
+        public List<PhieuMuonSach> TimKiemTheoMaPhieu(string keyword)
+        {
+            return PhieuMuonSachDAO.Instance.TimKiemTheoMaPhieu(keyword);
+        }
+
+        public List<PhieuMuonSach> TimKiemTheoMaDocGia(string keyword)
+        {
+            return PhieuMuonSachDAO.Instance.TimKiemTheoMaDocGia(keyword);
         }
     }
 }

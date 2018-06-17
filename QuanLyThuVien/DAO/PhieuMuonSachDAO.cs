@@ -105,6 +105,22 @@ namespace DAO
             }
         }
 
+        public List<PhieuMuonSach> TimKiemTheoMaDocGia(string keyword)
+        {
+            keyword = keyword.ToLower();
+
+            QLThuVienDataContext db = new QLThuVienDataContext();
+            return db.PhieuMuonSaches.Where(p => p.NguoiMuon.Contains(keyword)).Select(p => p).ToList();
+        }
+
+        public List<PhieuMuonSach> TimKiemTheoMaPhieu(string keyword)
+        {
+            keyword = keyword.ToLower();
+
+            QLThuVienDataContext db = new QLThuVienDataContext();
+            return db.PhieuMuonSaches.Where(p => p.pid.Contains(keyword)).Select(p => p).ToList();
+        }
+
         public bool XoaPhieuMuon(int id)
         {
             using (QLThuVienDataContext db = new QLThuVienDataContext())
