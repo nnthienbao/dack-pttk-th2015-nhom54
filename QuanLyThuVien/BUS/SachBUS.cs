@@ -44,6 +44,25 @@ namespace BUS
             return destFile;
         }
 
+        public int LaySoLuongSachHienCo(int idSach)
+        {
+            Sach sach = this.LaySachTheoId(idSach);
+            if (sach == null) return -1;
+            return sach.SoLuongHienCo;
+            
+        }
+
+        private Sach LaySachTheoId(int idSach)
+        {
+            try
+            {
+                return SachDAO.Instance.LaySachTheoId(idSach);
+            } catch
+            {
+                return null;
+            }
+        }
+
         public List<Sach> TimKiemTheoMa(string keywordMa)
         {
             keywordMa = keywordMa.ToLower();
@@ -80,6 +99,23 @@ namespace BUS
         public void XoaSach(int id)
         {
             SachDAO.Instance.XoaSach(id);
+        }
+
+        public Sach LaySach(string pid)
+        {
+            try
+            {
+                Sach sach = SachDAO.Instance.LaySach(pid);
+                return sach;
+            } catch
+            {
+                return null;
+            }
+        }
+
+        public List<SoLuongSachMuon> LayDanhSachSachMuon(DateTime begin, DateTime end)
+        {
+            return SachDAO.Instance.LayDanhSachSachMuon(begin, end);
         }
     }
 }

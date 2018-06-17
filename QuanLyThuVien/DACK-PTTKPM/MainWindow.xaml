@@ -12,8 +12,14 @@
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <DockPanel>
-        <Ribbon DockPanel.Dock="Top" SelectedIndex="0">
-            <RibbonTab Header="Quản lý danh mục sách">
+        <Ribbon
+            DockPanel.Dock="Top"
+            SelectedIndex="0"
+            SelectionChanged="Ribbon_SelectionChanged">
+            <Ribbon.ApplicationMenu>
+                <RibbonApplicationMenu Width="60" Visibility="Collapsed" />
+            </Ribbon.ApplicationMenu>
+            <RibbonTab Name="QLDanhMucSach" Header="Quản lý danh mục sách">
                 <RibbonGroup Header="Quản lý sách">
                     <RibbonButton
                         Click="btnPageDSSachClick"
@@ -88,8 +94,8 @@
                 </RibbonGroup>
 
             </RibbonTab>
-            <RibbonTab Header="Quản lý độc giả">
-                <RibbonGroup Header="Quản lý mượn sách">
+            <RibbonTab Name="QLDocGia" Header="Quản lý độc giả">
+                <RibbonGroup Header="Quản lý độc giả">
                     <RibbonButton
                         Click="btnPageDSDocGiaClick"
                         Label="Danh sách độc giả"
@@ -102,11 +108,14 @@
                         Click="btnSuaDocGiaClick"
                         Label="Sửa thông tin độc giả"
                         LargeImageSource="images/sua-doc-gia.png" />
-                    <RibbonButton Label="Xóa thông tin độc giả" LargeImageSource="images/xoa-doc-gia.png" />
+                    <RibbonButton
+                        Click="btnXoaDocGiaClick"
+                        Label="Xóa thông tin độc giả"
+                        LargeImageSource="images/xoa-doc-gia.png" />
                 </RibbonGroup>
             </RibbonTab>
-            <RibbonTab Header="Quản lý sách mượn - trả">
-                <RibbonGroup Header="Quản lý mượn sách">
+            <RibbonTab Name="QLDanhPhieuMuonSach" Header="Quản lý sách phiếu mượn sách">
+                <RibbonGroup Header="Quản lý phiếu mượn sách">
                     <RibbonButton
                         Click="btnPageDSPhieuMuonClick"
                         Label="Danh sách phiếu mượn"
@@ -119,29 +128,37 @@
                         Click="btnSuaPhieuMuonClick"
                         Label="Sửa thông tin phiếu mượn"
                         LargeImageSource="images/sua-phieu-muon-sach.png" />
-                    <RibbonButton Label="Xóa thông tin phiếu mượn" LargeImageSource="images/xoa-phieu-muon-sach.png" />
-                </RibbonGroup>
-                <RibbonGroup Header="Quản lý trả sách">
                     <RibbonButton
-                        Click="btnPageDSPhieuTraClick"
-                        Label="Danh sách phiếu mượn đã trả"
-                        LargeImageSource="images/phieu-muon-sach.png" />
+                        x:Name="btnXoaPhieuMuon"
+                        Click="btnXoaPhieuMuon_Click"
+                        Label="Xóa thông tin phiếu mượn"
+                        LargeImageSource="images/xoa-phieu-muon-sach.png" />
                 </RibbonGroup>
             </RibbonTab>
-            <RibbonTab Header="Báo cáo - thống kê">
-                <RibbonGroup>
+            <RibbonTab Name="BaoCaoThongKe" Header="Báo cáo - thống kê">
+                <RibbonGroup Header="Thống kê sách">
                     <RibbonButton
-                        Click="btnPageDSViPhamClick"
-                        Label=" Thống kê  vi phạm"
+                        x:Name="btnThongKeSLSachMuong"
+                        Click="btnThongKeSLSachMuong_Click"
+                        Label=" Thống kê sách mượn"
                         LargeImageSource="images/phieu-muon-sach.png" />
                     <RibbonButton
-                        Click="btnPageDSSachItMuonClick"
-                        Label="Thống kê sách ít mượn"
+                        x:Name="btnThongKeSachConLai"
+                        Click="btnThongKeSachConLai_Click"
+                        Label="Thống kê sách còn lại"
                         LargeImageSource="images/sach-it-xem.png" />
+                </RibbonGroup>
+                <RibbonGroup Header="Thống kê độc giả">
                     <RibbonButton
-                        Click="btnPageDSSachHongClick"
-                        Label="Thống kê sách hỏng"
-                        LargeImageSource="images/sach-cu.png" />
+                        x:Name="btnBaoCaoDocGiaDangKy"
+                        Click="btnBaoCaoDocGiaDangKy_Click"
+                        Label="Thống kê độc giả đăng ký"
+                        LargeImageSource="images/phieu-muon-sach.png" />
+                    <RibbonButton
+                        x:Name="btnBaoCaoDocGiaViPham"
+                        Click="btnBaoCaoDocGiaViPham_Click"
+                        Label="Thống kê độc giả vi phạm"
+                        LargeImageSource="images/phieu-muon-sach.png" />
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>

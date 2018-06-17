@@ -35,9 +35,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="system.windows.controls.ribbon" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -54,14 +57,25 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="converter\DateConverter.cs" />
+    <Compile Include="converter\GioiTinhConverter.cs" />
+    <Compile Include="converter\KTDuSoLuongSachKhiSua.cs" />
+    <Compile Include="converter\SoSanhHaiSoConverter.cs" />
+    <Compile Include="converter\SoSanhVoiMotSoConverter.cs" />
+    <Compile Include="converter\TinhTrangPhieuMuonConverter.cs" />
+    <Compile Include="custom_template\DataGridNumericColumn.cs" />
     <Compile Include="UC\TextboxNumber.xaml.cs">
       <DependentUpon>TextboxNumber.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_dangnhap\WindowDangNhap.xaml.cs">
+      <DependentUpon>WindowDangNhap.xaml</DependentUpon>
     </Compile>
     <Compile Include="_qldocgia\WindowSuaDocGia.xaml.cs">
       <DependentUpon>WindowSuaDocGia.xaml</DependentUpon>
@@ -126,7 +140,23 @@
     <Compile Include="_qldanhmucsach\PageDSSach.xaml.cs">
       <DependentUpon>PageDSSach.xaml</DependentUpon>
     </Compile>
+    <Compile Include="_report\BaoCaoDocGiaDangKy.xaml.cs">
+      <DependentUpon>BaoCaoDocGiaDangKy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_report\BaoCaoDocGiaViPham.xaml.cs">
+      <DependentUpon>BaoCaoDocGiaViPham.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_report\BaoCaoSachMuon.xaml.cs">
+      <DependentUpon>BaoCaoSachMuon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_report\BaoCaoSachConLai.xaml.cs">
+      <DependentUpon>BaoCaoSachConLai.xaml</DependentUpon>
+    </Compile>
     <Page Include="UC\TextboxNumber.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_dangnhap\WindowDangNhap.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -233,6 +263,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="_report\BaoCaoDocGiaDangKy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_report\BaoCaoDocGiaViPham.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_report\BaoCaoSachMuon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_report\BaoCaoSachConLai.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -252,6 +298,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="_report\BaoCaoDocGiaDangKy.rdlc" />
+    <EmbeddedResource Include="_report\BaoCaoDocGiaViPham.rdlc" />
+    <EmbeddedResource Include="_report\BaoCaoSachConLai.rdlc" />
+    <EmbeddedResource Include="_report\BaoCaoSachMuon.rdlc" />
+    <None Include="Properties\DataSources\DTO.DocGia.datasource" />
+    <None Include="Properties\DataSources\DTO.DocGiaViPham.datasource" />
+    <None Include="Properties\DataSources\DTO.Sach.datasource" />
+    <None Include="Properties\DataSources\DTO.SoLuongSachMuon.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -312,6 +366,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\no-image.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

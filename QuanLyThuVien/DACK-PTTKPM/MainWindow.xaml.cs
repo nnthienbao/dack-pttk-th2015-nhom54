@@ -23,16 +23,28 @@ namespace DACK_PTTKPM
     /// </summary>
     public partial class MainWindow : Window
     {
+        private NhanVien nhanVienSuDung = null;
+
         private PageDSNganhSach pageDSNganhSach = new PageDSNganhSach();
         private PageDSLoaiSach pageDSLoaiSach = new PageDSLoaiSach();
         private PageDSNhaXuatBan pageDSNhaXuatBan = new PageDSNhaXuatBan();
         private PageDSSach pageDSSach = new PageDSSach();
-        public MainWindow()
+        private PageDSPhieuMuon pageDSPhieuMuon = new PageDSPhieuMuon();
+        private PageDSDocGia pageDSDocGia = new PageDSDocGia();
+        public MainWindow(NhanVien nhanVienSuDung)
         {
             InitializeComponent();
-            this.MainArea.Content = pageDSNganhSach;
+            this.nhanVienSuDung = nhanVienSuDung;
+            this.MainArea.Content = pageDSSach;
         }
 
+        public NhanVien NhanVienSuDung
+        {
+            get
+            {
+                return nhanVienSuDung;
+            }
+        }
         //
         //  Quan ly danh muc sach
         //
@@ -231,48 +243,96 @@ namespace DACK_PTTKPM
         //
         private void btnPageDSDocGiaClick(object sender, RoutedEventArgs e)
         {
-            this.MainArea.Content = new PageDSDocGia();
+            if (this.MainArea.Content != pageDSDocGia)
+            {
+                this.MainArea.Content = pageDSDocGia;
+            }
+            else
+            {
+                pageDSDocGia.RefreshDanhSach();
+            }
+            
         }
 
         private void btnThemDocGiaClick(object sender, RoutedEventArgs e)
         {
             WindowThemDocGia wd = new WindowThemDocGia();
-            wd.Show();
+            if (wd.ShowDialog() == true)
+            {
+                pageDSDocGia.RefreshDanhSach();
+            }
         }
 
         private void btnSuaDocGiaClick(object sender, RoutedEventArgs e)
         {
-            WindowSuaDocGia wd = new WindowSuaDocGia();
-            wd.Show();
+            DocGia docGia = pageDSDocGia.LayDocGiaDangChon();
+            if (docGia == null)
+                return;
+
+            WindowSuaDocGia wd = new WindowSuaDocGia(docGia);
+            if (wd.ShowDialog() == true)
+            {
+                pageDSDocGia.RefreshDanhSach();
+            }
         }
 
         private void btnXoaDocGiaClick(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Xoa doc gia click");
+            DocGia docGia = pageDSDocGia.LayDocGiaDangChon();
+            if (docGia == null) return;
+
+            MessageBoxResult result =
+                MessageBox.Show("Xác nhận xóa Độc giả ?", "Thông báo", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.OK)
+            {
+                DocGiaBUS.Instance.XoaDocGia(docGia.mssv);
+                pageDSDocGia.RefreshDanhSach();
+            }
         }
         //
         //  Quan ly phieu muon tra
         //
         private void btnPageDSPhieuMuonClick(object sender, RoutedEventArgs e)
         {
-            this.MainArea.Content = new PageDSPhieuMuon();
+            this.MainArea.Content = pageDSPhieuMuon;
         }
 
         private void btnThemPhieuMuonClick(object sender, RoutedEventArgs e)
         {
-            WindowThemPhieuMuon wd = new WindowThemPhieuMuon();
-            wd.Show();
+            WindowThemPhieuMuon wd = new WindowThemPhieuMuon(this.nhanVienSuDung);
+            if(wd.ShowDialog() == true)
+            {
+                pageDSPhieuMuon.RefreshDanhSach();
+            }
         }
 
         private void btnSuaPhieuMuonClick(object sender, RoutedEventArgs e)
         {
-            WindowSuaPhieuMuon wd = new WindowSuaPhieuMuon();
-            wd.Show();
+            PhieuMuonSach pmsDangChon = pageDSPhieuMuon.LayPhieuMuonSachDangChon();
+            if (pmsDangChon == null) return;
+
+            WindowSuaPhieuMuon wd = new WindowSuaPhieuMuon(pmsDangChon);
+            if(wd.ShowDialog() == true)
+            {
+                pageDSPhieuMuon.RefreshDanhSach();
+            }
         }
 
-        private void btnXoaPhieuMuonClick(object sender, RoutedEventArgs e)
+        private void btnXoaPhieuMuon_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Xoa phieu muon click");
+            PhieuMuonSach pmsDangChon = pageDSPhieuMuon.LayPhieuMuonSachDangChon();
+            if (pmsDangChon == null) return;
+            MessageBoxResult msgResult = MessageBox.Show("Xác nhận xóa phiếu mượn", "Thông báo", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if(msgResult == MessageBoxResult.OK)
+            {
+                if (PhieuMuonSachBUS.Instance.XoaPhieuMuon(pmsDangChon.id))
+                {
+                    pageDSPhieuMuon.RefreshDanhSach();
+                } else
+                {
+                    MessageBox.Show("Có lỗi xảy ra", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
 
         private void btnPageDSPhieuTraClick(object sender, RoutedEventArgs e)
@@ -296,6 +356,57 @@ namespace DACK_PTTKPM
         private void btnPageDSSachHongClick(object sender, RoutedEventArgs e)
         {
             this.MainArea.Content = new PageDSSachHong();
+        }
+
+        private void RibbonButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        Page pageBaoCaoSachMuon = new BaoCaoSachMuon();
+        Page pageBaoCaoSachConLai = new BaoCaoSachConLai();
+        Page pageBaoCaoDocGiaDangKy = new BaoCaoDocGiaDangKy();
+        Page pageDocGiaViPham = new BaoCaoDocGiaViPham();
+        private void btnThongKeSLSachMuong_Click(object sender, RoutedEventArgs e)
+        {
+            this.MainArea.Content = pageBaoCaoSachMuon;
+        }
+
+        private void btnThongKeSachConLai_Click(object sender, RoutedEventArgs e)
+        {
+            this.MainArea.Content = pageBaoCaoSachConLai;
+        }
+
+        private void btnBaoCaoDocGiaDangKy_Click(object sender, RoutedEventArgs e)
+        {
+            this.MainArea.Content = pageBaoCaoDocGiaDangKy;
+        }
+
+        private void btnBaoCaoDocGiaViPham_Click(object sender, RoutedEventArgs e)
+        {
+            this.MainArea.Content = pageDocGiaViPham;
+        }
+
+        private void Ribbon_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.MainArea == null) return;
+            RibbonTab tab = e.AddedItems[0] as RibbonTab;
+            if (tab == null) return;
+            switch(tab.Name)
+            {
+                case "QLDanhMucSach":
+                    this.MainArea.Content = pageDSSach;
+                    break;
+                case "QLDocGia":
+                    this.MainArea.Content = pageDSDocGia;
+                    break;
+                case "QLDanhPhieuMuonSach":
+                    this.MainArea.Content = pageDSPhieuMuon;
+                    break;
+                case "BaoCaoThongKe":
+                    this.MainArea.Content = pageBaoCaoSachMuon;
+                    break;
+            }
         }
     }
 }
