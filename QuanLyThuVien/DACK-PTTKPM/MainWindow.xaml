@@ -13,6 +13,9 @@
     mc:Ignorable="d">
     <DockPanel>
         <Ribbon DockPanel.Dock="Top" SelectedIndex="2">
+            <Ribbon.ApplicationMenu>
+                <RibbonApplicationMenu Width="60" Visibility="Collapsed" />
+            </Ribbon.ApplicationMenu>
             <RibbonTab Header="Quản lý danh mục sách">
                 <RibbonGroup Header="Quản lý sách">
                     <RibbonButton
